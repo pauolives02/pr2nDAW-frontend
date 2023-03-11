@@ -1,0 +1,57 @@
+nav {
+  height: 100%;
+  width: 124px;
+  background-color: #272b34;
+  // backdrop-filter: blur(6px);
+  // background: rgba(10, 10, 10, .65);
+  // background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(37,145,251,0.98) 0.1%, rgba(0,7,128,1) 99.8% );
+  box-shadow: 0 8px 32px rgb(2, 4, 24);
+  // border-right: 2px solid rgba(255, 255, 255, .09);
+}
+
+nav a {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 4px;
+  width: 100%;
+  @apply h-14;
+  @apply px-4;
+  @apply mt-2;
+  color: #fff;
+}
+
+nav a i {
+  font-size: 26px;
+}
+
+nav a span {
+  font-size: 18px;
+  margin-left: 8px;
+  pointer-events: none;
+  display: none;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, .1);
+}
+
+nav a.active {
+  background: #007acc;
+}
+
+nav.open {
+  width: 360px;
+}
+
+nav.open a span {
+  display: block;
+}
+
+.logo {
+  font-family: 'Kalam';
+  color: #363a45;
+  text-shadow: -2px -2px 0px #1951dd, 2px 1px 0px #1951dd, 0px -2px 0px #1951dd, -1px 1px 0px #1951dd, 5px 3px 5px #000000;
+  font-size: 76px;
+}

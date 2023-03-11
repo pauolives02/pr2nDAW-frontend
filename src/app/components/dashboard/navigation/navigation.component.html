@@ -1,0 +1,12 @@
+<nav class="flex flex-col pt-0 px-8 open">
+
+  <a [routerLink]="['/dashboard']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </a>
+
+  <a [routerLink]="['/dashboard/exercises']" [routerLinkActive]="'active'">
+    <i class="fa-solid fa-dumbbell"></i>
+    <span>Exercises</span>
+  </a>
+</nav>
