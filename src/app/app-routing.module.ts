@@ -12,8 +12,8 @@ import { ExercisesComponent } from './components/dashboard/exercises/exercises.c
 const routes: Routes = [
   { path: '', component: LoginComponent},
   // { path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent},
+  { path: 'login', component: LoginComponent, data: { animation: 'isLeft' } },
+  { path: 'register', component: RegisterComponent, data: { animation: 'isRight' } },
   { path: 'dashboard', component: DashboardComponent, 
       children: [
         { path: 'exercises', component: ExercisesComponent}

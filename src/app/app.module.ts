@@ -12,6 +12,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ExercisesComponent } from './components/dashboard/exercises/exercises.component';
 import { NavigationComponent } from './components/dashboard/navigation/navigation.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { NavigationComponent } from './components/dashboard/navigation/navigatio
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
