@@ -3,7 +3,24 @@
 <div class="flex flex-row h-screen">
   <app-navigation></app-navigation>
 
-  <div class="grow-[4] md:grow-8 content">
-    <router-outlet></router-outlet>
+  <div class="flex-col grow-[4] md:grow-8 content" [ngClass]="{'blur': mobileNav}">
+    <nav class="w-[100%] flex justify-between items-center px-10 py-5">
+      <i class="fa-solid fa-bars" (click)="toggleNav()"></i>
+      
+      <div class="flex items-center">
+        <img src="assets/img/13.png" class="h-8 w-8 sm:h-11 sm:w-11 mr-3">
+        <div class="cursor-pointer relative dropdown">
+          <p>{{ username }}</p>
+          <div class="dropdownContent flex flex-col">
+            <a  [routerLink]="['/dashboard/profile']" [routerLinkActive]="'active'"><i class="fa-solid fa-user"></i> Profile</a>
+            <a  [routerLink]="['/logout']"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+      
+    </nav>
+    <div class="px-10 py-5">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

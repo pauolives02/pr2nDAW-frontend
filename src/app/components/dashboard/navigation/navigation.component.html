@@ -1,4 +1,6 @@
-<nav class="flex flex-col pt-0 px-8 open">
+<nav class="flex flex-col px-8 open" [ngClass]="{'toggle': mobileNav}">
+
+  <img src="assets/img/logo.png" class="logo">
 
   <a [routerLink]="['/dashboard']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">
     <i class="fa-solid fa-house"></i>

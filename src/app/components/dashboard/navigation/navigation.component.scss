@@ -1,12 +1,33 @@
 nav {
   height: 100%;
   width: 124px;
-  background-color: #272b34;
-  // backdrop-filter: blur(6px);
-  // background: rgba(10, 10, 10, .65);
-  // background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(37,145,251,0.98) 0.1%, rgba(0,7,128,1) 99.8% );
-  box-shadow: 0 8px 32px rgb(2, 4, 24);
-  // border-right: 2px solid rgba(255, 255, 255, .09);
+  // background-color: var(--color1);
+  background-color: #0d0e0f;
+  // background-color: #0560bb;
+  box-shadow: 0 8px 32px rgb(13, 14, 19);
+  // display: none;
+  position: absolute;
+  margin-left: -320px;
+  @apply sm:flex;
+  @apply md:w-80;
+  @apply sm:relative;
+  @apply sm:ml-0;
+  transition: margin .2s ease-in-out;
+}
+
+nav.toggle {
+  margin-left: 0;
+  @apply w-64;
+  z-index: 20;
+}
+
+nav.toggle a span {
+  display: block;
+}
+
+nav.toggle .logo {
+  @apply h-32;
+  @apply w-32;
 }
 
 nav a {
@@ -31,6 +52,8 @@ nav a span {
   margin-left: 8px;
   pointer-events: none;
   display: none;
+  @apply md:block;
+  // @apply md:block;
 }
 
 nav a:hover {
@@ -38,20 +61,15 @@ nav a:hover {
 }
 
 nav a.active {
-  background: #007acc;
-}
-
-nav.open {
-  width: 360px;
-}
-
-nav.open a span {
-  display: block;
+  // background: #007acc;
+  background: var(--color4);
 }
 
 .logo {
-  font-family: 'Kalam';
-  color: #363a45;
-  text-shadow: -2px -2px 0px #1951dd, 2px 1px 0px #1951dd, 0px -2px 0px #1951dd, -1px 1px 0px #1951dd, 5px 3px 5px #000000;
-  font-size: 76px;
+  @apply h-16;
+  @apply w-16;
+  @apply md:h-32;
+  @apply md:w-32;
+  @apply mb-12;
+  @apply mx-auto;
 }
