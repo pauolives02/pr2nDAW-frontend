@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -9,6 +9,7 @@ export class NavigationComponent {
 
   mobileNav: boolean = false
   clicks: number = 0
+  @Output() closeNav: EventEmitter<any> = new EventEmitter()
 
   @HostListener('document:click', ['$event'])
   clickout(event:any) {
@@ -16,7 +17,9 @@ export class NavigationComponent {
       if(this.clicks == 0) {
         this.clicks += 1
       } else {
-        this.toggleNav()
+        this.mobileNav = !this.mobileNav
+        this.closeNav.emit(this.mobileNav)
+        this.clicks = 0
       }
     }
   }

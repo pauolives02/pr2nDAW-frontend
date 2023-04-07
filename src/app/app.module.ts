@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { AuthInterceptor } from './auth/auth-interceptor';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -14,6 +13,10 @@ import { ExercisesComponent } from './components/dashboard/exercises/exercises.c
 import { NavigationComponent } from './components/dashboard/navigation/navigation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { HttpClientModule } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { RankingComponent } from './components/dashboard/ranking/ranking.component';
+import { SuggestionsComponent } from './components/dashboard/suggestions/suggestions.component';
 
 @NgModule({
   declarations: [
@@ -23,16 +26,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     DashboardComponent,
     NotFoundComponent,
     ExercisesComponent,
-    NavigationComponent
+    NavigationComponent,
+    RankingComponent,
+    SuggestionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 <!-- <h1>DASHBOARD</h1> -->
 
 <div class="flex flex-row h-screen">
-  <app-navigation></app-navigation>
+  <app-navigation (closeNav)="closeNav($event)"></app-navigation>
 
   <div class="flex-col grow-[4] md:grow-8 content" [ngClass]="{'blur': mobileNav}">
     <nav class="w-[100%] flex justify-between items-center px-10 py-5">
@@ -13,7 +13,7 @@
           <p>{{ username }}</p>
           <div class="dropdownContent flex flex-col">
             <a  [routerLink]="['/dashboard/profile']" [routerLinkActive]="'active'"><i class="fa-solid fa-user"></i> Profile</a>
-            <a  [routerLink]="['/logout']"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+            <a  (click)="onLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
           </div>
         </div>
       </div>

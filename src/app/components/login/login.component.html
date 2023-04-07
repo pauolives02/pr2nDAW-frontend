@@ -8,6 +8,7 @@
     <div class="item flex-col color4">
 
       <p *ngIf="error" class="mb-5 md:mb-20 w-[60%] text-base md:text-xl error">Error: safdagfasdgasg</p>
+      <p *ngIf="isLoading" class="mb-5 md:mb-20 w-[60%] text-base md:text-xl error">Loading</p>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form" id="loginForm">
 

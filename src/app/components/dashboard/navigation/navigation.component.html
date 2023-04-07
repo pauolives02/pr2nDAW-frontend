@@ -11,4 +11,19 @@
     <i class="fa-solid fa-dumbbell"></i>
     <span>Exercises</span>
   </a>
+
+  <a [routerLink]="['/dashboard/sets']" [routerLinkActive]="'active'">
+    <i class="fa-solid fa-list-check"></i>
+    <span>Sets</span>
+  </a>
+
+  <a [routerLink]="['/dashboard/ranking']" [routerLinkActive]="'active'">
+    <i class="fa-solid fa-ranking-star"></i>
+    <span>Ranking</span>
+  </a>
+
+  <a [routerLink]="['/dashboard/suggestions']" [routerLinkActive]="'active'">
+    <i class="fa-solid fa-message"></i>
+    <span>Suggestions</span>
+  </a>
 </nav>
