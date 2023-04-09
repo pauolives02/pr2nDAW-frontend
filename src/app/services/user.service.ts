@@ -44,4 +44,8 @@ export class UserService {
   logout() {
     this.authService.logout();
   }
+
+  getAuthUser() {
+    return this.http.get<User>(environment.apiUrl + '/api/user/user-data')
+  }
 }

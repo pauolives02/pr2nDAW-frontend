@@ -9,6 +9,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ExercisesComponent } from './components/dashboard/exercises/exercises.component';
 import { RankingComponent } from './components/dashboard/ranking/ranking.component';
 import { SuggestionsComponent } from './components/dashboard/suggestions/suggestions.component';
+import { SetsComponent } from './components/dashboard/sets/sets.component';
+import { AddExerciseComponent } from './components/dashboard/exercises/add-exercise/add-exercise.component';
 
 
 const routes: Routes = [
@@ -18,7 +20,12 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, data: { animation: 'isRight' } },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], 
       children: [
-        { path: 'exercises', component: ExercisesComponent },
+        { path: 'exercises', component: ExercisesComponent,
+          children: [
+            { path: 'add', component: AddExerciseComponent },
+          ]
+        },
+        { path: 'sets', component: SetsComponent },
         { path: 'ranking', component: RankingComponent },
         { path: 'suggestions', component: SuggestionsComponent },
         // { path: 'exercises', component: ExercisesComponent }

@@ -1,4 +1,4 @@
-<nav class="flex flex-col px-8 open" [ngClass]="{'toggle': mobileNav}">
+<nav class="sidenav flex flex-col px-8 toggle" [ngClass]="{'large': toggle || large, 'small': small, 'toggle': toggle}">
 
   <img src="assets/img/logo.png" class="logo">
 

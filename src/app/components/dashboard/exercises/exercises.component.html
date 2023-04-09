@@ -1,1 +1,30 @@
-<p>exercises works!</p>
+<app-component-nav [navLinks]="navLinks"></app-component-nav>
+
+<section>
+  <ng-container *ngIf="!hideContent">
+    <section>
+      <h3>Public</h3>
+      <div *ngIf="public_exercises.length != 0"></div>
+      <p *ngIf="public_exercises.length == 0">No exercises were found.</p>
+    </section>
+  
+    <section>
+      <h3>Private</h3>
+      <div *ngIf="private_exercises.length != 0">
+        <div *ngFor="let exercise of private_exercises">
+          <p>Id: {{ exercise.id }}</p>
+          <p>Name: {{ exercise.name }}</p>
+          <p>Description: {{ exercise.description }}</p>
+          <p>Image Url: {{ exercise.image }}</p>
+          <p>XP: {{ exercise.finished_xp }}</p>
+          <br>
+        </div>
+      </div>
+      <p *ngIf="private_exercises.length == 0">No exercises were found.</p>
+    </section>
+  </ng-container>
+
+  <router-outlet></router-outlet>
+
+  <!-- <app-spinner></app-spinner> -->
+</section>

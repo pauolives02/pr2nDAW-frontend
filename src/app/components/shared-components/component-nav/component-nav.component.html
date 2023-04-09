@@ -1,0 +1,6 @@
+<nav class="cnav">
+  <a *ngFor="let link of navLinks" [routerLink]="[link.url]" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
+    <i *ngIf="link.icon" class="fa-solid" [ngClass]="link.icon"></i>
+    <span>{{ link.text }}</span>
+  </a>
+</nav>

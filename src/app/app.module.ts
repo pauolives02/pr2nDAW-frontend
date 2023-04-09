@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { RankingComponent } from './components/dashboard/ranking/ranking.component';
 import { SuggestionsComponent } from './components/dashboard/suggestions/suggestions.component';
+import { SetsComponent } from './components/dashboard/sets/sets.component';
+import { ComponentNavComponent } from './components/shared-components/component-nav/component-nav.component';
+import { SpinnerComponent } from './components/shared-components/spinner/spinner.component';
+import { AddExerciseComponent } from './components/dashboard/exercises/add-exercise/add-exercise.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { SuggestionsComponent } from './components/dashboard/suggestions/suggest
     ExercisesComponent,
     NavigationComponent,
     RankingComponent,
-    SuggestionsComponent
+    SuggestionsComponent,
+    SetsComponent,
+    ComponentNavComponent,
+    SpinnerComponent,
+    AddExerciseComponent
   ],
   imports: [
     BrowserModule,

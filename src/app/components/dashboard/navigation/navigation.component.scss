@@ -1,75 +1,154 @@
-nav {
+// nav {
+//   height: 100%;
+//   // width: 124px;
+//   // background-color: var(--color1);
+//   background-color: #0d0e0f;
+//   // background-color: #0560bb;
+//   box-shadow: 0 8px 32px rgb(13, 14, 19);
+//   // display: none;
+//   position: absolute;
+//   margin-left: -320px;
+//   @apply sm:flex;
+//   @apply lg:w-64;
+//   @apply sm:relative;
+//   @apply sm:ml-0;
+//   transition: margin .2s ease-in-out;
+// }
+
+// nav.toggle {
+//   margin-left: 0;
+//   @apply w-64;
+//   z-index: 20;
+// }
+
+// nav.toggle a span {
+//   display: block;
+// }
+
+// nav.toggle .logo {
+//   @apply h-32;
+//   @apply w-32;
+// }
+
+// nav a {
+//   cursor: pointer;
+//   display: flex;
+//   align-items: center;
+//   justify-content: flex-start;
+//   border-radius: 4px;
+//   width: 100%;
+//   @apply h-14;
+//   @apply px-4;
+//   @apply mt-2;
+//   color: #fff;
+// }
+
+// nav a i {
+//   font-size: 26px;
+// }
+
+// nav a span {
+//   font-size: 18px;
+//   margin-left: 8px;
+//   pointer-events: none;
+//   display: none;
+//   @apply md:block;
+//   // @apply md:block;
+// }
+
+// nav a:hover {
+//   background: rgba(255, 255, 255, .1);
+// }
+
+// nav a.active {
+//   // background: #007acc;
+//   background: var(--color4);
+// }
+
+// .logo {
+//   @apply h-16;
+//   @apply w-16;
+//   @apply md:h-32;
+//   @apply md:w-32;
+//   @apply mb-12;
+//   @apply mx-auto;
+// }
+
+.sidenav {
+  display: flex;
+  color: var(--white);
   height: 100%;
   width: 124px;
-  // background-color: var(--color1);
-  background-color: #0d0e0f;
-  // background-color: #0560bb;
+  transition: margin .2s ease-out, width .2s ease-out,;
+  background-color: #2b2e3d;
   box-shadow: 0 8px 32px rgb(13, 14, 19);
-  // display: none;
-  position: absolute;
-  margin-left: -320px;
-  @apply sm:flex;
-  @apply md:w-80;
-  @apply sm:relative;
-  @apply sm:ml-0;
-  transition: margin .2s ease-in-out;
+  padding-top: 1rem;
+  margin-left: -240px;
+  // transition: .2s ease-in-out;
+  overflow-x: hidden;
 }
 
-nav.toggle {
+.sidenav .logo {
+  @apply h-16;
+  @apply w-16;
+  @apply mb-12;
+  @apply mx-auto;
+}
+
+.sidenav a {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  width: 100%;
+  @apply h-14;
+  // @apply px-4;
+  @apply mt-2;
+  color: #fff;
+}
+.sidenav a.active {
+  background-color: var(--color4);
+}
+
+.sidenav a i {
+  font-size: 26px;
+}
+
+.sidenav a span {
+  display: none;
+}
+
+.sidenav a:hover:not(.active) {
+  background: rgba(255, 255, 255, .1);
+}
+
+.small {
   margin-left: 0;
-  @apply w-64;
-  z-index: 20;
 }
 
-nav.toggle a span {
-  display: block;
+.large {
+  margin-left: 0;
+  width: 240px;
 }
 
-nav.toggle .logo {
+.large .logo {
   @apply h-32;
   @apply w-32;
 }
 
-nav a {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+.large a {
   justify-content: flex-start;
-  border-radius: 4px;
-  width: 100%;
-  @apply h-14;
-  @apply px-4;
-  @apply mt-2;
-  color: #fff;
+  padding-left: 10px;
 }
 
-nav a i {
-  font-size: 26px;
+.large a span {
+  display: block;
+  margin-left: 10px;
 }
 
-nav a span {
-  font-size: 18px;
-  margin-left: 8px;
-  pointer-events: none;
-  display: none;
-  @apply md:block;
-  // @apply md:block;
-}
 
-nav a:hover {
-  background: rgba(255, 255, 255, .1);
-}
-
-nav a.active {
-  // background: #007acc;
-  background: var(--color4);
-}
-
-.logo {
-  @apply h-16;
-  @apply w-16;
-  @apply md:h-32;
-  @apply md:w-32;
-  @apply mb-12;
-  @apply mx-auto;
+.toggle {
+  position: absolute;
+  z-index: 20;
 }

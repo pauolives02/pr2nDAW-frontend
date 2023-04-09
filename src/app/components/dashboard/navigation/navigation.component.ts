@@ -1,26 +1,53 @@
-import { Component, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
 
-  mobileNav: boolean = false
+  toggle: boolean = false
+  small: boolean = false
+  large: boolean = false
+
+  locked: boolean = false
+
+
   clicks: number = 0
   @Output() closeNav: EventEmitter<any> = new EventEmitter()
 
   @HostListener('document:click', ['$event'])
   clickout(event:any) {
-    if(!this.eRef.nativeElement.contains(event.target) && this.mobileNav) {
+    if(!this.eRef.nativeElement.contains(event.target) && this.toggle) {
       if(this.clicks == 0) {
         this.clicks += 1
       } else {
-        this.mobileNav = !this.mobileNav
-        this.closeNav.emit(this.mobileNav)
+        if(this.toggle) {
+          this.toggle = false
+          this.locked = !this.locked
+          this.closeNav.emit(this.toggle)
+        }
         this.clicks = 0
       }
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (window.innerWidth >= 1024) {
+      if(!this.locked) {
+        this.small = false
+        this.large = true
+      }
+    } else if (window.innerWidth < 1024 && window.innerWidth >= 640) {
+      if(!this.locked) {
+        this.small = true
+        this.large = false
+      }
+    } else {
+      this.small = false
+      this.large = false
     }
   }
 
@@ -28,8 +55,21 @@ export class NavigationComponent {
     private eRef: ElementRef
   ) { }
 
+  ngOnInit(): void {
+    this.onResize(null)
+  }
+
   toggleNav() {
-    this.mobileNav = !this.mobileNav
-    return this.mobileNav
+    if (window.innerWidth >= 1024) {
+      this.small = !this.small
+      this.large = !this.large
+    } else if (window.innerWidth < 1024 && window.innerWidth >= 640) {
+      this.small = !this.small
+      this.large = !this.large
+    } else {
+      this.toggle = !this.toggle
+      return true
+    }
+    return false
   }
 }
