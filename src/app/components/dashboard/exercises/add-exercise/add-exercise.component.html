@@ -1,6 +1,4 @@
-<!-- <p>add-exercise works!</p> -->
-
-<form [formGroup]="form" (submit)="saveExercise()" class="mt-8">
+<form [formGroup]="form" (submit)="saveExercise()" class="mt-8" *ngIf="!isLoading">
   <div class="form-group">
     <input type="text" id="name" formControlName="name" placeholder="Name"
     [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
@@ -28,6 +26,8 @@
     <label for="public">Public</label>
     <!-- <input type="text" id="description" formControlName="description" placeholder="Description"> -->
   </div>
+
+  <app-file-upload formControlName="image"></app-file-upload>
 
   <!-- <input #fileInput formControlName="image" type="file">
   <input formControlName="user" type="file"> -->

@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Exercise } from 'src/app/models/exercise.model';
+import { requiredFileType } from 'src/app/helpers/requiredFileType';
+import { toFormData } from 'src/app/helpers/toFormData';
 
 @Component({
   selector: 'app-add-exercise',
@@ -13,7 +15,7 @@ export class AddExerciseComponent implements OnInit {
 
   private isAdmin: boolean = false
   form: FormGroup
-  // descriptionCounter: number = 180;
+  isLoading = false
 
   constructor(
     private exerciseService: ExerciseService,
@@ -28,20 +30,19 @@ export class AddExerciseComponent implements OnInit {
       description: new FormControl('', [Validators.required, Validators.maxLength(180)]),
       finished_xp: new FormControl({value: '1', disabled: !this.isAdmin}, [Validators.required, Validators.min(1)]),
       public: new FormControl({value: 'false', disabled: !this.isAdmin}, [Validators.required]),
+      image: new FormControl(null, [Validators.required, requiredFileType()])
     })
   }
 
   saveExercise() {
     if (this.form.valid) {
-      // console.log(this.form.value)
-      const exercise: Exercise = {
-        name: this.form.value.name,
-        description: this.form.value.description,
-        finished_xp: this.form.value.finished_xp,
-        public: this.form.value.public,
-        image: 'a'
-      }
-      console.log(exercise)
+      const formData = toFormData(this.form.value)
+      this.isLoading = true
+      this.exerciseService.createExercise(formData)
+      .subscribe(res => {
+        console.log(res)
+        this.isLoading = false
+      })
     }
   }
 }

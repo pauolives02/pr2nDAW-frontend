@@ -1,7 +1,22 @@
 <section>
   <h3>Public</h3>
   <hr class="h-px my-2 bg-gray-400 border-0">
-  <div *ngIf="public_exercises.length != 0"></div>
+  <div *ngIf="public_exercises.length != 0">
+
+    <div *ngFor="let exercise of public_exercises" class="item">
+      <img src="{{imagesUrl + exercise.image}}">
+      <!-- <p>Image Url: {{ exercise.image }}</p> -->
+      <div>
+        <header>
+          <h1>{{ exercise.name }}</h1>
+          <p class="xp">{{ exercise.finished_xp }} XP</p>
+        </header>
+        <p class="description">{{ exercise.description }}</p>
+        <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a>
+      </div>
+    </div>
+
+  </div>
   <p *ngIf="public_exercises.length == 0 && !isLoadingPublic">No exercises were found.</p>
   <app-spinner *ngIf="isLoadingPublic"></app-spinner>
 </section>
@@ -14,14 +29,14 @@
 
 
     <div *ngFor="let exercise of private_exercises" class="item">
-      <img src="assets/img/test.png">
+      <img src="{{imagesUrl + exercise.image}}">
       <!-- <p>Image Url: {{ exercise.image }}</p> -->
       <div>
         <header>
           <h1>{{ exercise.name }}</h1>
           <p class="xp">{{ exercise.finished_xp }} XP</p>
         </header>
-        <p class="description">{{ exercise.description }} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus eum repellendus, hic suscipit, facere nobis nemo id qui eius ratione, asperiores inventore odio cum impedit ipsum necessitatibus officiis? Cupiditate, inventore?</p>
+        <p class="description">{{ exercise.description }}</p>
         <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a>
       </div>
     </div>

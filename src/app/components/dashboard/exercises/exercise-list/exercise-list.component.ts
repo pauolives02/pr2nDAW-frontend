@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Exercise } from 'src/app/models/exercise.model';
 import { ExerciseService } from 'src/app/services/exercise.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-exercise-list',
@@ -9,10 +10,11 @@ import { ExerciseService } from 'src/app/services/exercise.service';
 })
 export class ExerciseListComponent implements OnInit {
 
-  public_exercises: Exercise[] = [];
-  private_exercises: Exercise[] = [];
-  isLoadingPublic: boolean = false;
-  isLoadingPrivate: boolean = false;
+  public_exercises: Exercise[] = []
+  private_exercises: Exercise[] = []
+  isLoadingPublic: boolean = false
+  isLoadingPrivate: boolean = false
+  imagesUrl: string  = environment.apiUrl + '/api/exercise/get-image/'
 
   constructor(
     private exerciseService: ExerciseService,

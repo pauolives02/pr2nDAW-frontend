@@ -25,6 +25,7 @@ import { ProfileComponent } from './components/dashboard/profile/profile.compone
 import { ExerciseDetailComponent } from './components/dashboard/exercises/exercise-detail/exercise-detail.component';
 import { ExerciseListComponent } from './components/dashboard/exercises/exercise-list/exercise-list.component';
 import { HttpErrorInterceptor } from './interceptors/error-interceptor';
+import { FileUploadComponent } from './components/shared-components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HttpErrorInterceptor } from './interceptors/error-interceptor';
     AddExerciseComponent,
     ProfileComponent,
     ExerciseDetailComponent,
-    ExerciseListComponent
+    ExerciseListComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
