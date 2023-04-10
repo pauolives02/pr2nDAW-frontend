@@ -11,6 +11,9 @@ import { RankingComponent } from './components/dashboard/ranking/ranking.compone
 import { SuggestionsComponent } from './components/dashboard/suggestions/suggestions.component';
 import { SetsComponent } from './components/dashboard/sets/sets.component';
 import { AddExerciseComponent } from './components/dashboard/exercises/add-exercise/add-exercise.component';
+import { ProfileComponent } from './components/dashboard/profile/profile.component';
+import { ExerciseDetailComponent } from './components/dashboard/exercises/exercise-detail/exercise-detail.component';
+import { ExerciseListComponent } from './components/dashboard/exercises/exercise-list/exercise-list.component';
 
 
 const routes: Routes = [
@@ -22,13 +25,15 @@ const routes: Routes = [
       children: [
         { path: 'exercises', component: ExercisesComponent,
           children: [
+            { path: '', component: ExerciseListComponent },
             { path: 'add', component: AddExerciseComponent },
+            { path: 'detail/:id', component: ExerciseDetailComponent },
           ]
         },
         { path: 'sets', component: SetsComponent },
         { path: 'ranking', component: RankingComponent },
         { path: 'suggestions', component: SuggestionsComponent },
-        // { path: 'exercises', component: ExercisesComponent }
+        { path: 'profile', component: ProfileComponent },
       ]
   },
   { path: '**', component: NotFoundComponent}

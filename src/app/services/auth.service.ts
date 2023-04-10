@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
+import decode from "jwt-decode";
 
 import { authData } from "../models/auth-data.model";
 import { environment } from "src/environments/environment";
@@ -31,6 +32,11 @@ export class AuthService {
 
   getAuthStatusListener() {
     return this.authStatusListener.asObservable()
+  }
+
+  getIsAdmin() {
+    const decodedToken: any = decode(this.token)
+    return decodedToken.isAdmin
   }
 
   // Auto login 

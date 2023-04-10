@@ -1,6 +1,8 @@
 .bg {
   // background: #343f56;
-  background: #222222;
+  // background: #222222;
+  background: #354057;
+  overflow: hidden;
 }
 
 .nav {
@@ -11,12 +13,14 @@
 }
 
 .dropdownContent {
-  padding-top: 1rem;
+  margin-top: 1rem;
   min-width: 10rem;
   position: absolute;
   right: 0;
   // width: 100%;
   display: none;
+  background-color: #2b2e3d;
+  z-index: 10;
 }
 
 .dropdownClicked {
@@ -24,7 +28,6 @@
 }
 
 .dropdown a {
-  background-color: #0d0e0f;
   display: block;
   font-size: .8em;
   padding: .8em .8em;

@@ -21,6 +21,10 @@ import { SetsComponent } from './components/dashboard/sets/sets.component';
 import { ComponentNavComponent } from './components/shared-components/component-nav/component-nav.component';
 import { SpinnerComponent } from './components/shared-components/spinner/spinner.component';
 import { AddExerciseComponent } from './components/dashboard/exercises/add-exercise/add-exercise.component';
+import { ProfileComponent } from './components/dashboard/profile/profile.component';
+import { ExerciseDetailComponent } from './components/dashboard/exercises/exercise-detail/exercise-detail.component';
+import { ExerciseListComponent } from './components/dashboard/exercises/exercise-list/exercise-list.component';
+import { HttpErrorInterceptor } from './interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,10 @@ import { AddExerciseComponent } from './components/dashboard/exercises/add-exerc
     SetsComponent,
     ComponentNavComponent,
     SpinnerComponent,
-    AddExerciseComponent
+    AddExerciseComponent,
+    ProfileComponent,
+    ExerciseDetailComponent,
+    ExerciseListComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +53,8 @@ import { AddExerciseComponent } from './components/dashboard/exercises/add-exerc
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

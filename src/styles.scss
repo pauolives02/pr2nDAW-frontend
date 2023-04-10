@@ -84,7 +84,7 @@ body {
   @apply md:mb-12;
 }
 
-.form-group input {
+.form-group input, .form-group select, .form-group textarea {
   outline: none;
   width: 100%;
   border: 0;
@@ -94,7 +94,11 @@ body {
   @apply md:text-2xl;
 }
 
-.form-group input:focus + label, .form-group input:not(:placeholder-shown) + label {
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group select + label,
+.form-group textarea + label
+{
   transform: translateY(-1.2em) scale(.8);
 }
 
@@ -110,6 +114,14 @@ body {
   transform-origin: 0 0;
   transition: transform 0.2s ease-in-out;
   @apply md:text-2xl;
+}
+
+.form-group input.invalid, .form-group select.invalid, .form-group textarea.invalid {
+  border-bottom: 1px solid red;
+}
+
+.form-group input.invalid + label, .form-group select.invalid + label {
+  color: red;
 }
 
 .button {
@@ -159,4 +171,39 @@ p.error {
 
 section {
   color: var(--white);
+}
+
+section.main {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 70%;
+  @apply px-4;
+  // padding-right: 1rem;
+  width: 100%;
+}
+
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(75 85 99 / var(--tw-bg-opacity)) var(--color4);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  @apply bg-gray-600;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color4);
+  border-radius: 5px;
+}
+
+input:disabled, select:disabled, textarea:disabled {
+  cursor: not-allowed;
 }
