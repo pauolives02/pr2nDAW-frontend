@@ -1,49 +1,48 @@
-<section>
-  <h3>Public</h3>
-  <hr class="h-px my-2 bg-gray-400 border-0">
-  <div *ngIf="public_exercises.length != 0">
 
-    <div *ngFor="let exercise of public_exercises" class="item">
-      <img src="{{imagesUrl + exercise.image}}">
-      <!-- <p>Image Url: {{ exercise.image }}</p> -->
-      <div>
-        <header>
-          <h1>{{ exercise.name }}</h1>
-          <p class="xp">{{ exercise.finished_xp }} XP</p>
-        </header>
-        <p class="description">{{ exercise.description }}</p>
-        <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a>
+  <section>
+    <h3>Public</h3>
+    <hr class="h-px my-2 bg-gray-400 border-0">
+    <div *ngIf="public_exercises.length != 0">
+
+      <div *ngFor="let exercise of public_exercises" class="item">
+        <img src="{{imagesUrl + exercise.image}}">
+        <div>
+          <header>
+            <h1>{{ exercise.name }}</h1>
+            <p class="xp">{{ exercise.finished_xp }} XP</p>
+          </header>
+          <p class="description">{{ exercise.description }}</p>
+          <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a>
+        </div>
       </div>
+
     </div>
+    <p *ngIf="public_exercises.length == 0 && !isLoadingPublic">No exercises were found.</p>
+    <app-spinner *ngIf="isLoadingPublic"></app-spinner>
+  </section>
 
-  </div>
-  <p *ngIf="public_exercises.length == 0 && !isLoadingPublic">No exercises were found.</p>
-  <app-spinner *ngIf="isLoadingPublic"></app-spinner>
-</section>
-
-<section>
-  <h3>Private</h3>
-  <hr class="h-px my-2 bg-gray-400 border-0">
-  <div *ngIf="private_exercises.length != 0">
+  <section>
+    <h3>Private</h3>
+    <hr class="h-px my-2 bg-gray-400 border-0">
+    <div *ngIf="private_exercises.length != 0">
 
 
 
-    <div *ngFor="let exercise of private_exercises" class="item">
-      <img src="{{imagesUrl + exercise.image}}">
-      <!-- <p>Image Url: {{ exercise.image }}</p> -->
-      <div>
-        <header>
-          <h1>{{ exercise.name }}</h1>
-          <p class="xp">{{ exercise.finished_xp }} XP</p>
-        </header>
-        <p class="description">{{ exercise.description }}</p>
-        <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a>
+      <div *ngFor="let exercise of private_exercises" class="item">
+        <img src="{{imagesUrl + exercise.image}}">
+        <div>
+          <header>
+            <h1>{{ exercise.name }}</h1>
+            <p class="xp">{{ exercise.finished_xp }} XP</p>
+          </header>
+          <p class="description">{{ exercise.description }}</p>
+          <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a>
+        </div>
       </div>
+
+
+
     </div>
-
-
-
-  </div>
-  <p *ngIf="private_exercises.length == 0 && !isLoadingPrivate">No exercises were found.</p>
-  <app-spinner *ngIf="isLoadingPrivate"></app-spinner>
-</section>
+    <p *ngIf="private_exercises.length == 0 && !isLoadingPrivate">No exercises were found.</p>
+    <app-spinner *ngIf="isLoadingPrivate"></app-spinner>
+  </section>

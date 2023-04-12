@@ -1,6 +1,7 @@
 .cnav {
   display: flex;
   margin-bottom: 2rem;
+  @apply mx-6;
 }
 
 .cnav a {

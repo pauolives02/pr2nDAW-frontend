@@ -14,11 +14,10 @@ import { AddExerciseComponent } from './components/dashboard/exercises/add-exerc
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
 import { ExerciseDetailComponent } from './components/dashboard/exercises/exercise-detail/exercise-detail.component';
 import { ExerciseListComponent } from './components/dashboard/exercises/exercise-list/exercise-list.component';
-
+import { NewSuggestionComponent } from './components/dashboard/suggestions/new-suggestion/new-suggestion.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
-  // { path: 'edit/:id', component: EditComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, data: { animation: 'isLeft' } },
   { path: 'register', component: RegisterComponent, data: { animation: 'isRight' } },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], 
@@ -32,7 +31,11 @@ const routes: Routes = [
         },
         { path: 'sets', component: SetsComponent },
         { path: 'ranking', component: RankingComponent },
-        { path: 'suggestions', component: SuggestionsComponent },
+        { path: 'suggestions', component: SuggestionsComponent,
+          children: [
+            { path: '', component: NewSuggestionComponent }
+          ]
+        },
         { path: 'profile', component: ProfileComponent },
       ]
   },

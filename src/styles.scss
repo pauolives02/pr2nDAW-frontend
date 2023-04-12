@@ -174,13 +174,9 @@ section {
 }
 
 section.main {
-  position: relative;
-  overflow-x: hidden;
   overflow-y: auto;
-  height: 70%;
-  @apply px-4;
-  // padding-right: 1rem;
-  width: 100%;
+  flex: 1 1 1px;
+  margin-bottom: 4rem;
 }
 
 
