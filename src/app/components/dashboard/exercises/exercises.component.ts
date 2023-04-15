@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { ExerciseService } from 'src/app/services/exercise.service';
-// import { Router, NavigationStart } from '@angular/router';
-// import { Exercise } from 'src/app/models/exercise.model';
 
 @Component({
   selector: 'app-exercises',
@@ -18,8 +15,18 @@ export class ExercisesComponent implements OnInit {
 
     this.navLinks = [
       {
-        text: 'List',
+        text: 'Public',
         url: '/dashboard/exercises',
+        icon: 'fa-dumbbell'
+      },
+      {
+        text: 'Private',
+        url: '/dashboard/exercises/private',
+        icon: 'fa-dumbbell'
+      },
+      {
+        text: 'Subscriptions',
+        url: '/dashboard/exercises/subscriptions',
         icon: 'fa-dumbbell'
       },
       {

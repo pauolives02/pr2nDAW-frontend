@@ -27,6 +27,14 @@ import { ExerciseDetailComponent } from './components/dashboard/exercises/exerci
 import { ExerciseListComponent } from './components/dashboard/exercises/exercise-list/exercise-list.component';
 import { FileUploadComponent } from './components/shared-components/file-upload/file-upload.component';
 import { NewSuggestionComponent } from './components/dashboard/suggestions/new-suggestion/new-suggestion.component';
+import { ExercisePrivateListComponent } from './components/dashboard/exercises/exercise-private-list/exercise-private-list.component';
+import { ListItemComponent } from './components/shared-components/list-item/list-item.component';
+import { ExerciseSubscriptionsComponent } from './components/dashboard/exercises/exercise-subscriptions/exercise-subscriptions.component';
+import { SetListComponent } from './components/dashboard/sets/set-list/set-list.component';
+import { SetPrivateListComponent } from './components/dashboard/sets/set-private-list/set-private-list.component';
+import { SetSubscriptionsComponent } from './components/dashboard/sets/set-subscriptions/set-subscriptions.component';
+import { SetDetailComponent } from './components/dashboard/sets/set-detail/set-detail.component';
+import { AddSetComponent } from './components/dashboard/sets/add-set/add-set.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +55,15 @@ import { NewSuggestionComponent } from './components/dashboard/suggestions/new-s
     ExerciseDetailComponent,
     ExerciseListComponent,
     FileUploadComponent,
-    NewSuggestionComponent
+    NewSuggestionComponent,
+    ExercisePrivateListComponent,
+    ListItemComponent,
+    ExerciseSubscriptionsComponent,
+    SetListComponent,
+    SetPrivateListComponent,
+    SetSubscriptionsComponent,
+    SetDetailComponent,
+    AddSetComponent
   ],
   imports: [
     BrowserModule,

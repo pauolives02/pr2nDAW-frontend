@@ -9,7 +9,7 @@
       <div class="flex items-center">
         <img src="assets/img/13.png" class="h-8 w-8 sm:h-11 sm:w-11 mr-3">
         <div class="cursor-pointer relative dropdown">
-          <p *ngIf="user" #dropdown (clickOutside)="toggleDropdown()" (click)="toggleDropdown()">{{ user.username }}</p>
+          <p *ngIf="user" #dropdown (click)="toggleDropdown()">{{ user.username }}</p>
           <div class="dropdownContent flex flex-col" [ngClass]="{'dropdownClicked': dropdownClicked}">
             <a  [routerLink]="['/dashboard/profile']" [routerLinkActive]="'active'"><i class="fa-solid fa-user"></i> Profile</a>
             <a  (click)="onLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
@@ -18,10 +18,9 @@
       </div>
     </nav>
 
-    <div class="h-full main px-10">
+    <div class="h-full main px-5 sm:px-10">
       <router-outlet></router-outlet>
     </div>
 
-    <!-- <footer>afsg</footer> -->
   </div>
 </div>

@@ -444,6 +444,7 @@ div.item div.itemContent .description {
   display: flex;
   margin-bottom: 1rem;
   @apply mx-6;
+  flex-wrap: wrap;
 }
 
 .cnav a {

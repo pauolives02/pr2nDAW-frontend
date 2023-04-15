@@ -1,14 +1,13 @@
 import { Component, OnInit} from '@angular/core';
 import { Exercise } from 'src/app/models/exercise.model';
 import { ExerciseService } from 'src/app/services/exercise.service';
-// import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-exercise-list',
-  templateUrl: './exercise-list.component.html',
-  styleUrls: ['./exercise-list.component.scss']
+  selector: 'app-exercise-subscriptions',
+  templateUrl: './exercise-subscriptions.component.html',
+  styleUrls: ['./exercise-subscriptions.component.scss']
 })
-export class ExerciseListComponent implements OnInit {
+export class ExerciseSubscriptionsComponent implements OnInit {
 
   exercises: Exercise[] = []
   isLoading: boolean = false
@@ -20,7 +19,7 @@ export class ExerciseListComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true
-    this.exerciseService.getPublicExercises().subscribe(
+    this.exerciseService.getExercisesSubscribed().subscribe(
       (res: any) => {
         this.exercises = res
         this.isLoading = false

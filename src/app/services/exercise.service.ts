@@ -24,6 +24,11 @@ export class ExerciseService {
     return this.http.get<Exercise>(environment.apiUrl + '/api/exercise/' + id)
   }
 
+  getExercisesSubscribed() {
+    // return this.http.get(environment.apiUrl + '/api/exercise/public')
+    return this.http.get(environment.apiUrl + '/api/exercise/subscriptions')
+  }
+
   createExercise(exercise) {
     return this.http.post(environment.apiUrl + '/api/exercise/add', exercise)
   }
