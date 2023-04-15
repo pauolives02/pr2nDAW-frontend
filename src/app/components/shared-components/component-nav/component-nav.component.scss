@@ -1,22 +1,22 @@
-.cnav {
-  display: flex;
-  margin-bottom: 2rem;
-  @apply mx-6;
-}
+// .cnav {
+//   display: flex;
+//   margin-bottom: 2rem;
+//   @apply mx-6;
+// }
 
-.cnav a {
-  padding: 8px 1px 8px 1px;
-  color: var(--white);
-  margin-right: 20px;
-  // transition: .2s;
-}
+// .cnav a {
+//   padding: 8px 1px 8px 1px;
+//   color: var(--white);
+//   margin-right: 20px;
+//   // transition: .2s;
+// }
 
-.cnav a span {
-  margin-left: 5px;
-}
+// .cnav a span {
+//   margin-left: 5px;
+// }
 
-.cnav a.active, .cnav a:hover {
-  background-color: #ffffff00!important;
-  color: var(--color4);
-  border-bottom: 2px solid var(--color4);
-}
+// .cnav a.active, .cnav a:hover {
+//   background-color: #ffffff00!important;
+//   color: var(--color4);
+//   border-bottom: 2px solid var(--color4);
+// }

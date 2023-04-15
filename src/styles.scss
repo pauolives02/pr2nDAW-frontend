@@ -4,6 +4,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
 
+// ************************************ //
+// ***                              *** //
+// ***            GENERAL           *** //
+// ***                              *** //
+// ************************************ //
 :root {
   --color1: #140f07;
   --color2: #102d52;
@@ -32,12 +37,17 @@ body {
 // filter: grayscale(100%);
 
 
-// LOGIN REGISTER //
+// ************************************ //
+// ***                              *** //
+// ***      LOGIN REGISTER          *** //
+// ***                              *** //
+// ************************************ //
 .content {
   display: flex;
   height: 100vh;
 }
-.container {
+
+.auth .container {
   display: flex;
   width: 80%;
   margin: auto;
@@ -47,17 +57,16 @@ body {
   overflow: auto;
 }
 
-.container .item {
+.auth .container .item {
   width: 100%;
   height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  @apply md:w-1/2;
-  @apply md:h-[60vh];
+  @apply md:w-1/2 md:h-[60vh];
 }
 
-.item h3 {
+.auth .item h3 {
   color: var(--white);
   font-family: 'Kalam';
   font-size: 3em;
@@ -66,12 +75,221 @@ body {
   @apply md:text-7xl;
 }
 
-.container .image {
+.auth .container .image {
   background: linear-gradient(212.38deg, rgb(8 113 190 / 74%) 0%, rgb(8 192 255 / 73%) 100%), url('assets/img/test.png');
   background-size: cover;
   background-position: center, center;
 }
 
+.login {
+  background: linear-gradient(90deg, var(--color3), var(--color4));
+}
+
+.login:hover:not(:disabled) {
+  box-shadow: 0px 0px 15px 0px var(--color3);
+}
+
+.register {
+  background: linear-gradient(90deg, #441bfe, #5026a1);
+}
+
+.register:hover {
+  box-shadow: 0px 0px 15px 0px #5026a1;
+}
+
+// ************************************ //
+// ***                              *** //
+// ***          DASHBOARD           *** //
+// ***                              *** //
+// ************************************ //
+.bg {
+  background: #354057;
+  overflow: hidden;
+}
+
+section:not(.main) {
+  @apply mt-6;
+  color: var(--white);
+  position: relative;
+}
+
+div.main {
+  flex: 1 1 auto;
+}
+
+// ************************************ //
+// ***                              *** //
+// ***     DASHBOARD SIDENAV        *** //
+// ***                              *** //
+// ************************************ //
+.sidenav {
+  display: flex;
+  color: var(--white);
+  height: 100%;
+  width: 124px;
+  transition: margin .2s ease-out, width .2s ease-out,;
+  background-color: #2b2e3d;
+  box-shadow: 0 8px 32px rgb(13, 14, 19);
+  padding-top: 1rem;
+  margin-left: -240px;
+  // transition: .2s ease-in-out;
+  overflow-x: hidden;
+}
+
+.sidenav .logo {
+  @apply h-16 w-16 mb-12 mx-auto;
+}
+
+.sidenav a {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  width: 100%;
+  @apply h-14 mt-2;
+  color: #fff;
+}
+.sidenav a.active {
+  background-color: var(--color4);
+}
+
+.sidenav a i {
+  font-size: 26px;
+}
+
+.sidenav a span {
+  display: none;
+}
+
+.sidenav a:hover:not(.active) {
+  background: rgba(255, 255, 255, .1);
+}
+
+.small {
+  margin-left: 0;
+}
+
+.large {
+  margin-left: 0;
+  width: 240px;
+}
+
+.large .logo {
+  @apply h-32 w-32;
+}
+
+.large a {
+  justify-content: flex-start;
+  padding-left: 10px;
+}
+
+.large a span {
+  display: block;
+  margin-left: 10px;
+}
+
+
+.toggle {
+  position: absolute;
+  z-index: 20;
+}
+
+// ************************************ //
+// ***                              *** //
+// ***        DASHBOARD NAV         *** //
+// ***                              *** //
+// ************************************ //
+.nav {
+  color: var(--white);
+  font-size: 1.3em;
+}
+
+.dropdownContent {
+  margin-top: 1rem;
+  min-width: 10rem;
+  position: absolute;
+  right: 0;
+  display: none;
+  background-color: #2b2e3d;
+  z-index: 10;
+}
+
+.dropdownClicked {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  font-size: .8em;
+  padding: .8em .8em;
+  border: 1px solid #40444b;
+}
+
+.dropdown a:hover:not(.active) {
+  background: rgba(255, 255, 255, .1);
+}
+
+a.active {
+  background: var(--color4);
+}
+
+// 
+
+
+// OTHER
+section {
+  color: var(--white);
+}
+
+section.main {
+  overflow-y: auto;
+  flex: 1 1 1px;
+  margin-bottom: 4rem;
+}
+
+p.error {
+  background-color: red;
+  color: var(--white);
+  border-radius: 3px;
+  padding: .5em;
+}
+
+// ************************************ //
+// ***                              *** //
+// ***         SCROLLBAR            *** //
+// ***                              *** //
+// ************************************ //
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(75 85 99 / var(--tw-bg-opacity)) var(--color4);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  @apply bg-gray-600;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color4);
+  border-radius: 5px;
+}
+
+.dashboardMain {
+  @apply mx-6;
+}
+
+
+// ************************************ //
+// ***                              *** //
+// ***           FORMS              *** //
+// ***                              *** //
+// ************************************ //
 .form {
   display: flex;
   flex-direction: column;
@@ -124,6 +342,10 @@ body {
   color: red;
 }
 
+input:disabled, select:disabled, textarea:disabled {
+  cursor: not-allowed;
+}
+
 .button {
   cursor: pointer;
   color: var(--white);
@@ -134,8 +356,7 @@ body {
   font-weight: bold;
   transition: 1s;
   text-align: center;
-  @apply md:px-5;
-  @apply md:py-4;
+  @apply md:px-5 md:py-4;
 }
 
 .button:hover:not(:disabled) {
@@ -146,60 +367,148 @@ body {
   filter: grayscale(1);
 }
 
-.login {
-  background: linear-gradient(90deg, var(--color3), var(--color4));
+option {
+  background-color: #2b2e3d;
+  outline: none;
 }
 
-.login:hover:not(:disabled) {
-  box-shadow: 0px 0px 15px 0px var(--color3);
+// ************************************ //
+// ***                              *** //
+// ***         EXERCISES            *** //
+// ***                              *** //
+// ************************************ //
+h3 {
+  font-size: x-large;
 }
 
-.register {
-  background: linear-gradient(90deg, #441bfe, #5026a1);
+.gridList {
+  display: grid;
+  gap: 1.5rem;
+  @apply grid-cols-1 xl:grid-cols-2;
+  margin-bottom: 1rem;
 }
 
-.register:hover {
-  box-shadow: 0px 0px 15px 0px #5026a1;
-}
-
-p.error {
-  background-color: red;
-  color: var(--white);
+div.item:not(.auth .item) {
+  display: flex;
+  background-color: #2b2e3d;
   border-radius: 3px;
-  padding: .5em;
+  @apply p-1 md:flex-row;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-section {
-  color: var(--white);
+div.item img {
+  @apply h-24 w-24 md:mr-2;
+  // @apply lg:h-60;
+  // @apply lg:w-60;
+  border-radius: 3px;
 }
 
-section.main {
-  overflow-y: auto;
-  flex: 1 1 1px;
-  margin-bottom: 4rem;
+div.item div.itemContent {
+  width: 100%;
+  // padding: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
-
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(75 85 99 / var(--tw-bg-opacity)) var(--color4);
+div.item div.itemContent header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 7px;
+div.item div.itemContent header h1 {
+  font-size: x-large;
+  font-weight: bold;
 }
 
-*::-webkit-scrollbar-track {
-  @apply bg-gray-600;
-  border-radius: 5px;
+div.item div.itemContent .description {
+  flex-grow: 1;
 }
 
-*::-webkit-scrollbar-thumb {
+.xp {
   background-color: var(--color4);
-  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
-input:disabled, select:disabled, textarea:disabled {
-  cursor: not-allowed;
+// ************************************ //
+// ***                              *** //
+// ***         SHARED NAV           *** //
+// ***                              *** //
+// ************************************ //
+.cnav {
+  display: flex;
+  margin-bottom: 1rem;
+  @apply mx-6;
+}
+
+.cnav a {
+  padding: 8px 1px 8px 1px;
+  color: var(--white);
+  margin-right: 20px;
+  // transition: .2s;
+}
+
+.cnav a span {
+  margin-left: 5px;
+}
+
+.cnav a.active, .cnav a:hover {
+  background-color: #ffffff00!important;
+  color: var(--color4);
+  border-bottom: 2px solid var(--color4);
+}
+
+// ************************************ //
+// ***                              *** //
+// ***         FILE INPUT           *** //
+// ***                              *** //
+// ************************************ //
+.inputFile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;  
+}
+
+.inputFile + label {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  transform: none!important;
+  border: 1px solid var(--color4);
+  display: flex;
+  @apply text-base md:text-xl;
+
+}
+
+.inputFile + label strong {
+  min-width: 180px;
+  padding: 0.6rem;
+  // border: 1px solid var(--color4);
+  background-color: var(--color4);
+  color: #fff;
+}
+
+.inputFile + label span {
+  display: block;
+  width: 100%;
+  padding: .6rem;
+  text-align: center;
+  // border: 1px solid var(--color4);
+}
+
+// ************************************ //
+// ***                              *** //
+// ***           SPINNER            *** //
+// ***                              *** //
+// ************************************ //
+.spinner {
+  fill: var(--color4);
 }

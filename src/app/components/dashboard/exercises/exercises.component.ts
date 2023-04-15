@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ExerciseService } from 'src/app/services/exercise.service';
-import { Router, NavigationStart } from '@angular/router';
-import { Exercise } from 'src/app/models/exercise.model';
+// import { ExerciseService } from 'src/app/services/exercise.service';
+// import { Router, NavigationStart } from '@angular/router';
+// import { Exercise } from 'src/app/models/exercise.model';
 
 @Component({
   selector: 'app-exercises',

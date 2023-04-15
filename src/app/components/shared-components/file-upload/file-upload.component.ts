@@ -17,11 +17,13 @@ export class FileUploadComponent implements ControlValueAccessor {
   
   private file: File | null = null
   onChange: Function
+  fileName: string = ''
 
   @HostListener('change', ['$event.target.files']) emitFiles(event: FileList) {
     const file = event && event.item(0)
     this.onChange(file)
     this.file = file
+    this.file ? this.fileName = file.name : this.fileName = ''
   }
 
   constructor(
@@ -31,6 +33,7 @@ export class FileUploadComponent implements ControlValueAccessor {
   writeValue(value: null) {
     this.host.nativeElement.value = ''
     this.file = null
+    this.fileName = ''
   }
 
   registerOnChange(fn: Function) {

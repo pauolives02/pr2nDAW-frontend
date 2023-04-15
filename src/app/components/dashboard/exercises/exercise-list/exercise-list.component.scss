@@ -1,70 +1,61 @@
-h3 {
-  font-size: x-large;
-}
-
-// section:not(.active) {
-//   margin-bottom: 2rem;
+// h3 {
+//   font-size: x-large;
 // }
 
-section {
-  @apply mx-6;
-}
+// .gridList {
+//   display: grid;
+//   gap: 1.5rem;
+//   @apply grid-cols-1 xl:grid-cols-2;
+// }
 
-div.item {
-  display: flex;
-  @apply mb-4;
-  background-color: #2b2e3d;
-  border-radius: 3px;
-  @apply p-1;
-  // @apply h-64;
-  flex-direction: column;
-  @apply md:flex-row;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-}
+// div.item {
+//   display: flex;
+//   // @apply mb-2;
+//   background-color: #2b2e3d;
+//   border-radius: 3px;
+//   @apply p-1;
+//   // flex-direction: column;
+//   @apply md:flex-row;
+//   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+// }
 
-div.item img {
-  // @apply h-full;
-  // @apply w-full;
-  @apply md:h-40;
-  @apply md:w-40;
-  @apply lg:h-60;
-  @apply lg:w-60;
-  @apply md:mr-2;
-  border-radius: 3px;
-}
+// div.item img {
+//   @apply h-24;
+//   @apply w-24;
+//   // @apply lg:h-60;
+//   // @apply lg:w-60;
+//   @apply md:mr-2;
+//   border-radius: 3px;
+// }
 
-div.item div {
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-}
+// div.item div.itemContent {
+//   width: 100%;
+//   // padding: 1rem;
+//   display: flex;
+//   flex-direction: column;
+// }
 
-div.item div header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+// div.item div.itemContent header {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
 
-div.item div header h1 {
-  font-size: x-large;
-  font-weight: bold;
-}
+// div.item div.itemContent header h1 {
+//   font-size: x-large;
+//   font-weight: bold;
+// }
 
-div.item div .description {
-  flex-grow: 1;
-}
+// div.item div.itemContent .description {
+//   flex-grow: 1;
+// }
 
-.xp {
-  background-color: var(--color4);
-  display: flex;
-  align-items: center;
-  padding: 5px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.item-list .item:not(:last-child) {
-
-}
+// .xp {
+//   background-color: var(--color4);
+//   display: flex;
+//   align-items: center;
+//   padding: 5px;
+//   border-radius: 10px;
+//   font-size: 15px;
+//   font-weight: bold;
+// }
