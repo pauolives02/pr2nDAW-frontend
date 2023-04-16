@@ -9,8 +9,9 @@
           <i class="fa-solid fa-ellipsis-vertical ml-2 px-3 cursor-pointer"
             #dropdown (click)="toggleDropdown()"></i>
           <div class="dropdownContent flex flex-col dropdownContentSmall" [ngClass]="{'dropdownClicked': dropdownClicked}">
-            <a class="cursor-pointer" *ngIf="!subscribed" (click)="itemSubscription()"><i class="fa-solid fa-check"></i> Subscribe</a>
-            <a class="cursor-pointer" *ngIf="subscribed" (click)="itemSubscription()"><i class="fa-solid fa-xmark"></i> Unsubscribe</a>
+            <a class="cursor-pointer" *ngIf="!subscribed && !isLoading" (click)="itemSubscription()"><i class="fa-solid fa-check"></i> Subscribe</a>
+            <a class="cursor-pointer" *ngIf="subscribed && !isLoading" (click)="itemSubscription()"><i class="fa-solid fa-xmark"></i> Unsubscribe</a>
+            <app-spinner *ngIf="isLoading"></app-spinner>
             <!-- <a  ><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a> -->
           </div>
         </div>

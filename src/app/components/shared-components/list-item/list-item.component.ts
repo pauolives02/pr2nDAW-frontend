@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Exercise } from 'src/app/models/exercise.model';
 import { Set } from 'src/app/models/set.model';
 import { environment } from 'src/environments/environment';
@@ -22,6 +22,7 @@ export class ListItemComponent implements OnInit {
   @ViewChild('dropdown') dropdown: ElementRef
   @Input() item: Exercise | Set
   @Input() itemType: string
+  @Output() updateList = new EventEmitter<string>()
   subscribed: boolean = false
   private itemService
 
@@ -55,12 +56,15 @@ export class ListItemComponent implements OnInit {
   }
 
   itemSubscription() {
+    this.isLoading = true
     if (this.subscribed) {
       this.itemService.removeSubscription(this.item.id)
       .subscribe(
         (data) => {
           console.log(data)
           this.subscribed = false
+          this.isLoading = false
+          this.updateList.next(null)
         }
       )
     } else {
@@ -69,6 +73,8 @@ export class ListItemComponent implements OnInit {
         (data) => {
           console.log(data)
           this.subscribed = true
+          this.isLoading= false
+          this.updateList.next(null)
         }
       )
     }

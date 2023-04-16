@@ -18,6 +18,10 @@ export class ExerciseSubscriptionsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getSubscriptions()
+  }
+
+  getSubscriptions(event= null) {
     this.isLoading = true
     this.exerciseService.getExercisesSubscribed().subscribe(
       (res: any) => {

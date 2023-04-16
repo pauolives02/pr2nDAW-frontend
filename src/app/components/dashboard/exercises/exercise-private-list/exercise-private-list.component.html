@@ -4,20 +4,7 @@
     <!-- <hr class="h-px my-2 bg-gray-400 border-0"> -->
     <div *ngIf="exercises.length != 0" class="gridList">
 
-      <div *ngFor="let exercise of exercises" class="item">
-        <img src="{{imagesUrl + exercise.image}}">
-        <div class="itemContent">
-          <header>
-            <h1>{{ exercise.name }}</h1>
-            <div class="flex items-center">
-              <p class="xp">{{ exercise.finished_xp }} XP</p>
-              <i class="fa-solid fa-ellipsis-vertical ml-2 px-3 cursor-pointer"></i>
-            </div>
-          </header>
-          <!-- <p class="description">{{ exercise.description }}</p> -->
-          <!-- <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a> -->
-        </div>
-      </div>
+      <app-list-item *ngFor="let exercise of exercises" [item]="exercise" [itemType]="'exercise'"></app-list-item>
 
     </div>
     <p *ngIf="exercises.length == 0 && !isLoading">No exercises were found.</p>
