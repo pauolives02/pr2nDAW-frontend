@@ -21,7 +21,9 @@ export class ExerciseSubscriptionsComponent implements OnInit {
     this.isLoading = true
     this.exerciseService.getExercisesSubscribed().subscribe(
       (res: any) => {
+        // console.log(res)
         this.exercises = res
+        // console.log(this.exercises)
         this.isLoading = false
       }
     )

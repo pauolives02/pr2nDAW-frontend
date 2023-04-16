@@ -1,15 +1,18 @@
 <div class="item">
-  <img src="{{imagesUrl + exercise.image}}">
+  <img src="{{imagesUrl + item.image}}">
   <div class="itemContent">
     <header>
-      <h1>{{ exercise.name }}</h1>
-      <div class="flex items-center relative">
-        <p class="xp">{{ exercise.finished_xp }} XP</p>
-        <i class="fa-solid fa-ellipsis-vertical ml-2 px-3 cursor-pointer"
-          #dropdown (click)="toggleDropdown()"></i>
-        <div class="dropdownContent flex flex-col" [ngClass]="{'dropdownClicked': dropdownClicked}">
-          <a  [routerLink]="['/dashboard/profile']" [routerLinkActive]="'active'"><i class="fa-solid fa-user"></i> Profile</a>
-          <a  ><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+      <h1>{{ item.name }}</h1>
+      <div class="flex items-center">
+        <p class="xp" *ngIf="item.finished_xp">{{ item.finished_xp }} XP</p>
+        <div class="relative">
+          <i class="fa-solid fa-ellipsis-vertical ml-2 px-3 cursor-pointer"
+            #dropdown (click)="toggleDropdown()"></i>
+          <div class="dropdownContent flex flex-col dropdownContentSmall" [ngClass]="{'dropdownClicked': dropdownClicked}">
+            <a class="cursor-pointer" *ngIf="!subscribed" (click)="itemSubscription()"><i class="fa-solid fa-check"></i> Subscribe</a>
+            <a class="cursor-pointer" *ngIf="subscribed" (click)="itemSubscription()"><i class="fa-solid fa-xmark"></i> Unsubscribe</a>
+            <!-- <a  ><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a> -->
+          </div>
         </div>
       </div>
     </header>

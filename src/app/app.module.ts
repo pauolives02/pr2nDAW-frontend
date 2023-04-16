@@ -35,6 +35,8 @@ import { SetPrivateListComponent } from './components/dashboard/sets/set-private
 import { SetSubscriptionsComponent } from './components/dashboard/sets/set-subscriptions/set-subscriptions.component';
 import { SetDetailComponent } from './components/dashboard/sets/set-detail/set-detail.component';
 import { AddSetComponent } from './components/dashboard/sets/add-set/add-set.component';
+import { MySuggestionsComponent } from './components/dashboard/suggestions/my-suggestions/my-suggestions.component';
+import { HomeComponent } from './components/dashboard/home/home.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { AddSetComponent } from './components/dashboard/sets/add-set/add-set.com
     SetPrivateListComponent,
     SetSubscriptionsComponent,
     SetDetailComponent,
-    AddSetComponent
+    AddSetComponent,
+    MySuggestionsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

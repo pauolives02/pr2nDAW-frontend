@@ -4,7 +4,7 @@
     <!-- <hr class="h-px my-2 bg-gray-400 border-0"> -->
     <div *ngIf="exercises.length != 0" class="gridList">
 
-      <app-list-item *ngFor="let exercise of exercises" [exercise]="exercise"></app-list-item>
+      <app-list-item *ngFor="let exercise of exercises" [item]="exercise" [itemType]="'exercise'"></app-list-item>
       <!-- <div *ngFor="let exercise of exercises" class="item">
         <img src="{{imagesUrl + exercise.image}}">
         <div class="itemContent">

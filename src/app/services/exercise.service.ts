@@ -33,4 +33,12 @@ export class ExerciseService {
     return this.http.post(environment.apiUrl + '/api/exercise/add', exercise)
   }
 
+  addSubscription(id) {
+    return this.http.post(environment.apiUrl + '/api/exercise/subscription/add', {id})
+  }
+
+  removeSubscription(id) {
+    return this.http.post(environment.apiUrl + '/api/exercise/subscription/remove', {id})
+  }
+
 }

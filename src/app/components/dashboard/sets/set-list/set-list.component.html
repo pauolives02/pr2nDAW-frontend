@@ -1,1 +1,12 @@
-<p>set-list works!</p>
+<div class="dashboardMain">
+  <section>
+    <h3>Public</h3>
+
+    <div *ngIf="sets.length != 0" class="gridList">
+      <app-list-item *ngFor="let set of sets" [item]="set"></app-list-item>
+    </div>
+
+    <p *ngIf="sets.length == 0 && !isLoading">No sets were found.</p>
+    <app-spinner *ngIf="isLoading"></app-spinner>
+  </section>
+</div>

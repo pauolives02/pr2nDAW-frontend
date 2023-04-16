@@ -12,6 +12,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // > DASHBOARD
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HomeComponent } from './components/dashboard/home/home.component';
 
 // > DASHBOARD > EXERCISES
 import { ExercisesComponent } from './components/dashboard/exercises/exercises.component';
@@ -35,9 +36,11 @@ import { RankingComponent } from './components/dashboard/ranking/ranking.compone
 // > DASHBOARD > SUGGESTIONS
 import { SuggestionsComponent } from './components/dashboard/suggestions/suggestions.component';
 import { NewSuggestionComponent } from './components/dashboard/suggestions/new-suggestion/new-suggestion.component';
+import { MySuggestionsComponent } from './components/dashboard/suggestions/my-suggestions/my-suggestions.component';
 
 // > DASHBOARD > PROFILE
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
+
 
 // AUTO
 
@@ -49,6 +52,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, data: { animation: 'isRight' } },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], 
       children: [
+        { path: '', component: HomeComponent },
         { path: 'exercises', component: ExercisesComponent,
           children: [
             { path: '', component: ExerciseListComponent },
@@ -70,7 +74,8 @@ const routes: Routes = [
         { path: 'ranking', component: RankingComponent },
         { path: 'suggestions', component: SuggestionsComponent,
           children: [
-            { path: '', component: NewSuggestionComponent }
+            { path: '', component: NewSuggestionComponent },
+            { path: 'my-suggestions', component: MySuggestionsComponent },
           ]
         },
         { path: 'profile', component: ProfileComponent },

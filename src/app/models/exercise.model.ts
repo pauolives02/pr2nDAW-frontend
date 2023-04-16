@@ -5,4 +5,5 @@ export interface Exercise {
   image: string,
   finished_xp: number,
   public: boolean,
+  isSubscribed?: boolean
 }
