@@ -491,7 +491,7 @@ div.item div.itemContent .description {
   border: 1px solid var(--color4);
   display: flex;
   @apply text-base md:text-xl;
-
+  
 }
 
 .inputFile + label strong {
@@ -517,4 +517,21 @@ div.item div.itemContent .description {
 // ************************************ //
 .spinner {
   fill: var(--color4);
+}
+
+// ************************************ //
+// ***                              *** //
+// ***            DIALOG            *** //
+// ***                              *** //
+// ************************************ //
+.middleDialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.subscriptionDialog {
+  @apply h-60 w-3/4;
+  background-color: #08c0ff;
 }

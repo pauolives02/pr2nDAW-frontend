@@ -68,17 +68,23 @@ export class ListItemComponent implements OnInit {
         }
       )
     } else {
-      this.itemService.addSubscription(this.item.id)
-      .subscribe(
-        (data) => {
-          console.log(data)
-          this.subscribed = true
-          this.isLoading= false
-          this.updateList.next(null)
-        }
-      )
+      if (this.itemType === 'exercise') {
+        console.log('popup')
+        this.addSubscription(10)
+      } else if (this.itemType === 'set') {
+        this.addSubscription(1)
+      }
     }
-    // this.subscribed = !this.subscribed
-    // console.log(this.item.id)
+  }
+
+  addSubscription(ammount: number) {
+    this.itemService.addSubscription(this.item.id, ammount)
+    .subscribe(
+      (data) => {
+        console.log(data)
+        this.subscribed = true
+        this.isLoading = false
+      }
+    )
   }
 }
