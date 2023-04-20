@@ -9,7 +9,7 @@ import { ExerciseService } from 'src/app/services/exercise.service';
 })
 export class ExerciseSubscriptionsComponent implements OnInit {
 
-  exercises: Exercise[] = []
+  exercises: any[] = []
   isLoading: boolean = false
   // imagesUrl: string  = environment.apiUrl + '/api/exercise/get-image/'
 
@@ -25,9 +25,8 @@ export class ExerciseSubscriptionsComponent implements OnInit {
     this.isLoading = true
     this.exerciseService.getExercisesSubscribed().subscribe(
       (res: any) => {
-        // console.log(res)
         this.exercises = res
-        // console.log(this.exercises)
+        console.log(this.exercises)
         this.isLoading = false
       }
     )

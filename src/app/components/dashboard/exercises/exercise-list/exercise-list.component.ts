@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Exercise } from 'src/app/models/exercise.model';
 import { ExerciseService } from 'src/app/services/exercise.service';
-// import { environment } from 'src/environments/environment';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-exercise-list',
@@ -11,21 +11,37 @@ import { ExerciseService } from 'src/app/services/exercise.service';
 export class ExerciseListComponent implements OnInit {
 
   exercises: Exercise[] = []
+  isPrivate: boolean
   isLoading: boolean = false
-  // imagesUrl: string  = environment.apiUrl + '/api/exercise/get-image/'
+  title: string
 
   constructor(
     private exerciseService: ExerciseService,
-  ) {}
+    private route:ActivatedRoute,
+    private router:Router
+  ) {
+    this.isPrivate = this.route.snapshot.data['isPrivate']
+  }
 
   ngOnInit() {
     this.isLoading = true
-    this.exerciseService.getPublicExercises().subscribe(
-      (res: any) => {
-        this.exercises = res
-        this.isLoading = false
-      }
-    )
+    if (!this.isPrivate) {
+      this.title = 'Public'
+      this.exerciseService.getPublicExercises().subscribe(
+        (res: any) => {
+          this.exercises = res
+          this.isLoading = false
+        }
+      )
+    } else {
+      this.title = 'Private'
+      this.exerciseService.getPrivateExercises().subscribe(
+        (res: any) => {
+          this.exercises = res
+          this.isLoading = false
+        }
+      )
+    }
   }
 
 }

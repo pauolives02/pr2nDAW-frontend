@@ -1,32 +1,15 @@
 <div class="dashboardMain">
   <section>
-    <h3>Public</h3>
-    <!-- <hr class="h-px my-2 bg-gray-400 border-0"> -->
+
+    <h3>{{ title }}</h3>
+
     <div *ngIf="exercises.length != 0" class="gridList">
-
       <app-list-item *ngFor="let exercise of exercises" [item]="exercise" [itemType]="'exercise'"></app-list-item>
-      <!-- <div *ngFor="let exercise of exercises" class="item">
-        <img src="{{imagesUrl + exercise.image}}">
-        <div class="itemContent">
-          <header>
-            <h1>{{ exercise.name }}</h1>
-            <div class="flex items-center">
-              <p class="xp">{{ exercise.finished_xp }} XP</p>
-              <i class="fa-solid fa-ellipsis-vertical ml-2 px-3 cursor-pointer"
-                #dropdown (click)="toggleDropdown()"></i>
-              <div class="dropdownContent flex flex-col" [ngClass]="{'dropdownClicked': dropdownClicked}">
-                <a  [routerLink]="['/dashboard/profile']" [routerLinkActive]="'active'"><i class="fa-solid fa-user"></i> Profile</a>
-                <a  ><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
-              </div>
-            </div>
-          </header> -->
-          <!-- <p class="description">{{ exercise.description }}</p> -->
-          <!-- <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a> -->
-        <!-- </div>
-      </div> -->
-
     </div>
+
     <p *ngIf="exercises.length == 0 && !isLoading">No exercises were found.</p>
+
     <app-spinner *ngIf="isLoading"></app-spinner>
+    
   </section>
 </div>

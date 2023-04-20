@@ -32,7 +32,7 @@ export class ListItemComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log(this.item)
+    console.log(this.item)
     this.subscribed = this.item.isSubscribed
     if (this.itemType === 'exercise') {
       this.imagesUrl = environment.apiUrl + '/api/exercise/get-image/'

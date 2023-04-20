@@ -19,13 +19,11 @@ import { ExercisesComponent } from './components/dashboard/exercises/exercises.c
 import { AddExerciseComponent } from './components/dashboard/exercises/add-exercise/add-exercise.component';
 import { ExerciseDetailComponent } from './components/dashboard/exercises/exercise-detail/exercise-detail.component';
 import { ExerciseListComponent } from './components/dashboard/exercises/exercise-list/exercise-list.component';
-import { ExercisePrivateListComponent } from './components/dashboard/exercises/exercise-private-list/exercise-private-list.component';
 import { ExerciseSubscriptionsComponent } from './components/dashboard/exercises/exercise-subscriptions/exercise-subscriptions.component';
 
 // > DASHBOARD > SETS
 import { SetsComponent } from './components/dashboard/sets/sets.component';
 import { SetListComponent } from './components/dashboard/sets/set-list/set-list.component';
-import { SetPrivateListComponent } from './components/dashboard/sets/set-private-list/set-private-list.component';
 import { SetSubscriptionsComponent } from './components/dashboard/sets/set-subscriptions/set-subscriptions.component';
 import { AddSetComponent } from './components/dashboard/sets/add-set/add-set.component';
 import { SetDetailComponent } from './components/dashboard/sets/set-detail/set-detail.component';
@@ -42,10 +40,6 @@ import { MySuggestionsComponent } from './components/dashboard/suggestions/my-su
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
 
 
-// AUTO
-
-
-
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'login', component: LoginComponent, data: { animation: 'isLeft' } },
@@ -55,8 +49,8 @@ const routes: Routes = [
         { path: '', component: HomeComponent },
         { path: 'exercises', component: ExercisesComponent,
           children: [
-            { path: '', component: ExerciseListComponent },
-            { path: 'private', component: ExercisePrivateListComponent },
+            { path: '', component: ExerciseListComponent, data: { isPrivate: false } },
+            { path: 'private', component: ExerciseListComponent, data: { isPrivate: true } },
             { path: 'subscriptions', component: ExerciseSubscriptionsComponent },
             { path: 'add', component: AddExerciseComponent },
             { path: 'detail/:id', component: ExerciseDetailComponent },
@@ -64,8 +58,8 @@ const routes: Routes = [
         },
         { path: 'sets', component: SetsComponent,
           children: [
-            { path: '', component: SetListComponent },
-            { path: 'private', component: SetPrivateListComponent },
+            { path: '', component: SetListComponent, data: { isPrivate: false } },
+            { path: 'private', component: SetListComponent, data: { isPrivate: true } },
             { path: 'subscriptions', component: SetSubscriptionsComponent },
             { path: 'add', component: AddSetComponent },
             { path: 'detail/:id', component: SetDetailComponent },
