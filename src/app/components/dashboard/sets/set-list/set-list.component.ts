@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SetService } from 'src/app/services/set.service';
 import { Set } from 'src/app/models/set.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, /* Router */ } from '@angular/router';
 
 @Component({
   selector: 'app-set-list',
@@ -18,7 +18,7 @@ export class SetListComponent implements OnInit {
   constructor(
     private setService: SetService,
     private route:ActivatedRoute,
-    private router:Router
+    // private router:Router
   ) {
     this.isPrivate = this.route.snapshot.data['isPrivate']
   }

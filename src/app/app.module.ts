@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
+import { MatDialogModule } from "@angular/material/dialog";
 
 // INTERCEPTORS //
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -82,7 +83,8 @@ import { ListItemComponent } from './components/shared-components/list-item/list
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

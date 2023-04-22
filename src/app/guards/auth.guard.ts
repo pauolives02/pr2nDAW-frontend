@@ -19,16 +19,16 @@ export class AuthGuard implements CanActivate {
     const isAuth = this.authService.getIsAuth()
     if (isAuth) {
         // check if route is restricted by role
-        const { isAdmin } = route.data;
+        const { isAdmin } = route.data
         const token: any = decode(this.authService.getToken())
         if (isAdmin && !token.isAdmin) {
             // role not authorized so redirect to home page
-            this.router.navigate(['/']);
-            return false;
+            this.router.navigate(['/'])
+            return false
         }
 
         // authorized so return true
-        return true;
+        return true
     }
     this.router.navigate(['/login'])
     return false

@@ -4,6 +4,8 @@ import { Set } from 'src/app/models/set.model';
 import { environment } from 'src/environments/environment';
 import { ExerciseService } from 'src/app/services/exercise.service';
 import { SetService } from 'src/app/services/set.service';
+import { MatDialog } from "@angular/material/dialog";
+import { ItemSubscriptionDialogComponent } from './item-subscription-dialog/item-subscription-dialog.component';
 
 @Component({
   selector: 'app-list-item',
@@ -29,10 +31,11 @@ export class ListItemComponent implements OnInit {
   constructor(
     private exerciseService: ExerciseService,
     private setService: SetService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
-    console.log(this.item)
+    // console.log(this.item)
     this.subscribed = this.item.isSubscribed
     if (this.itemType === 'exercise') {
       this.imagesUrl = environment.apiUrl + '/api/exercise/get-image/'
@@ -68,23 +71,58 @@ export class ListItemComponent implements OnInit {
         }
       )
     } else {
-      if (this.itemType === 'exercise') {
-        console.log('popup')
-        this.addSubscription(10)
-      } else if (this.itemType === 'set') {
-        this.addSubscription(1)
-      }
+      let dialogRef = this.dialog.open(ItemSubscriptionDialogComponent, {
+        width: '500px',
+        height: '100px',
+        data: {
+          item: this.item
+        }
+      })
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.itemService.addSubscription(this.item.id, result)
+          .subscribe(
+            (data) => {
+              console.log(data)
+              this.subscribed = true
+              this.isLoading = false
+            }
+          )
+        } else {
+          this.isLoading = false
+        }
+      })
+      // if (this.itemType === 'exercise') {
+      //   console.log('popup')
+      //   this.openDialog()
+      //   // this.addSubscription(10)
+      // } else if (this.itemType === 'set') {
+      //   // this.addSubscription(1)
+      // }
     }
   }
 
-  addSubscription(ammount: number) {
-    this.itemService.addSubscription(this.item.id, ammount)
-    .subscribe(
-      (data) => {
-        console.log(data)
-        this.subscribed = true
-        this.isLoading = false
-      }
-    )
-  }
+  // addSubscription(ammount: number) {
+  //   this.itemService.addSubscription(this.item.id, ammount)
+  //   .subscribe(
+  //     (data) => {
+  //       console.log(data)
+  //       this.subscribed = true
+  //       this.isLoading = false
+  //     }
+  //   )
+  // }
+
+  // openSubscribeDialog() {
+  //   let dialogRef = this.dialog.open(ItemSubscriptionDialogComponent, {
+  //     width: '500px',
+  //     height: '100px',
+  //     data: {
+  //       test: 'aaaaa'
+  //     }
+  //   })
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(result)
+  //   })
+  // }
 }
