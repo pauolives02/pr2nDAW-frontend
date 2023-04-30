@@ -1,0 +1,43 @@
+.profile-container {
+  background-color: #2b2e3d;
+  border-radius: 3px;
+}
+
+
+.lvl-container {
+  color: var(--white);
+  font-weight: bold;
+  margin: auto;
+  margin-top: 1rem;
+}
+
+.progressbar-wrapper {
+  position: relative;
+  background-color:#e0e1e6;
+  display: block;
+  width: 100%;
+  height: .4rem;
+  border-radius: 30px;
+  @apply mb-4;
+}
+
+.progressbar-wrapper .progress {
+  background-color: var(--color4);
+  height: 100%;
+  border-radius: 30px;
+  max-width: 100%;
+}
+
+.lvl-container .star {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 2rem;
+}
+
+.lvl-container .lvl-info p:first-child, .lvl-container .lvl-info p:last-child {
+  font-size: .8rem;
+}
+
+.lvl-container .lvl-info .curr_xp {
+  color: var(--color4);
+}

@@ -27,7 +27,7 @@ export class AddExerciseComponent implements OnInit {
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required, Validators.maxLength(180)]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(300)]),
       finished_xp: new FormControl({value: '1', disabled: !this.isAdmin}, [Validators.required, Validators.min(1)]),
       public: new FormControl({value: 'false', disabled: !this.isAdmin}, [Validators.required]),
       image: new FormControl(null, [Validators.required, requiredFileType()])

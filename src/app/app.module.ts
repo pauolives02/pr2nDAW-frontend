@@ -48,6 +48,8 @@ import { ComponentNavComponent } from './components/shared-components/component-
 import { SpinnerComponent } from './components/shared-components/spinner/spinner.component';
 import { FileUploadComponent } from './components/shared-components/file-upload/file-upload.component';
 import { ListItemComponent } from './components/shared-components/list-item/list-item.component';
+import { ItemSubscriptionDialogComponent } from './components/shared-components/list-item/item-subscription-dialog/item-subscription-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -76,7 +78,8 @@ import { ListItemComponent } from './components/shared-components/list-item/list
     SetDetailComponent,
     AddSetComponent,
     MySuggestionsComponent,
-    HomeComponent
+    HomeComponent,
+    ItemSubscriptionDialogComponent
   ],
   imports: [
     BrowserModule,

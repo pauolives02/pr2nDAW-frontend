@@ -1,35 +1,43 @@
 <div class="dashboardMain">
-  <form [formGroup]="form" (submit)="saveExercise()" class="mt-8" *ngIf="!isLoading">
+  <form [formGroup]="form" (submit)="saveExercise()" class="form-content rounded">
 
-    <div class="form-group group">
-      <input type="text" id="name" formControlName="name" placeholder=" " class="peer"
-      [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
-      <label for="name" class="peer-focus:font-medium peer-focus:left-0 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
+    <div *ngIf="!isLoading">
+      <div class="form-group">
+        <i class="fa-solid fa-heading"></i>
+        <input type="text" id="name" formControlName="name" placeholder="Name"
+        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
+        <label for="name">Name</label>
+      </div>
+
+      <div class="form-group">
+        <i class="fa-solid fa-align-justify"></i>
+        <textarea rows="3" id="description" formControlName="description" placeholder="Description"
+        [ngClass]="{'invalid': form.get('description').invalid && (form.get('description').touched || form.get('description').dirty)}"></textarea>
+        <label for="description" class="top-0">Description ({{form.get('description').value.length}} / 300)</label>
+      </div>
+
+      <div class="form-group">
+        <i class="fa-solid fa-star"></i>
+        <input type="number" id="finished_xp" formControlName="finished_xp" placeholder="XP"
+        [ngClass]="{'invalid': form.get('finished_xp').invalid && form.get('finished_xp').touched}">
+        <label for="finished_xp">XP</label>
+      </div>
+
+      <div class="form-group">
+        <i class="fa-solid fa-unlock"></i>
+        <select id="public" formControlName="public"
+        [ngClass]="{'invalid': form.get('public').invalid && form.get('public').touched}">
+          <option value="false">False</option>
+          <option value="true">True</option>
+        </select>
+        <label for="public">Public</label>
+      </div>
+
+      <app-file-upload formControlName="image"></app-file-upload>
+
+      <div class="form-buttons">
+        <button type="submit" class="button login" [disabled]="form.invalid">Save</button>
+      </div>
     </div>
-
-    <div class="form-group">
-      <textarea type="text" id="description" formControlName="description" placeholder="Description"
-      [ngClass]="{'invalid': form.get('description').invalid && (form.get('description').touched || form.get('description').dirty)}"></textarea>
-      <label for="description">Description ({{form.get('description').value.length}} / 180)</label>
-    </div>
-
-    <div class="form-group">
-      <input type="number" id="finished_xp" formControlName="finished_xp" placeholder="XP"
-      [ngClass]="{'invalid': form.get('finished_xp').invalid && form.get('finished_xp').touched}">
-      <label for="finished_xp">XP</label>
-    </div>
-
-    <div class="form-group">
-      <select id="public" formControlName="public"
-      [ngClass]="{'invalid': form.get('public').invalid && form.get('public').touched}">
-        <option value="false">False</option>
-        <option value="true">True</option>
-      </select>
-      <label for="public">Public</label>
-    </div>
-
-    <app-file-upload formControlName="image"></app-file-upload>
-
-    <button type="submit" class="button login float-right" [disabled]="form.invalid">Save</button>
   </form>
 </div>

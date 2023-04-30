@@ -1,1 +1,19 @@
-<p>profile works!</p>
+<div class="dashboardMain">
+  <div class="profile-container flex flex-col">
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae sequi dolorem consequatur, magni amet soluta debitis perferendis non cum dolores? Veniam ipsum soluta eveniet accusantium, non impedit expedita a. Doloremque.</p>
+
+    <div class="lvl-container flex flex-col w-1/2" *ngIf="userData">
+      <div class="progressbar-wrapper">
+        <img src="assets/img/star.svg" class="star" [ngStyle]="{'left': progress + '%'}">
+        <div class="progress" [ngStyle]="{'width': progress + '%'}"></div>
+      </div>
+      <div class="flex justify-between px-1 lvl-info">
+        <p class="curr_xp">{{ userData.current_xp }}</p>
+        <p>LEVEL {{ userData.level }}</p>
+        <p>{{ userData.nextLvlXp }}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

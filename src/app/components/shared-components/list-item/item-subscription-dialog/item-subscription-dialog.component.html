@@ -1,8 +1,30 @@
-<p>Test</p>
+<!-- <p>Test</p>
 
 <button (click)="close()">Close</button>
 <button (click)="save()">Save</button>
+-->
+<div class="item h-full">
+  <img src="{{imagesUrl + item.image}}" class="!h-full !w-1/2">
+  <div class="itemContent mr-2 py-1">
+    <header>
+      <h1>{{ item.name }}</h1>
+      <div class="flex items-center">
+        <p class="xp" *ngIf="item.finished_xp">{{ item.finished_xp }} XP</p>
+      </div>
+    </header>
+    <p class="description overflow-y-auto pr-4 my-4">{{ item.description }}</p>
+    <div>
+      <form class="form-content" [formGroup]="form" (submit)="save()">
+        <div class="form-group">
+          <i class="fa-solid fa-repeat"></i>
+          <input type="number" id="ammount" formControlName="ammount" placeholder="Ammount" class="!h-7">
+          <label for="ammount">Repetitions</label>
+        </div>
 
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure debitis nulla eveniet! Recusandae harum nisi maiores culpa, eius assumenda voluptatem itaque reprehenderit, repellat commodi, magni aspernatur! Dignissimos impedit sed nostrum?</p>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure debitis nulla eveniet! Recusandae harum nisi maiores culpa, eius assumenda voluptatem itaque reprehenderit, repellat commodi, magni aspernatur! Dignissimos impedit sed nostrum?</p>
-<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure debitis nulla eveniet! Recusandae harum nisi maiores culpa, eius assumenda voluptatem itaque reprehenderit, repellat commodi, magni aspernatur! Dignissimos impedit sed nostrum?</p>
+        <div class="form-buttons">
+          <button type="submit" class="button login !h-7" [disabled]="!form.valid">Subscribe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

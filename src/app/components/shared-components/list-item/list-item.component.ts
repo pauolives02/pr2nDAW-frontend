@@ -72,10 +72,11 @@ export class ListItemComponent implements OnInit {
       )
     } else {
       let dialogRef = this.dialog.open(ItemSubscriptionDialogComponent, {
-        width: '500px',
-        height: '100px',
+        width: '80%',
+        height: '50vh',
         data: {
-          item: this.item
+          item: this.item,
+          imagesUrl: this.imagesUrl
         }
       })
       dialogRef.afterClosed().subscribe(result => {

@@ -19,26 +19,21 @@ export class UserService {
       username: email,
       password: password
     }
-    this.http.post<{ token: string, expiresIn: number }>(environment.apiUrl + '/api/user/login', authData)
-    .subscribe(response => {
-      if (response.token) {
-        this.authService.login(response.token, response.expiresIn)
-      }
-    })
+    return this.http.post<{ token: string, expiresIn: number }>(environment.apiUrl + '/api/user/login', authData)
+    // .subscribe(response => {
+    //   if (response.token) {
+    //     this.authService.login(response.token, response.expiresIn)
+    //   }
+    // })
   }
 
-  register(email: string, username: string, password: string) {
-    const authData: User = {
-      email: email,
-      username: username,
-      password: password
-    }
-    this.http.post(environment.apiUrl + '/api/user/register', authData, {observe: 'response'})
-    .subscribe(response => {
-      if (response.status == 201) {
-        this.router.navigate(['/login'])
-      }
-    })
+  register(authData: User) {
+    return this.http.post<{ token: string, expiresIn: number }>(environment.apiUrl + '/api/user/register', authData)
+    // .subscribe(response => {
+    //   if (response.status == 201) {
+    //     this.router.navigate(['/login'])
+    //   }
+    // })
   }
 
   logout() {
@@ -47,5 +42,9 @@ export class UserService {
 
   getAuthUser() {
     return this.http.get<User>(environment.apiUrl + '/api/user/user-data')
+  }
+
+  getUserStats() {
+    return this.http.get(environment.apiUrl + '/api/user/user-stats')
   }
 }
