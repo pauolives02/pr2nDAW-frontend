@@ -25,9 +25,14 @@ export class ConfigurationComponent implements OnInit {
         icon: 'fa-message'
       },
       {
-        text: 'Users list',
+        text: 'User list',
         url: '/dashboard/configuration/user-list',
         icon: 'fa-users'
+      },
+      {
+        text: 'User Reports',
+        url: '/dashboard/configuration/user-reports',
+        icon: 'fa-flag'
       },
     ]
   }

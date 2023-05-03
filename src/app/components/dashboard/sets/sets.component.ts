@@ -17,17 +17,17 @@ export class SetsComponent implements OnInit {
       {
         text: 'Public',
         url: '/dashboard/sets',
-        icon: 'fa-dumbbell'
+        icon: 'fa-lock-open'
       },
       {
         text: 'Private',
         url: '/dashboard/sets/private',
-        icon: 'fa-dumbbell'
+        icon: 'fa-lock'
       },
       {
         text: 'Subscriptions',
         url: '/dashboard/sets/subscriptions',
-        icon: 'fa-dumbbell'
+        icon: 'fa-check'
       },
       {
         text: 'Add',

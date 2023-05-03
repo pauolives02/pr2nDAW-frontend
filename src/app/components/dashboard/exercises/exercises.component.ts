@@ -17,17 +17,17 @@ export class ExercisesComponent implements OnInit {
       {
         text: 'Public',
         url: '/dashboard/exercises',
-        icon: 'fa-dumbbell'
+        icon: 'fa-lock-open'
       },
       {
         text: 'Private',
         url: '/dashboard/exercises/private',
-        icon: 'fa-dumbbell'
+        icon: 'fa-lock'
       },
       {
         text: 'Subscriptions',
         url: '/dashboard/exercises/subscriptions',
-        icon: 'fa-dumbbell'
+        icon: 'fa-check'
       },
       {
         text: 'Add',

@@ -54,6 +54,7 @@ import { ConfigurationComponent } from './components/dashboard/configuration/con
 import { ConfigurationAvatarsComponent } from './components/dashboard/configuration/configuration-avatars/configuration-avatars.component';
 import { ConfigurationUsersComponent } from './components/dashboard/configuration/configuration-users/configuration-users.component';
 import { ConfigurationSubjectsComponent } from './components/dashboard/configuration/configuration-subjects/configuration-subjects.component';
+import { ConfigurationReportsComponent } from './components/dashboard/configuration/configuration-reports/configuration-reports.component';
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { ConfigurationSubjectsComponent } from './components/dashboard/configura
     ConfigurationComponent,
     ConfigurationAvatarsComponent,
     ConfigurationUsersComponent,
-    ConfigurationSubjectsComponent
+    ConfigurationSubjectsComponent,
+    ConfigurationReportsComponent
   ],
   imports: [
     BrowserModule,
