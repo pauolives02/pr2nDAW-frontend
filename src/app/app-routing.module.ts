@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 // COMPONENTS //
 // > AUTH
@@ -39,6 +40,12 @@ import { MySuggestionsComponent } from './components/dashboard/suggestions/my-su
 // > DASHBOARD > PROFILE
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
 
+// > DASHBOARD > CONFIGURATION
+import { ConfigurationComponent } from './components/dashboard/configuration/configuration.component';
+import { ConfigurationAvatarsComponent } from './components/dashboard/configuration/configuration-avatars/configuration-avatars.component';
+import { ConfigurationUsersComponent } from './components/dashboard/configuration/configuration-users/configuration-users.component';
+import { ConfigurationSubjectsComponent } from './components/dashboard/configuration/configuration-subjects/configuration-subjects.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -73,6 +80,14 @@ const routes: Routes = [
           ]
         },
         { path: 'profile', component: ProfileComponent },
+        { path: 'configuration', component: ConfigurationComponent, canActivate: [AdminGuard],
+          children: [
+            { path: '', component: ConfigurationAvatarsComponent },
+            { path: 'avatars', component: ConfigurationAvatarsComponent },
+            { path: 'subjects', component: ConfigurationSubjectsComponent },
+            { path: 'user-list', component: ConfigurationUsersComponent },
+          ]
+        },
       ]
   },
   { path: '**', component: NotFoundComponent}
@@ -81,6 +96,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard]
+  providers: [AuthGuard, AdminGuard]
 })
 export class AppRoutingModule { }

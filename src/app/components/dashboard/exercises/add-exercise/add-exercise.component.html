@@ -5,7 +5,7 @@
       <div class="form-group">
         <i class="fa-solid fa-heading"></i>
         <input type="text" id="name" formControlName="name" placeholder="Name"
-        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}">
+        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}" autocomplete="off">
         <label for="name">Name</label>
       </div>
 

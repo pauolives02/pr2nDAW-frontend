@@ -55,7 +55,7 @@ body {
 }
 
 .auth-container .image {
-  background: linear-gradient(212.38deg, rgb(8 113 190 / 74%) 0%, rgb(8 192 255 / 73%) 100%), url('assets/img/test.png');
+  background: linear-gradient(212.38deg, rgb(8 113 190 / 74%) 0%, rgb(8 192 255 / 73%) 100%), url('assets/img/test.webp');
   background-size: cover;
   background-position: center, center;
   display: none;
@@ -478,7 +478,7 @@ p.error {
 .form-content .form-group input:focus + label,
 .form-content .form-group input:not(:placeholder-shown) + label,
 .form-content .form-group select + label,
-.form-content .form-group textarea + label
+.form-content .form-group textarea:focus + label
 {
   transform: translateY(-1.2em) scale(.8);
 }

@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, Output, EventEmitter, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -12,6 +13,8 @@ export class NavigationComponent implements OnInit {
   large: boolean = false
 
   locked: boolean = false
+
+  isAdmin: boolean = false
 
 
   clicks: number = 0
@@ -52,11 +55,13 @@ export class NavigationComponent implements OnInit {
   }
 
   constructor(
-    private eRef: ElementRef
+    private eRef: ElementRef,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.onResize(null)
+    this.isAdmin = this.authService.getIsAdmin()
   }
 
   toggleNav() {

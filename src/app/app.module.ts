@@ -49,6 +49,11 @@ import { SpinnerComponent } from './components/shared-components/spinner/spinner
 import { FileUploadComponent } from './components/shared-components/file-upload/file-upload.component';
 import { ListItemComponent } from './components/shared-components/list-item/list-item.component';
 import { ItemSubscriptionDialogComponent } from './components/shared-components/list-item/item-subscription-dialog/item-subscription-dialog.component';
+// > DASHBOARD > CONFIGURATION
+import { ConfigurationComponent } from './components/dashboard/configuration/configuration.component';
+import { ConfigurationAvatarsComponent } from './components/dashboard/configuration/configuration-avatars/configuration-avatars.component';
+import { ConfigurationUsersComponent } from './components/dashboard/configuration/configuration-users/configuration-users.component';
+import { ConfigurationSubjectsComponent } from './components/dashboard/configuration/configuration-subjects/configuration-subjects.component';
 
 
 @NgModule({
@@ -79,7 +84,11 @@ import { ItemSubscriptionDialogComponent } from './components/shared-components/
     AddSetComponent,
     MySuggestionsComponent,
     HomeComponent,
-    ItemSubscriptionDialogComponent
+    ItemSubscriptionDialogComponent,
+    ConfigurationComponent,
+    ConfigurationAvatarsComponent,
+    ConfigurationUsersComponent,
+    ConfigurationSubjectsComponent
   ],
   imports: [
     BrowserModule,
