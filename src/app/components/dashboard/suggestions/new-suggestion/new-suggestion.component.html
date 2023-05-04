@@ -3,10 +3,16 @@
     <div *ngIf="!isLoading">
 
       <div class="form-group">
-        <i class="fa-solid fa-pen-to-square"></i>
-        <input type="text" id="subject" formControlName="subject" placeholder="Subject" 
-        [ngClass]="{'invalid': form.get('subject').invalid && form.get('subject').touched}" autocomplete="off">
-        <label for="subject">Subject</label>
+        <app-spinner *ngIf="isLoadingSubjects"></app-spinner>
+        <ng-container *ngIf="!isLoadingSubjects">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <!-- <input type="text" id="subject" formControlName="subject" placeholder="Subject" 
+          [ngClass]="{'invalid': form.get('subject').invalid && form.get('subject').touched}" autocomplete="off"> -->
+          <select id="subject" formControlName="subject" [ngClass]="{'invalid': form.get('subject').invalid && form.get('subject').touched}">
+            <option *ngFor="let subject of subjects" value="{{ subject.id }}">{{ subject.name }}</option>
+          </select>
+          <label for="subject">Subject</label>
+        </ng-container>
       </div>
 
       <div class="form-group">
@@ -21,5 +27,6 @@
       </div>
 
     </div>
+    <app-spinner *ngIf="isLoading"></app-spinner>
   </form>
 </div>

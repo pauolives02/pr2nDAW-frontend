@@ -1,6 +1,6 @@
 export interface Suggestion {
-  subject: string,
+  subject: any,
   description: string,
-  // user_id: string,
-  date: Date
+  user_id?: string,
+  date?: Date
 }
