@@ -21,11 +21,6 @@ export class SuggestionService {
 
   addSuggestion(suggestion: Suggestion) {
     return this.http.post<Suggestion>(environment.apiUrl + '/api/suggestion/add-suggestion', suggestion)
-    // .subscribe(response => {
-    //   if (response.status == 201) {
-    //     this.router.navigate(['/login'])
-    //   }
-    // })
   }
 
 }

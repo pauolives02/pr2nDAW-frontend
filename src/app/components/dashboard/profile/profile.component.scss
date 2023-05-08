@@ -1,6 +1,7 @@
 .profile-container {
   background-color: #2b2e3d;
   border-radius: 3px;
+  // padding: 8px;
 }
 
 
@@ -40,4 +41,31 @@
 
 .lvl-container .lvl-info .curr_xp {
   color: var(--color4);
+}
+
+.profile-container .banner {
+  position: relative;
+  height: 30vh;
+  background: linear-gradient(212.38deg, rgb(8 113 190 / 74%) 0%, rgb(8 192 255 / 73%) 100%), url('../../../..//assets/img/banner.webp');
+  background-size: cover;
+  // filter: grayscale(1);
+  border-radius: 3px 3px 0 0;
+}
+
+.profile-container .banner img {
+  @apply h-32 w-32;
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid var(--color2);
+  border-radius: 50%;
+  background-color: var(--color2);
+}
+
+.profile-container .nickname {
+  color: var(--white);
+  @apply text-4xl;
+  font-weight: 500;
+  text-align: center;
 }

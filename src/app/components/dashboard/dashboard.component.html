@@ -6,8 +6,8 @@
   <div class="flex-col grow-[4] md:grow-8 content" [ngClass]="{'blur': toggldeNav}">
     <nav class="nav w-[100%] flex justify-between items-center px-10 py-5">
       <i class="fa-solid fa-bars cursor-pointer" (click)="toggleNav()"></i>
-      <div class="flex items-center">
-        <img src="assets/img/13.png" class="h-8 w-8 sm:h-11 sm:w-11 mr-3">
+      <div *ngIf="user" class="flex items-center">
+        <img src="{{ avatarUrl + user.avatar }}" class="h-8 w-8 sm:h-11 sm:w-11 mr-3">
         <div class="cursor-pointer relative dropdown">
           <p *ngIf="user" #dropdown (click)="toggleDropdown()">{{ user.username }}</p>
           <div class="dropdownContent flex flex-col" [ngClass]="{'dropdownClicked': dropdownClicked}">

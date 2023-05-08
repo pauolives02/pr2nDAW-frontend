@@ -47,4 +47,5 @@ export class UserService {
   getUserStats() {
     return this.http.get(environment.apiUrl + '/api/user/user-stats')
   }
+
 }

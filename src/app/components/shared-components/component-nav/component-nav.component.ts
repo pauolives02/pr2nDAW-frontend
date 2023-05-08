@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-component-nav',
@@ -7,10 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ComponentNavComponent implements OnInit {
 
-  @Input() navLinks: any[];
+  @Input() navLinks: any[]
 
-  constructor() {}
+  isAdmin: boolean = false
+
+  constructor(
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
+    this.isAdmin = this.authService.getIsAdmin()
   }
 }

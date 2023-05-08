@@ -3,6 +3,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,6 +21,7 @@ export class DashboardComponent implements OnInit {
   dropdownCliks: number = 0
   @ViewChild(NavigationComponent) navC!: NavigationComponent
   @ViewChild('dropdown') dropdown: ElementRef
+  avatarUrl: string = environment.apiUrl + '/api/avatar/get-avatar/'
 
   constructor(
     private userService: UserService,

@@ -31,12 +31,14 @@ import { ExerciseDetailComponent } from './components/dashboard/exercises/exerci
 import { ExerciseListComponent } from './components/dashboard/exercises/exercise-list/exercise-list.component';
 import { AddExerciseComponent } from './components/dashboard/exercises/add-exercise/add-exercise.component';
 import { ExerciseSubscriptionsComponent } from './components/dashboard/exercises/exercise-subscriptions/exercise-subscriptions.component';
+import { AllExercisesComponent } from './components/dashboard/exercises/all-exercises/all-exercises.component';
 // > DASHBOARD > SETS
 import { SetsComponent } from './components/dashboard/sets/sets.component';
 import { SetListComponent } from './components/dashboard/sets/set-list/set-list.component';
 import { SetSubscriptionsComponent } from './components/dashboard/sets/set-subscriptions/set-subscriptions.component';
 import { SetDetailComponent } from './components/dashboard/sets/set-detail/set-detail.component';
 import { AddSetComponent } from './components/dashboard/sets/add-set/add-set.component';
+import { AllSetsComponent } from './components/dashboard/sets/all-sets/all-sets.component';
 // > DASHBOARD > RANKING
 import { RankingComponent } from './components/dashboard/ranking/ranking.component';
 // > DASHBOARD > SUGGESTIONS
@@ -49,6 +51,7 @@ import { SpinnerComponent } from './components/shared-components/spinner/spinner
 import { FileUploadComponent } from './components/shared-components/file-upload/file-upload.component';
 import { ListItemComponent } from './components/shared-components/list-item/list-item.component';
 import { ItemSubscriptionDialogComponent } from './components/shared-components/list-item/item-subscription-dialog/item-subscription-dialog.component';
+import { SharedTableComponent } from './components/shared-components/shared-table/shared-table.component';
 import { ConfirmDialogComponent } from './components/shared-components/confirm-dialog/confirm-dialog.component';
 // > DASHBOARD > CONFIGURATION
 import { ConfigurationComponent } from './components/dashboard/configuration/configuration.component';
@@ -56,6 +59,7 @@ import { ConfigurationAvatarsComponent } from './components/dashboard/configurat
 import { ConfigurationUsersComponent } from './components/dashboard/configuration/configuration-users/configuration-users.component';
 import { ConfigurationSubjectsComponent } from './components/dashboard/configuration/configuration-subjects/configuration-subjects.component';
 import { ConfigurationReportsComponent } from './components/dashboard/configuration/configuration-reports/configuration-reports.component';
+
 
 
 @NgModule({
@@ -92,7 +96,10 @@ import { ConfigurationReportsComponent } from './components/dashboard/configurat
     ConfigurationUsersComponent,
     ConfigurationSubjectsComponent,
     ConfigurationReportsComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    SharedTableComponent,
+    AllExercisesComponent,
+    AllSetsComponent
   ],
   imports: [
     BrowserModule,

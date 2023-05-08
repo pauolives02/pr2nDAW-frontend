@@ -27,10 +27,8 @@ body {
 }
 
 
-.color1 {color: #140f07;}
-.color2 {color: #102d52;}
-.color3 {color: #0871be;}
-.color4 {color: #08c0ff;}
+.bgcolor1 {background-color: #354057;}
+.bgcolor2 {background-color: #2b2e3d;}
 
 // filter: grayscale(100%);
 
@@ -478,7 +476,8 @@ p.error {
 .form-content .form-group input:focus + label,
 .form-content .form-group input:not(:placeholder-shown) + label,
 .form-content .form-group select + label,
-.form-content .form-group textarea:focus + label
+.form-content .form-group textarea:focus + label,
+.form-content .form-group textarea:not(:placeholder-shown) + label
 {
   transform: translateY(-1.2em) scale(.8);
 }

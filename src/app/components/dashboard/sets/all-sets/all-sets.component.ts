@@ -2,21 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ConfirmDialogComponent } from 'src/app/components/shared-components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from "@angular/material/dialog";
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-configuration-users',
-  templateUrl: './configuration-users.component.html',
-  styleUrls: ['./configuration-users.component.scss']
+  selector: 'app-all-sets',
+  templateUrl: './all-sets.component.html',
+  styleUrls: ['./all-sets.component.scss']
 })
-export class ConfigurationUsersComponent implements OnInit {
+export class AllSetsComponent {
 
   fields: any[] = []
   buttons: any[] = []
   endPoint: string = ''
 
   constructor(
-    private userService: UserService,
     private dialog: MatDialog
   ) {}
 
@@ -25,29 +23,41 @@ export class ConfigurationUsersComponent implements OnInit {
   }
 
   tableConfig() {
-    this.endPoint = '/api/user/get-all'
+    this.endPoint = '/api/set/all'
 
     this.fields = [
       {
-        name: 'Email',
-        key: 'email',
+        name: 'Name',
+        key: 'name',
+      },
+      // {
+      //   name: 'Description',
+      //   key: 'description',
+      // },
+      {
+        name: 'Finished XP',
+        key: 'finished_xp',
       },
       {
-        name: 'Username',
-        key: 'username'
+        name: 'Public',
+        key: 'public',
       },
       {
-        name: 'Creation date',
-        key: 'creationDate',
-        render: (item) => item.creationDate.split("T")[0]
+        name: 'Owner',
+        key: 'owner',
+        render: (item) => item.owner.username
       },
+      // {
+      //   name: 'Image',
+      //   key: 'image',
+      //   render: (item) => item.creationDate.split("T")[0]
+      // },
     ]
 
     this.buttons = [
       {
         text: 'Delete',
         icon: 'fa-trash',
-        class: 'bgRed',
         onclick: (item) => this.onDelete(item)
       },
     ]

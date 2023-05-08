@@ -34,6 +34,12 @@ export class SetsComponent implements OnInit {
         url: '/dashboard/sets/add',
         icon: 'fa-plus'
       },
+      {
+        text: 'All',
+        url: '/dashboard/sets/all',
+        icon: 'fa-list',
+        admin: true
+      },
     ]
   }
 }

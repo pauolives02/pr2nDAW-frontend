@@ -21,6 +21,7 @@ import { AddExerciseComponent } from './components/dashboard/exercises/add-exerc
 import { ExerciseDetailComponent } from './components/dashboard/exercises/exercise-detail/exercise-detail.component';
 import { ExerciseListComponent } from './components/dashboard/exercises/exercise-list/exercise-list.component';
 import { ExerciseSubscriptionsComponent } from './components/dashboard/exercises/exercise-subscriptions/exercise-subscriptions.component';
+import { AllExercisesComponent } from './components/dashboard/exercises/all-exercises/all-exercises.component';
 
 // > DASHBOARD > SETS
 import { SetsComponent } from './components/dashboard/sets/sets.component';
@@ -28,6 +29,7 @@ import { SetListComponent } from './components/dashboard/sets/set-list/set-list.
 import { SetSubscriptionsComponent } from './components/dashboard/sets/set-subscriptions/set-subscriptions.component';
 import { AddSetComponent } from './components/dashboard/sets/add-set/add-set.component';
 import { SetDetailComponent } from './components/dashboard/sets/set-detail/set-detail.component';
+import { AllSetsComponent } from './components/dashboard/sets/all-sets/all-sets.component';
 
 // > DASHBOARD > RANKING
 import { RankingComponent } from './components/dashboard/ranking/ranking.component';
@@ -48,6 +50,7 @@ import { ConfigurationSubjectsComponent } from './components/dashboard/configura
 import { ConfigurationReportsComponent } from './components/dashboard/configuration/configuration-reports/configuration-reports.component';
 
 
+
 const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'login', component: LoginComponent, data: { animation: 'isLeft' } },
@@ -62,6 +65,7 @@ const routes: Routes = [
             { path: 'subscriptions', component: ExerciseSubscriptionsComponent },
             { path: 'add', component: AddExerciseComponent },
             { path: 'detail/:id', component: ExerciseDetailComponent },
+            { path: 'all', component: AllExercisesComponent, canActivate: [AdminGuard] },
           ]
         },
         { path: 'sets', component: SetsComponent,
@@ -71,6 +75,7 @@ const routes: Routes = [
             { path: 'subscriptions', component: SetSubscriptionsComponent },
             { path: 'add', component: AddSetComponent },
             { path: 'detail/:id', component: SetDetailComponent },
+            { path: 'all', component: AllSetsComponent, canActivate: [AdminGuard] },
           ]
         },
         { path: 'ranking', component: RankingComponent },

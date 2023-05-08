@@ -34,6 +34,12 @@ export class ExercisesComponent implements OnInit {
         url: '/dashboard/exercises/add',
         icon: 'fa-plus'
       },
+      {
+        text: 'All',
+        url: '/dashboard/exercises/all',
+        icon: 'fa-list',
+        admin: true
+      },
     ]
   }
 }

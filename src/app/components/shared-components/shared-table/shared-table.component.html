@@ -1,0 +1,21 @@
+<table class="w-full">
+  <tr>
+    <th *ngFor="let field of fields">{{ field.name }}</th>
+    <th>Actions</th>
+  </tr>
+
+  <ng-container *ngIf="items.length > 0">
+    <tr *ngFor="let item of items" >
+      <td *ngFor="let field of fields">
+        <img *ngIf="field.image" src="{{ field.render(item)}}" class="w-12 h-12">
+        <p *ngIf="!field.image">{{ field.render ? field.render(item) : item[field.key] }}</p>
+      </td>
+  
+      <td>
+        <button *ngFor="let button of buttons" (click)="button.onclick(item)" [ngClass]="button.class"><i class="fa-solid" [ngClass]="button.icon"></i></button>
+      </td>
+    </tr>
+  </ng-container>
+
+  <tr *ngIf="items.length == 0"><td [colSpan]="fields.length + 1">No data available.</td></tr>
+</table>

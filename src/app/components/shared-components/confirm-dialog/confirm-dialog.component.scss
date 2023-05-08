@@ -1,0 +1,37 @@
+h1 {
+  @apply text-3xl mb-4 p-2;
+  font-weight: 500;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.buttons {
+  @apply p-2;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  @apply p-4;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+button:first-child {
+  background-color: #b62020;
+  border-bottom: 2px solid #831919;
+  border-right: 2px solid #831919;
+}
+
+button:last-child {
+  background-color: #137913;
+  border-bottom: 2px solid #0e4c0e;
+  border-right: 2px solid #0e4c0e;
+}

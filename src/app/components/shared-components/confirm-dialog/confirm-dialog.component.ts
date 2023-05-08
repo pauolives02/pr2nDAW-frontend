@@ -7,11 +7,20 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dial
   styleUrls: ['./confirm-dialog.component.scss']
 })
 export class ConfirmDialogComponent {
+
+  message: string = ''
+  imageUrl: string
+
   constructor(
     private dialogRef: MatDialogRef<ConfirmDialogComponent>,
     private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) {
+    this.message = data.message
+    if (data.imageUrl) {
+      this.imageUrl = data.imageUrl
+    }
+  }
 
   confirm() {
     this.dialogRef.close(true)

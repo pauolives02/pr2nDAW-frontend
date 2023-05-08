@@ -1,0 +1,32 @@
+table {
+  border: 2px solid var(--color4);
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+table tr:first-child {
+  background-color: var(--color4);
+  text-align: left;
+}
+
+table th, table td {
+  @apply p-2;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--color2);
+}
+
+table td button {
+  background-color: var(--color4);
+  @apply p-2;
+  border-radius: 4px;
+}
+
+table td button:not(:first-child) {
+  @apply ml-4;
+}
+
+.bgRed {
+  background-color: #b62020 !important;
+}
