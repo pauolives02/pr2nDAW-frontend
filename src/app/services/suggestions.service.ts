@@ -23,4 +23,8 @@ export class SuggestionService {
     return this.http.post<Suggestion>(environment.apiUrl + '/api/suggestion/add-suggestion', suggestion)
   }
 
+  deleteSubject(item) {
+    return this.http.delete(environment.apiUrl + '/api/suggestion/delete-subject/' + item.id)
+  }
+
 }

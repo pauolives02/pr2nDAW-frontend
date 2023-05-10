@@ -67,6 +67,19 @@ export class AllExercisesComponent implements OnInit {
   }
 
   onDelete(item) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      height: '50vh',
+      width: '80vh',
+      data: {
+        message: `Are you sure you want to delete exercise '${item.name}' by ${item.owner.username}?`,
+        imageUrl: this.imageUrl + item.image
+      },
+    })
 
+    dialogRef.afterClosed().subscribe(
+      confirmed => {
+        console.log(confirmed)
+      }
+    )
   }
 }

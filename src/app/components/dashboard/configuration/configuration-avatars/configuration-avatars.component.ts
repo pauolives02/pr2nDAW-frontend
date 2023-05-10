@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-// import { AvatarService } from 'src/app/services/avatar.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AvatarService } from 'src/app/services/avatar.service';
 import { environment } from 'src/environments/environment';
 import { ConfirmDialogComponent } from 'src/app/components/shared-components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from "@angular/material/dialog";
+import { SharedTableComponent } from 'src/app/components/shared-components/shared-table/shared-table.component';
+import { AvatarsAddModalComponent } from './avatars-add-modal/avatars-add-modal.component';
+
 
 @Component({
   selector: 'app-configuration-avatars',
@@ -11,13 +14,14 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class ConfigurationAvatarsComponent implements OnInit {
 
+  @ViewChild(SharedTableComponent) sharedTable: SharedTableComponent
   avatarUrl: string = environment.apiUrl + '/api/avatar/get-avatar/'
   fields: any[] = []
   buttons: any[] = []
   endPoint: string = ''
 
   constructor(
-    // private avatarsService: AvatarService,
+    private avatarService: AvatarService,
     private dialog: MatDialog
   ) {}
 
@@ -43,6 +47,11 @@ export class ConfigurationAvatarsComponent implements OnInit {
 
     this.buttons = [
       {
+        text: 'Edit',
+        icon: 'fa-pen',
+        onclick: (item) => this.addEditModal(item)
+      },
+      {
         text: 'Delete',
         icon: 'fa-trash',
         class: 'bgRed',
@@ -51,20 +60,22 @@ export class ConfigurationAvatarsComponent implements OnInit {
     ]
   }
 
-  // getAvatars() {
-  //   this.isLoading = true
-  //   this.avatarsService.getAllAvatars()
-  //   .subscribe({
-  //     next: (result) => {
-  //       this.avatars = result
-  //       this.isLoading = false
-  //     },
-  //     error: (error) => {
-  //       console.log(error)
-  //       this.isLoading = false
-  //     }
-  //   })
-  // }
+  onEdit(item) {
+
+  }
+
+  addEditModal(item?) {
+    const dialogRef = this.dialog.open(AvatarsAddModalComponent, {
+      height: '50vh',
+      width: '80vh',
+      data: {
+        item: item,
+        imageUrl: this.avatarUrl + item?.image
+      },
+    })
+
+
+  }
 
   onDelete(item) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -78,7 +89,20 @@ export class ConfigurationAvatarsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       confirmed => {
-        console.log(confirmed)
+        if (confirmed) {
+          this.avatarService.delete(item)
+          .subscribe({
+            next: (result) => {
+              console.log(result)
+              this.sharedTable.getItems()
+              // this.isLoading = false
+            },
+            error: (error) => {
+              console.log(error)
+              // this.isLoading = false
+            }
+          })
+        }
       }
     )
   }

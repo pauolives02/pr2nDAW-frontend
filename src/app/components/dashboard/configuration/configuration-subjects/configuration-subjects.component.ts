@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ConfirmDialogComponent } from 'src/app/components/shared-components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from "@angular/material/dialog";
 import { SuggestionService } from 'src/app/services/suggestions.service';
+import { SharedTableComponent } from 'src/app/components/shared-components/shared-table/shared-table.component';
 
 @Component({
   selector: 'app-configuration-subjects',
@@ -11,6 +12,7 @@ import { SuggestionService } from 'src/app/services/suggestions.service';
 })
 export class ConfigurationSubjectsComponent implements OnInit {
 
+  @ViewChild(SharedTableComponent) sharedTable: SharedTableComponent
   fields: any[] = []
   buttons: any[] = []
   endPoint: string = ''
@@ -69,7 +71,20 @@ export class ConfigurationSubjectsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       confirmed => {
-        console.log(confirmed)
+        if (confirmed) {
+          this.suggestionService.deleteSubject(item)
+          .subscribe({
+            next: (result) => {
+              console.log(result)
+              this.sharedTable.getItems()
+              // this.isLoading = false
+            },
+            error: (error) => {
+              console.log(error)
+              // this.isLoading = false
+            }
+          })
+        }
       }
     )
   }

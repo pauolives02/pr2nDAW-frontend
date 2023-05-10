@@ -13,6 +13,7 @@ export class AllSetsComponent {
   fields: any[] = []
   buttons: any[] = []
   endPoint: string = ''
+  imageUrl: string = environment.apiUrl + '/api/set/get-image/'
 
   constructor(
     private dialog: MatDialog
@@ -26,6 +27,12 @@ export class AllSetsComponent {
     this.endPoint = '/api/set/all'
 
     this.fields = [
+      {
+        name: 'Image',
+        key: 'image',
+        image: true,
+        render: (item) => this.imageUrl + item.image
+      },
       {
         name: 'Name',
         key: 'name',
@@ -47,11 +54,6 @@ export class AllSetsComponent {
         key: 'owner',
         render: (item) => item.owner.username
       },
-      // {
-      //   name: 'Image',
-      //   key: 'image',
-      //   render: (item) => item.creationDate.split("T")[0]
-      // },
     ]
 
     this.buttons = [
@@ -64,7 +66,20 @@ export class AllSetsComponent {
   }
 
   onDelete(item) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      height: '50vh',
+      width: '80vh',
+      data: {
+        message: `Are you sure you want to delete set '${item.name}' by ${item.owner.username}?`,
+        imageUrl: this.imageUrl + item.image
+      },
+    })
 
+    dialogRef.afterClosed().subscribe(
+      confirmed => {
+        console.log(confirmed)
+      }
+    )
   }
 
 }

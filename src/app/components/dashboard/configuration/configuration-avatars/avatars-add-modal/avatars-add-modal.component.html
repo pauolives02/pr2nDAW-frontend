@@ -1,0 +1,21 @@
+<div class="item !flex-col h-full justify-center">
+
+  <img src="{{ imageUrl }}" class="h-32 w-32 mt-2 self-center">
+
+  <form class="form-content !p-4" [formGroup]="form" (submit)="saveAvatar()">
+
+    <div class="form-group">
+      <i class="fa-solid fa-star"></i>
+      <input type="number" id="ammount" formControlName="lvl" placeholder="Lvl" >
+      <label for="ammount">Lvl required</label>
+    </div>
+
+    <app-file-upload *ngIf="form.get('image')" formControlName="image" (change)="onSelectImage($event)"></app-file-upload>
+
+    <div class="form-buttons">
+      <button type="submit" class="button login !h-7" [disabled]="!form.valid">Save</button>
+    </div>
+  </form>
+
+
+</div>

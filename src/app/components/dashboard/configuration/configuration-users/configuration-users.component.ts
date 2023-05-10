@@ -46,7 +46,7 @@ export class ConfigurationUsersComponent implements OnInit {
     this.buttons = [
       {
         text: 'Delete',
-        icon: 'fa-trash',
+        icon: 'fa-ban',
         class: 'bgRed',
         onclick: (item) => this.onDelete(item)
       },

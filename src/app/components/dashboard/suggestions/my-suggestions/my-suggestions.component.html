@@ -4,7 +4,7 @@
 
     <div *ngIf="suggestions.length != 0" class="gridList">
       <div *ngFor="let suggestion of suggestions">
-        <p>{{ suggestion.subject.name }}</p>
+        <p>{{ suggestion.subject ? suggestion.subject.name : 'undefined' }}</p>
         <p>{{ suggestion.description }}</p>
       </div>
     </div>

@@ -53,13 +53,15 @@ import { ListItemComponent } from './components/shared-components/list-item/list
 import { ItemSubscriptionDialogComponent } from './components/shared-components/list-item/item-subscription-dialog/item-subscription-dialog.component';
 import { SharedTableComponent } from './components/shared-components/shared-table/shared-table.component';
 import { ConfirmDialogComponent } from './components/shared-components/confirm-dialog/confirm-dialog.component';
+import { MessageDialogComponent } from './components/shared-components/message-dialog/message-dialog.component';
 // > DASHBOARD > CONFIGURATION
 import { ConfigurationComponent } from './components/dashboard/configuration/configuration.component';
 import { ConfigurationAvatarsComponent } from './components/dashboard/configuration/configuration-avatars/configuration-avatars.component';
 import { ConfigurationUsersComponent } from './components/dashboard/configuration/configuration-users/configuration-users.component';
 import { ConfigurationSubjectsComponent } from './components/dashboard/configuration/configuration-subjects/configuration-subjects.component';
 import { ConfigurationReportsComponent } from './components/dashboard/configuration/configuration-reports/configuration-reports.component';
-
+import { AvatarsAddModalComponent } from './components/dashboard/configuration/configuration-avatars/avatars-add-modal/avatars-add-modal.component';
+import { SubjectsAddModalComponent } from './components/dashboard/configuration/configuration-subjects/subjects-add-modal/subjects-add-modal.component';
 
 
 @NgModule({
@@ -99,7 +101,10 @@ import { ConfigurationReportsComponent } from './components/dashboard/configurat
     ConfirmDialogComponent,
     SharedTableComponent,
     AllExercisesComponent,
-    AllSetsComponent
+    AllSetsComponent,
+    MessageDialogComponent,
+    AvatarsAddModalComponent,
+    SubjectsAddModalComponent
   ],
   imports: [
     BrowserModule,

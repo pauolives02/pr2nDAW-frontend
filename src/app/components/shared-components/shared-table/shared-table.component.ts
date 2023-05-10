@@ -19,6 +19,10 @@ export class SharedTableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getItems()
+  }
+
+  getItems() {
     this.sharedTableService.getItems(this.endPoint)
     .subscribe({
       next: (result) => {
