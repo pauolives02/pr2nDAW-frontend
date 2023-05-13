@@ -12,6 +12,7 @@ export class AvatarsAddModalComponent {
   imageUrl: string = 'assets/img/defaultAvatar.svg'
   item: any
   form: FormGroup
+  isNew: boolean = true
 
   constructor(
     private dialogRef: MatDialogRef<AvatarsAddModalComponent>,
@@ -30,13 +31,10 @@ export class AvatarsAddModalComponent {
     if (data.item) {
       this.item = data.item
       this.form.get('lvl').setValue(this.item.lvl)
+      this.isNew = false
     } else {
       this.form.addControl('image', new FormControl(null, [Validators.required, requiredFileType()]))
     }
-  }
-
-  confirm() {
-    this.dialogRef.close(true)
   }
 
   close() {
@@ -54,6 +52,12 @@ export class AvatarsAddModalComponent {
   }
 
   saveAvatar() {
-
+    if (this.form.valid) {
+      const data = {
+        form: this.form.value,
+        isNew: this.isNew
+      }
+      this.dialogRef.close(data)
+    }
   }
 }

@@ -14,4 +14,12 @@ export class AvatarService {
     return this.http.delete(environment.apiUrl + '/api/avatar/delete/' + item.id)
   }
 
+  update(item, lvl) {
+    return this.http.put(environment.apiUrl + '/api/avatar/update/' + item.id, {lvl})
+  }
+
+  add(formData) {
+    return this.http.post(environment.apiUrl + '/api/avatar/add', formData)
+  }
+
 }

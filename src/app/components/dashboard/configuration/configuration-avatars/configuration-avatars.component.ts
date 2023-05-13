@@ -5,7 +5,8 @@ import { ConfirmDialogComponent } from 'src/app/components/shared-components/con
 import { MatDialog } from "@angular/material/dialog";
 import { SharedTableComponent } from 'src/app/components/shared-components/shared-table/shared-table.component';
 import { AvatarsAddModalComponent } from './avatars-add-modal/avatars-add-modal.component';
-
+import { toFormData } from 'src/app/helpers/toFormData';
+import { MessageModalService } from 'src/app/services/messageModal.service';
 
 @Component({
   selector: 'app-configuration-avatars',
@@ -22,7 +23,8 @@ export class ConfigurationAvatarsComponent implements OnInit {
 
   constructor(
     private avatarService: AvatarService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private messageModalService: MessageModalService
   ) {}
 
   ngOnInit(): void {
@@ -60,10 +62,6 @@ export class ConfigurationAvatarsComponent implements OnInit {
     ]
   }
 
-  onEdit(item) {
-
-  }
-
   addEditModal(item?) {
     const dialogRef = this.dialog.open(AvatarsAddModalComponent, {
       height: '50vh',
@@ -74,6 +72,28 @@ export class ConfigurationAvatarsComponent implements OnInit {
       },
     })
 
+    dialogRef.afterClosed().subscribe(
+      data => {
+        if (data) {
+          if (data.isNew) {
+            const formData = toFormData(data.form)
+            this.avatarService.add(formData).subscribe({
+              next: (result: any) => {
+                this.messageModalService.openModal(result.msg, 1)
+                this.sharedTable.getItems()
+              }
+            })
+          } else {
+            this.avatarService.update(item, data.form.lvl).subscribe({
+              next: (result: any) => {
+                this.messageModalService.openModal(result.msg, 1)
+                this.sharedTable.getItems()
+              }
+            })
+          }
+        }
+      }
+    )
 
   }
 
@@ -92,14 +112,9 @@ export class ConfigurationAvatarsComponent implements OnInit {
         if (confirmed) {
           this.avatarService.delete(item)
           .subscribe({
-            next: (result) => {
-              console.log(result)
+            next: (result: any) => {
+              this.messageModalService.openModal(result.msg, 1)
               this.sharedTable.getItems()
-              // this.isLoading = false
-            },
-            error: (error) => {
-              console.log(error)
-              // this.isLoading = false
             }
           })
         }
