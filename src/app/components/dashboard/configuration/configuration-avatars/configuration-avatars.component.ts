@@ -73,10 +73,10 @@ export class ConfigurationAvatarsComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(
-      data => {
-        if (data) {
-          if (data.isNew) {
-            const formData = toFormData(data.form)
+      form => {
+        if (form) {
+          if (!item) {
+            const formData = toFormData(form)
             this.avatarService.add(formData).subscribe({
               next: (result: any) => {
                 this.messageModalService.openModal(result.msg, 1)
@@ -84,7 +84,7 @@ export class ConfigurationAvatarsComponent implements OnInit {
               }
             })
           } else {
-            this.avatarService.update(item, data.form.lvl).subscribe({
+            this.avatarService.update(item, form.lvl).subscribe({
               next: (result: any) => {
                 this.messageModalService.openModal(result.msg, 1)
                 this.sharedTable.getItems()
