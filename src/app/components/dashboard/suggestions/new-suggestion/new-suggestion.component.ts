@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SuggestionService } from 'src/app/services/suggestions.service';
 import { Suggestion } from 'src/app/models/suggestion.model';
+import { MessageModalService } from 'src/app/services/messageModal.service';
 
 @Component({
   selector: 'app-new-suggestion',
@@ -16,7 +17,8 @@ export class NewSuggestionComponent implements OnInit {
   subjects: any[] = []
 
   constructor(
-    private suggestionService: SuggestionService
+    private suggestionService: SuggestionService,
+    private messageModalService: MessageModalService
   ) {
     this.form = new FormGroup({
       subject: new FormControl('', Validators.required),
@@ -33,7 +35,6 @@ export class NewSuggestionComponent implements OnInit {
         this.isLoadingSubjects = false
       },
       error: (error) => {
-        console.log(error)
         this.isLoadingSubjects = false
       }
     })
@@ -49,13 +50,12 @@ export class NewSuggestionComponent implements OnInit {
       this.isLoading = true
       this.suggestionService.addSuggestion(suggestion)
       .subscribe({
-        next: (response) => {
-          console.log(response)
+        next: (response: any) => {
+          this.messageModalService.openModal(response.msg, 1)
           this.isLoading = false
-          // this.form.reset()
+          this.form.reset()
         },
         error: (error) => {
-          console.log(error)
           this.isLoading = false
         }
       })

@@ -24,6 +24,12 @@ export class SuggestionsComponent implements OnInit {
         url: '/dashboard/suggestions/my-suggestions',
         icon: 'fa-dumbbell'
       },
+      {
+        text: 'All',
+        url: '/dashboard/suggestions/all',
+        icon: 'fa-list',
+        admin: true
+      },
     ]
   }
 

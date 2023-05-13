@@ -1,17 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SuggestionService } from 'src/app/services/suggestions.service';
-import { DetailSuggestionComponent } from '../detail-suggestion/detail-suggestion.component';
 import { MatDialog } from "@angular/material/dialog";
 import { ConfirmDialogComponent } from 'src/app/components/shared-components/confirm-dialog/confirm-dialog.component';
 import { SharedTableComponent } from 'src/app/components/shared-components/shared-table/shared-table.component';
 import { MessageModalService } from 'src/app/services/messageModal.service';
+import { SuggestionService } from 'src/app/services/suggestions.service';
+import { DetailSuggestionComponent } from '../detail-suggestion/detail-suggestion.component';
 
 @Component({
-  selector: 'app-my-suggestions',
-  templateUrl: './my-suggestions.component.html',
-  styleUrls: ['./my-suggestions.component.scss']
+  selector: 'app-all-suggestions',
+  templateUrl: './all-suggestions.component.html',
+  styleUrls: ['./all-suggestions.component.scss']
 })
-export class MySuggestionsComponent implements OnInit {
+export class AllSuggestionsComponent implements OnInit {
 
   @ViewChild(SharedTableComponent) sharedTable: SharedTableComponent
   fields: any[] = []
@@ -29,7 +29,7 @@ export class MySuggestionsComponent implements OnInit {
   }
 
   tableConfig() {
-    this.endPoint = '/api/suggestion/user-suggestions'
+    this.endPoint = '/api/suggestion/all'
 
     this.fields = [
       {
@@ -53,6 +53,11 @@ export class MySuggestionsComponent implements OnInit {
         render: (item) => item.date.split("T")[0]
       },
       {
+        name: 'Owner',
+        key: 'user_id',
+        render: (item) => item.user_id.username
+      },
+      {
         name: 'Status',
         key: 'status',
         render: (item) => {
@@ -74,6 +79,26 @@ export class MySuggestionsComponent implements OnInit {
         text: 'Show',
         icon: 'fa-eye',
         onclick: (item) => this.showDetail(item)
+      },
+      {
+        text: 'Accept',
+        icon: 'fa-thumbs-up',
+        class: 'bgGreen',
+        hidden: (item) => item.status == 1
+      },
+      {
+        text: 'Pending',
+        icon: 'fa-minus',
+        class: 'bgOrange',
+        hidden: (item) => item.status == 0
+        // onclick: (item) => this.onDelete(item)
+      },
+      {
+        text: 'Deny',
+        icon: 'fa-thumbs-down',
+        class: 'bgRed',
+        hidden: (item) => item.status == 2
+        // onclick: (item) => this.onDelete(item)
       },
       {
         text: 'Delete',
@@ -107,7 +132,7 @@ export class MySuggestionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       confirmed => {
         if (confirmed) {
-          this.suggestionService.deleteSuggestionByUser(item).subscribe({
+          this.suggestionService.deleteSuggestion(item).subscribe({
             next: (result: any) => {
               this.messageModalService.openModal(result.msg, 1)
               this.sharedTable.getItems()

@@ -38,6 +38,7 @@ import { RankingComponent } from './components/dashboard/ranking/ranking.compone
 import { SuggestionsComponent } from './components/dashboard/suggestions/suggestions.component';
 import { NewSuggestionComponent } from './components/dashboard/suggestions/new-suggestion/new-suggestion.component';
 import { MySuggestionsComponent } from './components/dashboard/suggestions/my-suggestions/my-suggestions.component';
+import { AllSuggestionsComponent } from './components/dashboard/suggestions/all-suggestions/all-suggestions.component';
 
 // > DASHBOARD > PROFILE
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
@@ -83,6 +84,7 @@ const routes: Routes = [
           children: [
             { path: '', component: NewSuggestionComponent },
             { path: 'my-suggestions', component: MySuggestionsComponent },
+            { path: 'all', component: AllSuggestionsComponent, canActivate: [AdminGuard] },
           ]
         },
         { path: 'profile', component: ProfileComponent },

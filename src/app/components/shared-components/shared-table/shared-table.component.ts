@@ -35,4 +35,8 @@ export class SharedTableComponent implements OnInit {
       }
     })
   }
+
+  isFunction(v) {
+    return typeof v === 'function'
+  }
 }

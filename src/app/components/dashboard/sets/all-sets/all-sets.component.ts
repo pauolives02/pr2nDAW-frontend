@@ -8,7 +8,7 @@ import { MatDialog } from "@angular/material/dialog";
   templateUrl: './all-sets.component.html',
   styleUrls: ['./all-sets.component.scss']
 })
-export class AllSetsComponent {
+export class AllSetsComponent implements OnInit {
 
   fields: any[] = []
   buttons: any[] = []
@@ -37,10 +37,16 @@ export class AllSetsComponent {
         name: 'Name',
         key: 'name',
       },
-      // {
-      //   name: 'Description',
-      //   key: 'description',
-      // },
+      {
+        name: 'Description',
+        key: 'description',
+        render: (item) => {
+          if (item.description.length > 20) {
+            return item.description.slice(0, 20) + '...'
+          }
+          return item.description
+        }
+      },
       {
         name: 'Finished XP',
         key: 'finished_xp',

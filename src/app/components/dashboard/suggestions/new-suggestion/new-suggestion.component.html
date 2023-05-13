@@ -19,7 +19,7 @@
         <i class="fa-solid fa-comment"></i>
         <textarea rows="8" id="message" formControlName="message" placeholder="Message"
         [ngClass]="{'invalid': form.get('message').invalid && (form.get('message').touched || form.get('message').dirty)}" autocomplete="off"></textarea>
-        <label for="message" class="top-0">Message ({{form.get('message').value.length}} / 1000)</label>
+        <label for="message" class="top-0">Message ({{form.get('message').value?.length ?? '0'}} / 1000)</label>
       </div>
 
       <div class="form-buttons">

@@ -1,15 +1,5 @@
 <div class="dashboardMain">
-  <section>
-    <h3>Sent suggestions</h3>
 
-    <div *ngIf="suggestions.length != 0" class="gridList">
-      <div *ngFor="let suggestion of suggestions">
-        <p>{{ suggestion.subject ? suggestion.subject.name : 'undefined' }}</p>
-        <p>{{ suggestion.description }}</p>
-      </div>
-    </div>
-
-    <p *ngIf="suggestions.length == 0 && !isLoading">You haven't sent any suggestion yet.</p>
-    <app-spinner *ngIf="isLoading"></app-spinner>
-  </section>
+  <app-shared-table [endPoint]="endPoint" [fields]="fields" [buttons]="buttons"></app-shared-table>
+  
 </div>

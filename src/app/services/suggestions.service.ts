@@ -11,20 +11,39 @@ export class SuggestionService {
     private router: Router,
   ) {}
 
+  // Suggestions
   getUsersSuggestions() {
     return this.http.get(environment.apiUrl + '/api/suggestion/user-suggestions');
-  }
-
-  getSuggestionSubjects() {
-    return this.http.get<any>(environment.apiUrl + '/api/suggestion/suggestion-subjects');
   }
 
   addSuggestion(suggestion: Suggestion) {
     return this.http.post<Suggestion>(environment.apiUrl + '/api/suggestion/add-suggestion', suggestion)
   }
 
+  deleteSuggestionByUser(item) {
+    return this.http.delete(environment.apiUrl + '/api/suggestion/user-suggestions/delete/' + item.id);
+  }
+
+  deleteSuggestion(item) {
+    return this.http.delete(environment.apiUrl + '/api/suggestion/delete/' + item.id);
+  }
+
+  // Suggestion subjects
+  getSuggestionSubjects() {
+    return this.http.get<any>(environment.apiUrl + '/api/suggestion/suggestion-subjects');
+  }
+  
+  updateSubject(item, name) {
+    return this.http.put(environment.apiUrl + '/api/suggestion/update-subject/' + item.id, {name})
+  }
+
+  addSubject(subject) {
+    return this.http.post(environment.apiUrl + '/api/suggestion/add-subject', subject)
+  }
+
   deleteSubject(item) {
     return this.http.delete(environment.apiUrl + '/api/suggestion/delete-subject/' + item.id)
   }
+
 
 }

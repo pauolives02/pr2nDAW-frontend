@@ -1,4 +1,8 @@
 <div class="dashboardMain">
+
+  <div class="flex justify-end mb-4">
+    <button class="addBtn" (click)="addEditModal()"><i class="fa-solid fa-plus"></i> Add Subject</button>
+  </div>
   
   <app-shared-table [endPoint]="endPoint" [fields]="fields" [buttons]="buttons"></app-shared-table>
 

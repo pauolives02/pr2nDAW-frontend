@@ -4,6 +4,9 @@ import { ConfirmDialogComponent } from 'src/app/components/shared-components/con
 import { MatDialog } from "@angular/material/dialog";
 import { SuggestionService } from 'src/app/services/suggestions.service';
 import { SharedTableComponent } from 'src/app/components/shared-components/shared-table/shared-table.component';
+import { MessageModalService } from 'src/app/services/messageModal.service';
+import { SubjectsAddModalComponent } from './subjects-add-modal/subjects-add-modal.component';
+
 
 @Component({
   selector: 'app-configuration-subjects',
@@ -19,7 +22,8 @@ export class ConfigurationSubjectsComponent implements OnInit {
 
   constructor(
     private suggestionService: SuggestionService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private messageModalService: MessageModalService
   ) {}
 
   ngOnInit() {
@@ -38,6 +42,11 @@ export class ConfigurationSubjectsComponent implements OnInit {
 
     this.buttons = [
       {
+        text: 'Edit',
+        icon: 'fa-pen',
+        onclick: (item) => this.addEditModal(item)
+      },
+      {
         text: 'Delete',
         icon: 'fa-trash',
         class: 'bgRed',
@@ -46,19 +55,37 @@ export class ConfigurationSubjectsComponent implements OnInit {
     ]
   }
 
-  // getSubjects() {
-  //   this.suggestionService.getSuggestionSubjects()
-  //   .subscribe({
-  //     next: (result) => {
-  //       this.subjects = result
-  //       this.isLoading = false
-  //     },
-  //     error: (error) => {
-  //       console.log(error)
-  //       this.isLoading = false
-  //     }
-  //   })
-  // }
+  addEditModal(item?) {
+    const dialogRef = this.dialog.open(SubjectsAddModalComponent, {
+      height: '40vh',
+      width: '80vh',
+      data: {
+        item: item
+      },
+    })
+
+    dialogRef.afterClosed().subscribe(
+      form => {
+        if (form) {
+          if (!item) {
+            this.suggestionService.addSubject(form).subscribe({
+              next: (result: any) => {
+                this.messageModalService.openModal(result.msg, 1)
+                this.sharedTable.getItems()
+              }
+            })
+          } else {
+            this.suggestionService.updateSubject(item, form.name).subscribe({
+              next: (result: any) => {
+                this.messageModalService.openModal(result.msg, 1)
+                this.sharedTable.getItems()
+              }
+            })
+          }
+        }
+      }
+    )
+  }
 
   onDelete(item) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
@@ -74,14 +101,9 @@ export class ConfigurationSubjectsComponent implements OnInit {
         if (confirmed) {
           this.suggestionService.deleteSubject(item)
           .subscribe({
-            next: (result) => {
-              console.log(result)
+            next: (result: any) => {
+              this.messageModalService.openModal(result.msg, 1)
               this.sharedTable.getItems()
-              // this.isLoading = false
-            },
-            error: (error) => {
-              console.log(error)
-              // this.isLoading = false
             }
           })
         }

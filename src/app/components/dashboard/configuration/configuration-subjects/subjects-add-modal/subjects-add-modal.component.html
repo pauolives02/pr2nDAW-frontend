@@ -1,1 +1,19 @@
-<p>subjects-add-modal works!</p>
+<div class="item !flex-col h-full justify-center">
+
+  <h1 class="text-2xl font-medium text-center">{{ title }}</h1>
+
+  <form class="form-content !p-4" [formGroup]="form" (submit)="save()">
+
+    <div class="form-group">
+      <i class="fa-solid fa-heading"></i>
+      <input type="text" id="name" formControlName="name" placeholder="subject name" >
+      <label for="name">Subject name</label>
+    </div>
+
+    <div class="form-buttons">
+      <button type="submit" class="button login !h-7" [disabled]="!form.valid">Save</button>
+    </div>
+  </form>
+
+
+</div>

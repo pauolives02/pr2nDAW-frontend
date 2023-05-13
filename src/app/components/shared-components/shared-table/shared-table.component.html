@@ -12,7 +12,10 @@
       </td>
   
       <td>
-        <button *ngFor="let button of buttons" (click)="button.onclick(item)" [ngClass]="button.class"><i class="fa-solid" [ngClass]="button.icon"></i></button>
+        <button *ngFor="let button of buttons" (click)="button.onclick(item)" [ngClass]="button.class" title="{{ button.text }}" 
+          [hidden]="isFunction(button.hidden) ? button.hidden(item) : button.hidden">
+          <i class="fa-solid" [ngClass]="button.icon"></i>
+        </button>
       </td>
     </tr>
   </ng-container>
