@@ -1,0 +1,36 @@
+.ranking > * {
+  width: 25%;
+}
+.ranking:nth-child(odd) {
+  background-color: #2b2e3d;
+}
+
+.ranking:nth-child(2) i {
+  color: #efce4a;
+}
+
+.ranking:nth-child(3) i {
+  color: silver;
+}
+
+.ranking:nth-child(4) i {
+  color: #a8662c;
+}
+
+// .ranking:not(:nth-child(-n+3)) {
+//  @apply ml-7;
+// }
+
+.ranking i, .ranking .index {
+  @apply text-xl mr-2;
+  width: 5%;
+}
+
+.ranking .index {
+  min-width: 20px;
+  // text-align: center;
+}
+
+.gridList {
+  @apply grid-cols-1 lg:grid-cols-2;
+}

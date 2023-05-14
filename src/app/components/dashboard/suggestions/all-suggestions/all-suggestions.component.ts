@@ -33,6 +33,11 @@ export class AllSuggestionsComponent implements OnInit {
 
     this.fields = [
       {
+        name: 'Date',
+        key: 'date',
+        render: (item) => item.date.split("T")[0]
+      },
+      {
         name: 'Subject',
         key: 'subject',
         render: (item) => item.subject ? item.subject.name ?? 'Undefined' : 'Undefined'
@@ -46,11 +51,6 @@ export class AllSuggestionsComponent implements OnInit {
           }
           return item.description
         }
-      },
-      {
-        name: 'Date',
-        key: 'date',
-        render: (item) => item.date.split("T")[0]
       },
       {
         name: 'Owner',
@@ -84,21 +84,22 @@ export class AllSuggestionsComponent implements OnInit {
         text: 'Accept',
         icon: 'fa-thumbs-up',
         class: 'bgGreen',
-        hidden: (item) => item.status == 1
+        hidden: (item) => item.status == 1,
+        onclick: (item) => this.onChangeStatus(item, 1)
       },
       {
         text: 'Pending',
-        icon: 'fa-minus',
+        icon: 'fa-pause',
         class: 'bgOrange',
-        hidden: (item) => item.status == 0
-        // onclick: (item) => this.onDelete(item)
+        hidden: (item) => item.status == 0,
+        onclick: (item) => this.onChangeStatus(item, 0)
       },
       {
         text: 'Deny',
         icon: 'fa-thumbs-down',
         class: 'bgRed',
-        hidden: (item) => item.status == 2
-        // onclick: (item) => this.onDelete(item)
+        hidden: (item) => item.status == 2,
+        onclick: (item) => this.onChangeStatus(item, 2)
       },
       {
         text: 'Delete',
@@ -119,15 +120,48 @@ export class AllSuggestionsComponent implements OnInit {
     })
   }
 
-  onDelete(item) {
-    console.log(item)
+  openDialog(message) {
+    return this.dialog.open(ConfirmDialogComponent, {
+      height: '50vh',
+      width: '80vh',
+      data: {
+        message: message,
+      },
+    })
+  }
+
+  onChangeStatus(item, status) {
+    let message = 'Are you sure you want to change this suggestion to pending?'
+    if (status == 1) {
+      message = 'Are you sure you want to accept this suggestion?'
+    } else if (status == 2) {
+      message = 'Are you sure you want to deny this suggestion?'
+    }
+
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       height: '50vh',
       width: '80vh',
       data: {
-        message: 'Are you sure you want to delete this suggestion?',
+        message: message,
       },
     })
+
+    dialogRef.afterClosed().subscribe(
+      confirmed => {
+        if (confirmed) {
+          this.suggestionService.changeStatus(item, status).subscribe({
+            next: (result: any) => {
+              this.messageModalService.openModal(result.msg, 1)
+              this.sharedTable.getItems()
+            }
+          })
+        }
+      }
+    )
+  }
+
+  onDelete(item) {
+    const dialogRef = this.openDialog('Are you sure you want to delete this suggestion?')
 
     dialogRef.afterClosed().subscribe(
       confirmed => {

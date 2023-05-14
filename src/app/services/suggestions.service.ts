@@ -28,6 +28,10 @@ export class SuggestionService {
     return this.http.delete(environment.apiUrl + '/api/suggestion/delete/' + item.id);
   }
 
+  changeStatus(item, status) {
+    return this.http.put(environment.apiUrl + '/api/suggestion/change-status/' + item.id, {status})
+  }
+
   // Suggestion subjects
   getSuggestionSubjects() {
     return this.http.get<any>(environment.apiUrl + '/api/suggestion/suggestion-subjects');

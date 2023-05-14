@@ -14,25 +14,29 @@
         <div *ngIf="!isLoading">
           <div class="form-group">
             <i class="fa-solid fa-user"></i>
-            <input type="text" id="username" formControlName="username" placeholder="Username" autocomplete="off">
+            <input type="text" id="username" formControlName="username" placeholder="Username" autocomplete="off"
+            [ngClass]="{'invalid': registerForm.get('username').invalid && registerForm.get('username').touched}">
             <label for="username">Username</label>
           </div>
 
           <div class="form-group">
             <i class="fa-regular fa-at"></i>
-            <input type="email" id="email" formControlName="email" placeholder="Email" autocomplete="off">
+            <input type="email" id="email" formControlName="email" placeholder="Email" autocomplete="off"
+            [ngClass]="{'invalid': registerForm.get('email').invalid && registerForm.get('email').touched}">
             <label for="email">Email</label>
           </div>
 
           <div class="form-group">
             <i class="fa-solid fa-lock"></i>
-            <input type="password" id="password" formControlName="password" placeholder="Password" autocomplete="off">
+            <input type="password" id="password" formControlName="password" placeholder="Password" autocomplete="off"
+            [ngClass]="{'invalid': registerForm.get('password').invalid && registerForm.get('password').touched}">
             <label for="password">Password</label>
           </div>
 
           <div class="form-group">
             <i class="fa-solid fa-lock"></i>
-            <input type="password" id="rpassword" formControlName="rpassword" placeholder="Repeat password" autocomplete="off">
+            <input type="password" id="rpassword" formControlName="rpassword" placeholder="Repeat password" autocomplete="off"
+            [ngClass]="{'invalid': registerForm.get('rpassword').invalid && registerForm.get('rpassword').touched}">
             <label for="rpassword">Repeat password</label>
           </div>
 
