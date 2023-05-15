@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ConfirmDialogComponent } from 'src/app/components/shared-components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from "@angular/material/dialog";
+import { SetService } from 'src/app/services/set.service';
+import { MessageModalService } from 'src/app/services/messageModal.service';
+import { SharedTableComponent } from 'src/app/components/shared-components/shared-table/shared-table.component';
 
 @Component({
   selector: 'app-all-sets',
@@ -10,13 +13,16 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class AllSetsComponent implements OnInit {
 
+  @ViewChild(SharedTableComponent) sharedTable: SharedTableComponent
   fields: any[] = []
   buttons: any[] = []
   endPoint: string = ''
   imageUrl: string = environment.apiUrl + '/api/set/get-image/'
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private setService: SetService,
+    private messageModalService: MessageModalService
   ) {}
 
   ngOnInit() {
@@ -93,7 +99,14 @@ export class AllSetsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       confirmed => {
-        console.log(confirmed)
+        if (confirmed) {
+          this.setService.deleteSet(item.id).subscribe({
+            next: (response: any) => {
+              this.sharedTable.getItems()
+              this.messageModalService.openModal(response.msg, 1)
+            }
+          })
+        }
       }
     )
   }
