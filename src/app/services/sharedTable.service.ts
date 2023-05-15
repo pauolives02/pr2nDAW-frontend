@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
 import { Router } from "@angular/router";
 
@@ -10,8 +10,15 @@ export class SharedTableService {
     private router: Router,
   ) {}
 
-  getItems(endPoint) {
-    return this.http.get<any>(environment.apiUrl + endPoint)
+  getItems(endPoint, filters?) {
+    let params = new HttpParams()
+    if (filters) {
+      Object.keys(filters).forEach(key => {
+        const value = filters[key]
+        if (value != '') params = params.append(key, value)
+    })
+    }
+    return this.http.get<any>(environment.apiUrl + endPoint, { params })
   }
 
 }

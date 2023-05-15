@@ -39,3 +39,10 @@ table td button:not(:first-child) {
 .bgOrange {
   background-color: #ca8c1b !important;
 }
+
+td input, td select {
+  width: 100%;
+  padding: 0.3rem;
+  outline: none;
+  background-color: var(--color1);
+}

@@ -14,6 +14,7 @@ export class ConfigurationUsersComponent implements OnInit {
   fields: any[] = []
   buttons: any[] = []
   endPoint: string = ''
+  avatarUrl: string = environment.apiUrl + '/api/avatar/get-avatar/'
 
   constructor(
     private userService: UserService,
@@ -29,16 +30,26 @@ export class ConfigurationUsersComponent implements OnInit {
 
     this.fields = [
       {
+        name: 'Avatar',
+        key: 'image',
+        image: true,
+        noSearch: true,
+        render: (item) => this.avatarUrl + item.image
+      },
+      {
         name: 'Email',
         key: 'email',
+        type: 'text'
       },
       {
         name: 'Username',
-        key: 'username'
+        key: 'username',
+        type: 'text'
       },
       {
         name: 'Creation date',
         key: 'creationDate',
+        type: 'date',
         render: (item) => item.creationDate.split("T")[0]
       },
     ]

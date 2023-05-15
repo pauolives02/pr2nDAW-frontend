@@ -17,6 +17,7 @@ export class MySuggestionsComponent implements OnInit {
   fields: any[] = []
   buttons: any[] = []
   endPoint: string = ''
+  subjects: any[] = []
 
   constructor(
     private dialog: MatDialog,
@@ -25,6 +26,7 @@ export class MySuggestionsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getSubjects()
     this.tableConfig()
   }
 
@@ -33,13 +35,22 @@ export class MySuggestionsComponent implements OnInit {
 
     this.fields = [
       {
+        name: 'Date',
+        key: 'date',
+        type: 'date',
+        render: (item) => item.date.split("T")[0]
+      },
+      {
         name: 'Subject',
         key: 'subject',
+        type: 'select',
+        selOptions: this.subjects,
         render: (item) => item.subject ? item.subject.name ?? 'Undefined' : 'Undefined'
       },
       {
         name: 'Description',
         key: 'description',
+        type: 'text',
         render: (item) => {
           if (item.description.length > 20) {
             return item.description.slice(0, 20) + '...'
@@ -48,13 +59,14 @@ export class MySuggestionsComponent implements OnInit {
         }
       },
       {
-        name: 'Date',
-        key: 'date',
-        render: (item) => item.date.split("T")[0]
-      },
-      {
         name: 'Status',
         key: 'status',
+        type: 'select',
+        selOptions: [
+          { value: 0, text: 'Pending' },
+          { value: 1, text: 'Accepted' },
+          { value: 2, text: 'Denied' },
+        ],
         render: (item) => {
           let text = ''
           if (item.status == 0) {
@@ -82,6 +94,19 @@ export class MySuggestionsComponent implements OnInit {
         onclick: (item) => this.onDelete(item)
       },
     ]
+  }
+
+  getSubjects() {
+    this.suggestionService.getSuggestionSubjects().subscribe({
+      next: (result: any) => {
+        result.map((subject) => {
+          this.subjects.push({
+            value: subject.id,
+            text: subject.name
+          })
+        })
+      }
+    })
   }
 
   showDetail(item) {

@@ -4,7 +4,22 @@
     <th>Actions</th>
   </tr>
 
-  <ng-container *ngIf="items.length > 0">
+  <tr>
+    <ng-container *ngFor="let field of fields">
+      <td *ngIf="field.noSearch != true">
+        <input *ngIf="field.type == 'text' || field.type == 'number' || field.type == 'date'" type="{{ field.type }}"
+               placeholder="Search {{  field.name }}" (change)="onSearch(field.key, $event)" (keyup)="onSearch(field.key, $event)">
+        <select *ngIf="field.type == 'select'" (change)="onSearch(field.key, $event)">
+          <option value=""></option>
+          <option *ngFor="let option of field.selOptions" value="{{ option.value }}">{{ option.text }}</option>
+        </select>
+      </td>
+      <td *ngIf="field.noSearch"></td>
+    </ng-container>
+    <td></td>
+  </tr>
+
+  <ng-container *ngIf="items.length > 0 && !isLoading">
     <tr *ngFor="let item of items" >
       <td *ngFor="let field of fields">
         <img *ngIf="field.image" src="{{ field.render(item)}}" class="w-12 h-12">
@@ -21,4 +36,11 @@
   </ng-container>
 
   <tr *ngIf="items.length == 0"><td [colSpan]="fields.length + 1">No data available.</td></tr>
+  
+  <tr *ngIf="isLoading">
+    <td [colSpan]="fields.length + 1">
+      <app-spinner></app-spinner>
+    </td>
+  </tr>
+  
 </table>

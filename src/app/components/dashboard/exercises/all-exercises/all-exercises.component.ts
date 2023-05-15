@@ -39,15 +39,18 @@ export class AllExercisesComponent implements OnInit {
         name: 'Image',
         key: 'image',
         image: true,
+        noSearch: true,
         render: (item) => this.imageUrl + item.image
       },
       {
         name: 'Name',
         key: 'name',
+        type: 'text'
       },
       {
         name: 'Description',
         key: 'description',
+        type: 'text',
         render: (item) => {
           if (item.description.length > 20) {
             return item.description.slice(0, 20) + '...'
@@ -58,14 +61,21 @@ export class AllExercisesComponent implements OnInit {
       {
         name: 'Finished XP',
         key: 'finished_xp',
+        type: 'number',
       },
       {
         name: 'Public',
         key: 'public',
+        type: 'select',
+        selOptions: [
+          { value: true, text: 'True' },
+          { value: false, text: 'False' },
+        ]
       },
       {
         name: 'Owner',
         key: 'owner',
+        type: 'text',
         render: (item) => item.owner.username
       },
     ]

@@ -13,6 +13,8 @@ export class SharedTableComponent implements OnInit {
 
   isLoading: boolean = false
   items: any[] = []
+  searchTimeout: any
+  filters: any[] = []
 
   constructor(
     private sharedTableService: SharedTableService
@@ -22,8 +24,9 @@ export class SharedTableComponent implements OnInit {
     this.getItems()
   }
 
-  getItems() {
-    this.sharedTableService.getItems(this.endPoint)
+  getItems(filters?) {
+    this.isLoading = true
+    this.sharedTableService.getItems(this.endPoint, filters)
     .subscribe({
       next: (result) => {
         this.items = result
@@ -38,5 +41,16 @@ export class SharedTableComponent implements OnInit {
 
   isFunction(v) {
     return typeof v === 'function'
+  }
+
+  onSearch(key, event) {
+    const value = (event.target as HTMLInputElement).value
+    if (this.filters[key] !== value) {
+      this.filters[key] = value
+      if (this.searchTimeout) clearTimeout(this.searchTimeout)
+      this.searchTimeout = setTimeout(() => {
+        this.getItems(this.filters)
+      }, 1500)
+    }
   }
 }

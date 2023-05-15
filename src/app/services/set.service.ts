@@ -31,4 +31,8 @@ export class SetService {
     return this.http.post(environment.apiUrl + '/api/set/add', set)
   }
 
+  deleteSet(id) {
+    return this.http.delete(environment.apiUrl + '/api/set/delete/' + id)
+  }
+
 }

@@ -37,6 +37,7 @@ export class ConfigurationSubjectsComponent implements OnInit {
       {
         name: 'Subject',
         key: 'name',
+        type: 'text'
       },
     ]
 

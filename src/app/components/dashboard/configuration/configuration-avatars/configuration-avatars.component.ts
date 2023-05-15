@@ -39,11 +39,13 @@ export class ConfigurationAvatarsComponent implements OnInit {
         name: 'Image',
         key: 'image',
         image: true,
+        noSearch: true,
         render: (item) => this.avatarUrl + item.image
       },
       {
         name: 'Lvl required',
-        key: 'lvl'
+        key: 'lvl',
+        type: 'number'
       },
     ]
 
