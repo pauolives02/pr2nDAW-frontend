@@ -65,6 +65,7 @@ const routes: Routes = [
             { path: 'private', component: ExerciseListComponent, data: { isPrivate: true } },
             { path: 'subscriptions', component: ExerciseSubscriptionsComponent },
             { path: 'add', component: AddExerciseComponent },
+            { path: 'edit/:id', component: AddExerciseComponent },
             { path: 'detail/:id', component: ExerciseDetailComponent },
             { path: 'all', component: AllExercisesComponent, canActivate: [AdminGuard] },
           ]
@@ -75,6 +76,7 @@ const routes: Routes = [
             { path: 'private', component: SetListComponent, data: { isPrivate: true } },
             { path: 'subscriptions', component: SetSubscriptionsComponent },
             { path: 'add', component: AddSetComponent },
+            { path: 'edit/:id', component: AddSetComponent },
             { path: 'detail/:id', component: SetDetailComponent },
             { path: 'all', component: AllSetsComponent, canActivate: [AdminGuard] },
           ]
@@ -87,10 +89,11 @@ const routes: Routes = [
             { path: 'all', component: AllSuggestionsComponent, canActivate: [AdminGuard] },
           ]
         },
+        { path: 'profile/:id', component: ProfileComponent },
         { path: 'profile', component: ProfileComponent },
         { path: 'configuration', component: ConfigurationComponent, canActivate: [AdminGuard],
           children: [
-            { path: '', component: ConfigurationAvatarsComponent },
+            { path: '', redirectTo: 'avatars', pathMatch: 'full' },
             { path: 'avatars', component: ConfigurationAvatarsComponent },
             { path: 'subjects', component: ConfigurationSubjectsComponent },
             { path: 'user-list', component: ConfigurationUsersComponent },

@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ConfirmDialogComponent } from 'src/app/components/shared-components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from "@angular/material/dialog";
+import { Router } from '@angular/router';
+import { ExerciseService } from 'src/app/services/exercise.service';
+import { MessageModalService } from 'src/app/services/messageModal.service';
+import { SharedTableComponent } from 'src/app/components/shared-components/shared-table/shared-table.component';
 
 @Component({
   selector: 'app-all-exercises',
@@ -10,13 +14,17 @@ import { MatDialog } from "@angular/material/dialog";
 })
 export class AllExercisesComponent implements OnInit {
 
+  @ViewChild(SharedTableComponent) sharedTable: SharedTableComponent
   fields: any[] = []
   buttons: any[] = []
   endPoint: string = ''
   imageUrl: string = environment.apiUrl + '/api/exercise/get-image/'
 
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router,
+    private exerciseService: ExerciseService,
+    private messageModalService: MessageModalService
   ) {}
 
   ngOnInit() {
@@ -64,6 +72,11 @@ export class AllExercisesComponent implements OnInit {
 
     this.buttons = [
       {
+        text: 'Edit',
+        icon: 'fa-pen',
+        onclick: (item) => this.router.navigate(['/dashboard/exercises/edit/' + item.id])
+      },
+      {
         text: 'Delete',
         icon: 'fa-trash',
         class: 'bgRed',
@@ -84,7 +97,14 @@ export class AllExercisesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
       confirmed => {
-        console.log(confirmed)
+        if (confirmed) {
+          this.exerciseService.deleteExercise(item.id).subscribe({
+            next: (response: any) => {
+              this.sharedTable.getItems()
+              this.messageModalService.openModal(response.msg, 1)
+            }
+          })
+        }
       }
     )
   }

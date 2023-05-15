@@ -7,7 +7,6 @@ import { Exercise } from '../models/exercise.model';
 @Injectable({ providedIn: 'root' })
 export class ExerciseService {
   constructor(
-    // private authService: AuthService,
     private http: HttpClient,
     private router: Router,
   ) {}
@@ -25,7 +24,6 @@ export class ExerciseService {
   }
 
   getExercisesSubscribed() {
-    // return this.http.get(environment.apiUrl + '/api/exercise/public')
     return this.http.get(environment.apiUrl + '/api/exercise/subscriptions')
   }
 
@@ -39,6 +37,14 @@ export class ExerciseService {
 
   removeSubscription(id) {
     return this.http.post(environment.apiUrl + '/api/exercise/subscription/remove', {id})
+  }
+
+  updateExercise(exercise, id) {
+    return this.http.put(environment.apiUrl + '/api/exercise/update/' + id, exercise)
+  }
+
+  deleteExercise(id) {
+    return this.http.delete(environment.apiUrl + '/api/exercise/delete/' + id)
   }
 
 }
