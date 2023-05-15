@@ -13,12 +13,13 @@ export class ProfileComponent implements OnInit{
   userData: any
   progress: number = 0
   avatarUrl: string = environment.apiUrl + '/api/avatar/get-avatar/'
+  selfProfile: boolean = true
 
   constructor (
     private userService: UserService
   ) { }
   
-  ngOnInit(): void {
+  ngOnInit() {
     this.userService.getUserStats()
     .subscribe({
       next: (data) => {
