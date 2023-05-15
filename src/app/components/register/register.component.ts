@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
-// import { Router } from '@angular/router';
+import { ConfirmPassword } from 'src/app/helpers/confirmPassword';
 
 @Component({
   selector: 'app-register',
@@ -20,14 +20,15 @@ export class RegisterComponent {
   constructor(
     private userService: UserService,
     private authService: AuthService
-    // private router: Router
   ) {
     this.registerForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       username: new FormControl('', [Validators.required, Validators.minLength(1)]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      rpassword: new FormControl('', Validators.required)
-    })
+      rpassword: new FormControl('', [Validators.required, Validators.minLength(8)])
+    },
+    { validators: [ConfirmPassword('password', 'rpassword')] }
+    )
   }
 
   onSubmit() {
@@ -44,9 +45,6 @@ export class RegisterComponent {
       this.userService.register(authData).subscribe({
         next: (response) => {
           this.authService.login(response.token, response.expiresIn)
-          // if (response.status == 201) {
-          //   this.router.navigate(['/login'])
-          // }
         },
         error: (error) => {
           this.isLoading = false
