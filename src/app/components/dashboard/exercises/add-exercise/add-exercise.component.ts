@@ -20,7 +20,7 @@ export class AddExerciseComponent implements OnInit {
   isLoading: boolean = false
   edit: boolean = false
   exerciseId: string = ''
-  exercise
+  exercise: any
 
   constructor(
     private exerciseService: ExerciseService,

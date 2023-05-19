@@ -6,6 +6,7 @@ import { ExerciseService } from 'src/app/services/exercise.service';
 import { SetService } from 'src/app/services/set.service';
 import { MatDialog } from "@angular/material/dialog";
 import { ItemSubscriptionDialogComponent } from './item-subscription-dialog/item-subscription-dialog.component';
+import { MessageModalService } from 'src/app/services/messageModal.service';
 
 @Component({
   selector: 'app-list-item',
@@ -31,7 +32,8 @@ export class ListItemComponent implements OnInit {
   constructor(
     private exerciseService: ExerciseService,
     private setService: SetService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private messageModalService: MessageModalService
   ) {}
 
   ngOnInit() {
@@ -59,21 +61,21 @@ export class ListItemComponent implements OnInit {
   }
 
   itemSubscription() {
-    this.isLoading = true
     if (this.subscribed) {
-      this.itemService.removeSubscription(this.item.id)
-      .subscribe(
-        (data) => {
-          console.log(data)
+      this.isLoading = true
+      this.itemService.removeSubscription(this.item.id).subscribe({
+        next: (data) => {
           this.subscribed = false
           this.isLoading = false
           this.updateList.next(null)
-        }
-      )
+          this.messageModalService.openModal(data.msg, 1)
+        },
+        error: () => this.isLoading = false
+      })
     } else {
       let dialogRef = this.dialog.open(ItemSubscriptionDialogComponent, {
         width: '80%',
-        height: '50vh',
+        height: '70vh',
         data: {
           item: this.item,
           imagesUrl: this.imagesUrl
@@ -81,49 +83,18 @@ export class ListItemComponent implements OnInit {
       })
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          this.itemService.addSubscription(this.item.id, result)
-          .subscribe(
-            (data) => {
-              console.log(data)
+          this.isLoading = true
+          this.itemService.addSubscription(this.item.id, result).subscribe({
+            next: (data) => {
               this.subscribed = true
               this.isLoading = false
-            }
-          )
-        } else {
-          this.isLoading = false
+              this.messageModalService.openModal(data.msg, 1)
+            },
+            error: () => this.isLoading = false
+          })
         }
       })
-      // if (this.itemType === 'exercise') {
-      //   console.log('popup')
-      //   this.openDialog()
-      //   // this.addSubscription(10)
-      // } else if (this.itemType === 'set') {
-      //   // this.addSubscription(1)
-      // }
     }
   }
 
-  // addSubscription(ammount: number) {
-  //   this.itemService.addSubscription(this.item.id, ammount)
-  //   .subscribe(
-  //     (data) => {
-  //       console.log(data)
-  //       this.subscribed = true
-  //       this.isLoading = false
-  //     }
-  //   )
-  // }
-
-  // openSubscribeDialog() {
-  //   let dialogRef = this.dialog.open(ItemSubscriptionDialogComponent, {
-  //     width: '500px',
-  //     height: '100px',
-  //     data: {
-  //       test: 'aaaaa'
-  //     }
-  //   })
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(result)
-  //   })
-  // }
 }

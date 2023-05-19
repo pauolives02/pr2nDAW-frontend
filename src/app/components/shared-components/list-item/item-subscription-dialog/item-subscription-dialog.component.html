@@ -3,16 +3,16 @@
 <button (click)="close()">Close</button>
 <button (click)="save()">Save</button>
 -->
-<div class="item h-full">
-  <img src="{{imagesUrl + item.image}}" class="!h-full !w-1/2">
+<div class="item md:h-full !flex-col md:!flex-row">
+  <img src="{{imagesUrl + item.image}}" class="!w-full !h-full md:!w-1/2">
   <div class="itemContent mr-2 py-1">
-    <header>
+    <header class="px-8 md:px-0">
       <h1>{{ item.name }}</h1>
       <div class="flex items-center">
         <p class="xp" *ngIf="item.finished_xp">{{ item.finished_xp }} XP</p>
       </div>
     </header>
-    <p class="description overflow-y-auto pr-4 my-4">{{ item.description }}</p>
+    <p class="description overflow-y-auto pr-4 my-4 px-8 md:px-0">{{ item.description }}</p>
     <div>
       <form class="form-content" [formGroup]="form" (submit)="save()">
         <div class="form-group">

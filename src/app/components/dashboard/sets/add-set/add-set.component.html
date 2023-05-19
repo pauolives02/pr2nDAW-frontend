@@ -1,3 +1,36 @@
 <div class="dashboardMain">
-  <p>add-set works!</p>
+  <form [formGroup]="form" (submit)="saveSet()" class="form-content rounded">
+
+    <div *ngIf="!isLoading">
+      <div class="form-group">
+        <i class="fa-solid fa-heading"></i>
+        <input type="text" id="name" formControlName="name" placeholder="Name"
+        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}" autocomplete="off">
+        <label for="name">Name</label>
+      </div>
+
+      <div class="form-group">
+        <i class="fa-solid fa-align-justify"></i>
+        <textarea rows="3" id="description" formControlName="description" placeholder="Description"
+        [ngClass]="{'invalid': form.get('description').invalid && (form.get('description').touched || form.get('description').dirty)}"></textarea>
+        <label for="description" class="top-0">Description ({{form.get('description').value?.length ?? '0'}} / 300)</label>
+      </div>
+
+      <div class="form-group">
+        <i class="fa-solid fa-unlock"></i>
+        <select id="public" formControlName="public"
+        [ngClass]="{'invalid': form.get('public').invalid && form.get('public').touched}">
+          <option value="false">False</option>
+          <option value="true">True</option>
+        </select>
+        <label for="public">Public</label>
+      </div>
+
+      <app-file-upload formControlName="image"></app-file-upload>
+
+      <div class="form-buttons">
+        <button type="submit" class="button login" [disabled]="form.invalid">Save</button>
+      </div>
+    </div>
+  </form>
 </div>
