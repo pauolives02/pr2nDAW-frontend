@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xsm': '300px'
+      },
       flexGrow: {
         2: '2',
         3: '3',

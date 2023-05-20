@@ -17,7 +17,7 @@ export class DetailSuggestionComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.item = data.item
-
+    this.item.stringDate = this.item.date.split("T")[0]
   }
 
   close() {

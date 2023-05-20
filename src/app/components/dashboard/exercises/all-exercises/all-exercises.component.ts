@@ -108,7 +108,7 @@ export class AllExercisesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       confirmed => {
         if (confirmed) {
-          this.exerciseService.deleteExercise(item.id).subscribe({
+          this.exerciseService.delete(item.id).subscribe({
             next: (response: any) => {
               this.sharedTable.getItems()
               this.messageModalService.openModal(response.msg, 1)

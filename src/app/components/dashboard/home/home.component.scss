@@ -1,0 +1,31 @@
+.dailyGoal {
+  position: relative;
+}
+.dailyGoal .overlay {
+  position: absolute;
+  @apply h-full w-full flex justify-center items-center;
+  background-color: #040404bd;
+  z-index: 20;
+}
+
+.dailyGoal .overlay i {
+  @apply text-6xl;
+}
+
+.dailyGoal .dailyGoalFooter {
+  @apply flex flex-col p-3;
+  background-color: var(--color2);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.dailyGoal .dailyGoalFooter button {
+  @apply py-1 px-2;
+  background-color: #1aa24e;
+  border-radius: 2px;
+}
+
+.dailyGoal .dailyGoalFooter button:hover {
+  @apply py-1 px-2;
+  background-color: #179045;
+  border-radius: 2px;
+}

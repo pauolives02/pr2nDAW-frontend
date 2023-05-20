@@ -139,7 +139,7 @@ export class AllSuggestionsComponent implements OnInit {
   showDetail(item) {
     const dialogRef = this.dialog.open(DetailSuggestionComponent, {
       width: '80vw',
-      height: '65vh',
+      height: '56vh',
       data: {
         item
       }

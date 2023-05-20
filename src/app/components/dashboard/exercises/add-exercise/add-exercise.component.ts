@@ -42,7 +42,7 @@ export class AddExerciseComponent implements OnInit {
     this.isAdmin = this.authService.getIsAdmin()
 
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(15)]),
       description: new FormControl('', [Validators.required, Validators.maxLength(300)]),
       finished_xp: new FormControl({value: '1', disabled: !this.isAdmin}, [Validators.required, Validators.min(1)]),
       public: new FormControl({value: 'false', disabled: !this.isAdmin}, [Validators.required]),

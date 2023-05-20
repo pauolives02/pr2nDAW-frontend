@@ -1,0 +1,25 @@
+h2 {
+  @apply text-2xl;
+}
+
+.circle {
+  @apply h-3 w-3;
+  border-radius: 50%;
+  display: block;
+}
+
+.bgRed {
+  background-color: #b62020 !important;
+}
+
+.bgGreen {
+  background-color: green !important;
+}
+
+.bgOrange {
+  background-color: #ca8c1b !important;
+}
+
+.item {
+  min-height: 100%;
+}

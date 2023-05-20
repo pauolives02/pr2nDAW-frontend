@@ -8,5 +8,6 @@ export interface Set {
   image: string,
   public: boolean,
   finished_xp?: number
-  isSubscribed?: boolean
+  isSubscribed?: boolean,
+  owner?: string
 }

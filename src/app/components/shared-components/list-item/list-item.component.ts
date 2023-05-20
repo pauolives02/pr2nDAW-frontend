@@ -7,6 +7,8 @@ import { SetService } from 'src/app/services/set.service';
 import { MatDialog } from "@angular/material/dialog";
 import { ItemSubscriptionDialogComponent } from './item-subscription-dialog/item-subscription-dialog.component';
 import { MessageModalService } from 'src/app/services/messageModal.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { ConfirmDialogComponent } from 'src/app/components/shared-components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-list-item',
@@ -28,13 +30,20 @@ export class ListItemComponent implements OnInit {
   @Output() updateList = new EventEmitter<string>()
   subscribed: boolean = false
   private itemService
+  isAdmin: boolean = false
+  userId: string
+  editUrl: string
 
   constructor(
     private exerciseService: ExerciseService,
     private setService: SetService,
     private dialog: MatDialog,
-    private messageModalService: MessageModalService
-  ) {}
+    private messageModalService: MessageModalService,
+    private authService: AuthService
+  ) {
+    this.isAdmin = this.authService.getIsAdmin()
+    this.userId = this.authService.getUserId()
+  }
 
   ngOnInit() {
     // console.log(this.item)
@@ -42,9 +51,11 @@ export class ListItemComponent implements OnInit {
     if (this.itemType === 'exercise') {
       this.imagesUrl = environment.apiUrl + '/api/exercise/get-image/'
       this.itemService = this.exerciseService
+      this.editUrl = '/dashboard/exercises/edit/'
     } else if (this.itemType === 'set') {
-      this.imagesUrl = environment.apiUrl + '/api/set/get-image/'
+      this.imagesUrl = environment.apiUrl + '/api/sets/get-image/'
       this.itemService = this.setService
+      this.editUrl = '/dashboard/set/edit/'
     }
   }
 
@@ -95,6 +106,30 @@ export class ListItemComponent implements OnInit {
         }
       })
     }
+  }
+
+  onDelete() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      height: '50vh',
+      width: '80vh',
+      data: {
+        message: `Are you sure you want to delete ${this.itemType} '${this.item.name}'?`,
+        imageUrl: this.imagesUrl + this.item.image
+      },
+    })
+
+    dialogRef.afterClosed().subscribe(
+      confirmed => {
+        if (confirmed) {
+          this.itemService.delete(this.item.id).subscribe({
+            next: (response: any) => {
+              this.updateList.next(null)
+              this.messageModalService.openModal(response.msg, 1)
+            }
+          })
+        }
+      }
+    )
   }
 
 }

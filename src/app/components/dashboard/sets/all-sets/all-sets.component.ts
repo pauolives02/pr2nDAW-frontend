@@ -100,7 +100,7 @@ export class AllSetsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       confirmed => {
         if (confirmed) {
-          this.setService.deleteSet(item.id).subscribe({
+          this.setService.delete(item.id).subscribe({
             next: (response: any) => {
               this.sharedTable.getItems()
               this.messageModalService.openModal(response.msg, 1)

@@ -4,19 +4,20 @@
     <header>
       <h1>{{ item.name }}</h1>
       <div class="flex items-center">
-        <p class="xp" *ngIf="item.finished_xp">{{ item.finished_xp }} XP</p>
         <div class="relative">
           <i class="fa-solid fa-ellipsis-vertical ml-2 px-3 cursor-pointer"
             #dropdown (click)="toggleDropdown()"></i>
           <div class="dropdownContent flex flex-col dropdownContentSmall" [ngClass]="{'dropdownClicked': dropdownClicked}">
             <a class="cursor-pointer" *ngIf="!subscribed && !isLoading" (click)="itemSubscription()"><i class="fa-solid fa-check"></i> Subscribe</a>
             <a class="cursor-pointer" *ngIf="subscribed && !isLoading" (click)="itemSubscription()"><i class="fa-solid fa-xmark"></i> Unsubscribe</a>
+            <a class="cursor-pointer" *ngIf="!isLoading && (item.owner == userId || isAdmin)" [routerLink]="editUrl + item.id"><i class="fa-solid fa-pen"></i> Edit</a>
+            <a class="cursor-pointer" *ngIf="!isLoading && (item.owner == userId || isAdmin)" (click)="onDelete()"><i class="fa-solid fa-trash"></i> Delete</a>
             <app-spinner *ngIf="isLoading"></app-spinner>
-            <!-- <a  ><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a> -->
           </div>
         </div>
       </div>
     </header>
+    <p class="xp" *ngIf="item.finished_xp">{{ item.finished_xp }} XP</p>
     <!-- <p class="description">{{ exercise.description }}</p> -->
     <!-- <a [routerLink]="['/dashboard/exercises/detail/' + exercise.id]">Detail</a> -->
   </div>

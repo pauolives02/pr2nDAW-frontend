@@ -1,7 +1,12 @@
+.tableContainer {
+  overflow-x: auto;
+  @apply w-[80vw] md:w-full;
+}
+
 table {
   border: 2px solid var(--color4);
-  overflow-x: auto;
   border-collapse: collapse;
+  @apply w-full;
 }
 
 table tr:first-child {
@@ -25,7 +30,7 @@ table td button {
 }
 
 table td button:not(:first-child) {
-  @apply ml-4;
+  // @apply ml-4;
 }
 
 .bgRed {

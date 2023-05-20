@@ -1,46 +1,48 @@
-<table class="w-full">
-  <tr>
-    <th *ngFor="let field of fields">{{ field.name }}</th>
-    <th>Actions</th>
-  </tr>
-
-  <tr>
-    <ng-container *ngFor="let field of fields">
-      <td *ngIf="field.noSearch != true">
-        <input *ngIf="field.type == 'text' || field.type == 'number' || field.type == 'date'" type="{{ field.type }}"
-               placeholder="Search {{  field.name }}" (change)="onSearch(field.key, $event)" (keyup)="onSearch(field.key, $event)">
-        <select *ngIf="field.type == 'select'" (change)="onSearch(field.key, $event)">
-          <option value=""></option>
-          <option *ngFor="let option of field.selOptions" value="{{ option.value }}">{{ option.text }}</option>
-        </select>
-      </td>
-      <td *ngIf="field.noSearch"></td>
-    </ng-container>
-    <td></td>
-  </tr>
-
-  <ng-container *ngIf="items.length > 0 && !isLoading">
-    <tr *ngFor="let item of items" >
-      <td *ngFor="let field of fields">
-        <img *ngIf="field.image" src="{{ field.render(item)}}" class="w-12 h-12">
-        <p *ngIf="!field.image">{{ field.render ? field.render(item) : item[field.key] }}</p>
-      </td>
+<div class="tableContainer">
+  <table >
+    <tr>
+      <th *ngFor="let field of fields">{{ field.name }}</th>
+      <th>Actions</th>
+    </tr>
   
-      <td>
-        <button *ngFor="let button of buttons" (click)="button.onclick(item)" [ngClass]="button.class" title="{{ button.text }}" 
-          [hidden]="isFunction(button.hidden) ? button.hidden(item) : button.hidden">
-          <i class="fa-solid" [ngClass]="button.icon"></i>
-        </button>
+    <tr>
+      <ng-container *ngFor="let field of fields">
+        <td *ngIf="field.noSearch != true">
+          <input *ngIf="field.type == 'text' || field.type == 'number' || field.type == 'date'" type="{{ field.type }}"
+                 placeholder="Search {{  field.name }}" (change)="onSearch(field.key, $event)" (keyup)="onSearch(field.key, $event)">
+          <select *ngIf="field.type == 'select'" (change)="onSearch(field.key, $event)">
+            <option value=""></option>
+            <option *ngFor="let option of field.selOptions" value="{{ option.value }}">{{ option.text }}</option>
+          </select>
+        </td>
+        <td *ngIf="field.noSearch"></td>
+      </ng-container>
+      <td></td>
+    </tr>
+  
+    <ng-container *ngIf="items.length > 0 && !isLoading">
+      <tr *ngFor="let item of items" >
+        <td *ngFor="let field of fields">
+          <img *ngIf="field.image" src="{{ field.render(item)}}" class="w-12 h-12">
+          <p *ngIf="!field.image">{{ field.render ? field.render(item) : item[field.key] }}</p>
+        </td>
+    
+        <td class="flex flex-col gap-1 md:flex-row">
+          <button *ngFor="let button of buttons" (click)="button.onclick(item)" [ngClass]="button.class" title="{{ button.text }}" 
+            [hidden]="isFunction(button.hidden) ? button.hidden(item) : button.hidden">
+            <i class="fa-solid" [ngClass]="button.icon"></i>
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+  
+    <tr *ngIf="items.length == 0"><td [colSpan]="fields.length + 1">No data available.</td></tr>
+    
+    <tr *ngIf="isLoading">
+      <td [colSpan]="fields.length + 1">
+        <app-spinner></app-spinner>
       </td>
     </tr>
-  </ng-container>
-
-  <tr *ngIf="items.length == 0"><td [colSpan]="fields.length + 1">No data available.</td></tr>
-  
-  <tr *ngIf="isLoading">
-    <td [colSpan]="fields.length + 1">
-      <app-spinner></app-spinner>
-    </td>
-  </tr>
-  
-</table>
+    
+  </table>
+</div>

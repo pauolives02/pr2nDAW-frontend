@@ -24,6 +24,10 @@ export class ExerciseListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getExercises()
+  }
+
+  getExercises(event= null) {
     this.isLoading = true
     if (!this.isPrivate) {
       this.title = 'Public'

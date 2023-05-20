@@ -241,7 +241,7 @@ div.main {
 
 .dropdownContentSmall {
   min-width: 7rem;
-  background-color: #353b5a;
+  background-color: #262628;
 }
 
 .dropdownClicked {
@@ -252,7 +252,6 @@ div.main {
   display: block;
   font-size: .8em;
   padding: .8em .8em;
-  border: 1px solid #40444b;
 }
 
 .dropdownContent a:hover:not(.active) {
@@ -292,6 +291,10 @@ p.error {
   border-radius: 3px;
 }
 
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 // ************************************ //
 // ***                              *** //
 // ***         SCROLLBAR            *** //
@@ -305,6 +308,7 @@ p.error {
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 7px;
+  height: 7px;
 }
 
 *::-webkit-scrollbar-track {
@@ -327,83 +331,6 @@ p.error {
 // ***           FORMS              *** //
 // ***                              *** //
 // ************************************ //
-// .form {
-//   display: flex;
-//   flex-direction: column;
-//   width: 60%;
-// }
-
-// .form-group {
-//   position: relative;
-//   margin-bottom: 2em;
-//   @apply md:mb-12;
-// }
-
-// .form-group input, .form-group select, .form-group textarea {
-//   outline: none;
-//   width: 100%;
-//   border: 0;
-//   font-size: 1em;
-//   background-color: unset;
-//   border-bottom: 1px solid var(--color4);
-//   @apply md:text-2xl;
-// }
-
-// .form-group input:focus + label,
-// .form-group input:not(:placeholder-shown) + label,
-// .form-group select + label,
-// .form-group textarea + label
-// {
-//   transform: translateY(-1.2em) scale(.8);
-// }
-
-// .form-group input::placeholder {
-//   color: transparent;
-// }
-
-// .form-group label {
-//   position: absolute;
-//   color: var(--color4);
-//   font-size: 1em;
-//   left: 0;
-//   transform-origin: 0 0;
-//   transition: transform 0.2s ease-in-out;
-//   @apply md:text-2xl;
-// }
-
-// .form-group input.invalid, .form-group select.invalid, .form-group textarea.invalid {
-//   border-bottom: 1px solid red;
-// }
-
-// .form-group input.invalid + label, .form-group select.invalid + label {
-//   color: red;
-// }
-
-// input:disabled, select:disabled, textarea:disabled {
-//   cursor: not-allowed;
-// }
-
-// .button {
-//   cursor: pointer;
-//   color: var(--white);
-//   border-radius: 40px;
-//   padding: .5em 1.2em;
-//   letter-spacing: 2px;
-//   text-transform: uppercase;
-//   font-weight: bold;
-//   transition: 1s;
-//   text-align: center;
-//   @apply md:px-5 md:py-4;
-// }
-
-// .button:hover:not(:disabled) {
-//   filter: brightness(1.35);
-// }
-
-// .button:disabled {
-//   filter: grayscale(1);
-// }
-
 .form-content {
   background-color: var(--color2);
   @apply p-8;
@@ -586,7 +513,7 @@ div.item div.itemContent header {
 }
 
 div.item div.itemContent header h1 {
-  font-size: x-large;
+  @apply text-base md:text-lg;
   font-weight: bold;
 }
 

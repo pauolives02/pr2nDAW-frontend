@@ -43,7 +43,7 @@ export class ExerciseService {
     return this.http.put(environment.apiUrl + '/api/exercise/update/' + id, exercise)
   }
 
-  deleteExercise(id) {
+  delete(id) {
     return this.http.delete(environment.apiUrl + '/api/exercise/delete/' + id)
   }
 

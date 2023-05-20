@@ -39,6 +39,11 @@ export class AuthService {
     return decodedToken.isAdmin
   }
 
+  getUserId() {
+    const decodedToken: any = decode(this.token)
+    return decodedToken.userId
+  }
+
   // Auto login 
   autoAuthUser() {
     const authInformation = this.getAuthData()

@@ -1,13 +1,33 @@
-<div class="item !flex-col h-full">
-  
-  <button (click)="close()"><i class="fa-solid fa-xmark"></i></button>
+<div class="item !flex-col">
 
-  <div class="center">
-    <p class="mt-2">{{ item.description }}</p>
+  <div class="px-4">
+    <div class="flex justify-between">
+      <p class="mt-2">Sent by: {{ item.user_id.username }}</p>
+      <p class="mt-2">Date: {{ item.stringDate }}</p>
+    </div>
+
+    <div class="flex mt-4">
+      <div class="flex flex-col w-1/2">
+        <h2>Subject</h2>
+        <p>{{ item.subject.name }}</p>
+      </div>
+      <div class="flex flex-col w-1/2 items-end">
+        <h2>Status</h2>
+        <p class="flex items-center">
+          <span class="circle mr-1" [ngClass]="{ 'bgOrange': item.status == 0, 'bgGreen': item.status == 1, 'bgRed': item.status == 2}"></span>
+          <span *ngIf="item.status == 0">Pending</span>
+          <span *ngIf="item.status == 1">Accepted</span>
+          <span *ngIf="item.status == 2">Denied</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="flex flex-col mt-4 mb-4 break-words">
+      <h2>Description</h2>
+      <p class="mt-2 text-justify">{{ item.description }}</p>
+    </div>
+
   </div>
 
-  <!-- <div class="buttons">
-    <button type="button" (click)="close()">Close</button>
-  </div> -->
 
 </div>

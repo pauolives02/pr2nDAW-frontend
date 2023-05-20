@@ -4,7 +4,7 @@
     <h3>{{ title }}</h3>
 
     <div *ngIf="exercises.length != 0" class="gridList">
-      <app-list-item *ngFor="let exercise of exercises" [item]="exercise" [itemType]="'exercise'"></app-list-item>
+      <app-list-item *ngFor="let exercise of exercises" [item]="exercise" [itemType]="'exercise'" (updateList)="getExercises($event)"></app-list-item>
     </div>
 
     <p *ngIf="exercises.length == 0 && !isLoading">No exercises were found.</p>
