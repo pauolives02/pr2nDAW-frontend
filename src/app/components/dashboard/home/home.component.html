@@ -18,7 +18,7 @@
               </div>
               <div class="flex justify-between items-center mt-3">
                 <p>{{ goal.completed_repetitions}} / {{ goal.repetitions }}</p>
-                <button><i class="fa-solid fa-play"></i> Start</button>
+                <button (click)="play(goal)"><i class="fa-solid fa-play"></i> Start</button>
               </div>
             </div>
           </div>

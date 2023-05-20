@@ -20,20 +20,10 @@ export class UserService {
       password: password
     }
     return this.http.post<{ token: string, expiresIn: number }>(environment.apiUrl + '/api/user/login', authData)
-    // .subscribe(response => {
-    //   if (response.token) {
-    //     this.authService.login(response.token, response.expiresIn)
-    //   }
-    // })
   }
 
   register(authData: User) {
     return this.http.post<{ token: string, expiresIn: number }>(environment.apiUrl + '/api/user/register', authData)
-    // .subscribe(response => {
-    //   if (response.status == 201) {
-    //     this.router.navigate(['/login'])
-    //   }
-    // })
   }
 
   logout() {
@@ -44,8 +34,24 @@ export class UserService {
     return this.http.get<User>(environment.apiUrl + '/api/user/user-data')
   }
 
-  getUserStats() {
-    return this.http.get(environment.apiUrl + '/api/user/user-stats')
+  getUserStats(userId) {
+    return this.http.get(environment.apiUrl + '/api/user/user-stats/' + userId)
+  }
+
+  updateAvatar(avatarId) {
+    return this.http.put(environment.apiUrl + '/api/user/update-avatar', {avatarId})
+  }
+
+  getUserProfile(userId) {
+    return this.http.get(environment.apiUrl + '/api/user/user-profile/' + userId)
+  }
+
+  updateUserData(userData) {
+    return this.http.put(environment.apiUrl + '/api/user/update-data', userData)
+  }
+
+  updateUserCredentials(userCredentials) {
+    return this.http.put(environment.apiUrl + '/api/user/update-password', userCredentials)
   }
 
 }

@@ -14,6 +14,8 @@ export class MessageModalService {
       width: '80vh',
       data: { message, status}
     })
+
+    return dialogRef
   }
 
 }

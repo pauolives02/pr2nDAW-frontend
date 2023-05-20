@@ -1,0 +1,21 @@
+<div class="item !flex-col">
+
+  <h1>Select your new avatar</h1>
+  <ng-container *ngIf="avatars.length > 0 && !isLoading">
+    <div class="flex flex-wrap">
+      <div *ngFor="let avatar of avatars" class="imageContainer">
+        <div class="imgWrapper">
+          <div *ngIf="avatar.lvl > userLvl" class="overlay">
+            <p>Lvl {{ avatar.lvl }}</p>
+          </div>
+          <img src="{{imgUrl + avatar.image}}" class="cursor-pointer" (click)="selectAvatar(avatar)">
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <app-spinner *ngIf="isLoading"></app-spinner>
+  
+  <p *ngIf="!isLoading && avatars.length == 0">No avatars were found.</p>
+
+</div>

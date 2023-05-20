@@ -29,6 +29,7 @@ import { NavigationComponent } from './components/dashboard/navigation/navigatio
 
 // > DASHBOARD > PROFILE
 import { ProfileComponent } from './components/dashboard/profile/profile.component';
+import { SelectAvatarComponent } from './components/dashboard/profile/select-avatar/select-avatar.component';
 
 // > DASHBOARD > EXERCISES
 import { ExercisesComponent } from './components/dashboard/exercises/exercises.component';
@@ -118,7 +119,8 @@ import { SubjectsAddModalComponent } from './components/dashboard/configuration/
     AvatarsAddModalComponent,
     SubjectsAddModalComponent,
     AllSuggestionsComponent,
-    DetailSuggestionComponent
+    DetailSuggestionComponent,
+    SelectAvatarComponent
   ],
   imports: [
     BrowserModule,

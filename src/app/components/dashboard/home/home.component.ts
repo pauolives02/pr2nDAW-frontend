@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,8 @@ export class HomeComponent implements OnInit {
   exerciseImgUrl: string = environment.apiUrl + '/api/exercise/get-image/'
 
   constructor(
-    private homeService: HomeService
+    private homeService: HomeService,
+    private router: Router 
   ) {}
 
   ngOnInit() {
@@ -32,5 +34,12 @@ export class HomeComponent implements OnInit {
       },
       error: () => this.isLoading = false
     })
+  }
+
+  play(goal) {
+    if (goal.completed_repetitions < goal.repetitions) {
+      const type = goal.subscriptionType.toLowerCase()
+      this.router.navigate([`/dashboard/play/${type}/${goal.id}`])
+    }
   }
 }

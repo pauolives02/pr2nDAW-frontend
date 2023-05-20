@@ -1,0 +1,32 @@
+h1 {
+  @apply text-2xl mb-2 text-center;
+  font-weight: 500;
+}
+
+.imageContainer {
+  flex: 0 0 30%;
+  @apply m-2;
+}
+
+.imageContainer .overlay {
+  position: absolute;
+  display: flex;
+  z-index: 20;
+  background-color: #000000d1;
+  @apply w-full h-full;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer .overlay p {
+  @apply text-xl;
+  font-weight: 500;
+}
+
+.imgWrapper {
+  position: relative;
+  @apply h-24 w-24;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: auto!important;
+}

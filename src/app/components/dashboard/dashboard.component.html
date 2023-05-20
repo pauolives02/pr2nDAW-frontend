@@ -1,5 +1,3 @@
-<!-- <h1>DASHBOARD</h1> -->
-
 <div class="flex flex-row h-screen bg">
   <app-navigation (closeNav)="closeNav($event)"></app-navigation>
 
@@ -11,7 +9,7 @@
         <div class="cursor-pointer relative dropdown">
           <p *ngIf="user" #dropdown (click)="toggleDropdown()">{{ user.username }}</p>
           <div class="dropdownContent flex flex-col" [ngClass]="{'dropdownClicked': dropdownClicked}">
-            <a  [routerLink]="['/dashboard/profile']" [routerLinkActive]="'active'"><i class="fa-solid fa-user"></i> Profile</a>
+            <a  [routerLink]="['/dashboard/profile']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}"><i class="fa-solid fa-user"></i> Profile</a>
             <a  (click)="onLogout()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
           </div>
         </div>

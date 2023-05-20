@@ -10,6 +10,10 @@ export class AvatarService {
     private router: Router,
   ) {}
 
+  getAvatars() {
+    return this.http.get(environment.apiUrl + '/api/avatar/all')
+  }
+
   delete(item) {
     return this.http.delete(environment.apiUrl + '/api/avatar/delete/' + item.id)
   }

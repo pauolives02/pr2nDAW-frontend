@@ -34,7 +34,7 @@ export class ConfigurationUsersComponent implements OnInit {
         key: 'image',
         image: true,
         noSearch: true,
-        render: (item) => this.avatarUrl + item.image
+        render: (item) => this.avatarUrl + item.avatar
       },
       {
         name: 'Email',

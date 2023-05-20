@@ -1,84 +1,103 @@
-<!-- <div class="flex flex-col h-full">
+<div class="flex flex-col h-full"> 
   <section class="main">
-    <div class="profile-container flex flex-col">
-
-      <div class="banner">
-        <img src="{{ avatarUrl + userData.avatar }}">
-      </div>
-
-      <div class="mt-12">
-        <h1 class="nickname">{{ userData.username }}</h1>
-        <div class="lvl-container flex flex-col w-1/2" *ngIf="userStats">
-          <div class="progressbar-wrapper">
-            <img src="assets/img/star.svg" class="star" [ngStyle]="{'left': progress + '%'}">
-            <div class="progress" [ngStyle]="{'width': progress + '%'}"></div>
-          </div>
-          <div class="flex justify-between px-1 lvl-info">
-            <p class="curr_xp">{{ userStats.current_xp }}</p>
-            <p>LEVEL {{ userStats.level }}</p>
-            <p>{{ userStats.nextLvlXp }}</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
     <div class="dashboardMain">
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-      </p>
-    </div>
-  </section>
-</div> -->
 
-<div class="flex flex-col h-full">
-  <div class="profile-container flex flex-col">
-
-    <div class="banner">
-      <img *ngIf="userData" src="{{ avatarUrl + userData.avatar }}">
-    </div>
-
-    <div *ngIf="userData" class="mt-16 mb-4">
-      <h1 class="nickname">{{ userData.username }}</h1>
-      <div class="lvl-container flex flex-col w-1/2" *ngIf="userStats">
-        <div class="progressbar-wrapper">
-          <img src="assets/img/star.svg" class="star" [ngStyle]="{'left': progress + '%'}">
-          <div class="progress" [ngStyle]="{'width': progress + '%'}"></div>
+      <div class="flex flex-col h-full">
+        <div class="profile-container flex flex-col">
+      
+          <div class="banner">
+            <img *ngIf="userData" src="{{ avatarUrl + userData.avatar }}" (click)="onSelectAvatar()" 
+              [ngClass]="{'cursor-pointer': selfProfile}">
+          </div>
+      
+          <div *ngIf="userData" class="mt-16 mb-4">
+            <h1 class="nickname">{{ userData.username }}</h1>
+            <div class="lvl-container flex flex-col w-1/2" *ngIf="userStats">
+              <div class="progressbar-wrapper">
+                <img src="assets/img/star.svg" class="star" [ngStyle]="{'left': progress + '%'}">
+                <div class="progress" [ngStyle]="{'width': progress + '%'}"></div>
+              </div>
+              <div class="flex justify-between px-1 lvl-info">
+                <p class="curr_xp">{{ userStats.current_xp }}</p>
+                <p>LEVEL {{ userStats.level }}</p>
+                <p>{{ userStats.nextLvlXp }}</p>
+              </div>
+            </div>
+          </div>
+      
         </div>
-        <div class="flex justify-between px-1 lvl-info">
-          <p class="curr_xp">{{ userStats.current_xp }}</p>
-          <p>LEVEL {{ userStats.level }}</p>
-          <p>{{ userStats.nextLvlXp }}</p>
-        </div>
+      
       </div>
+
+    <div *ngIf="selfProfile">
+      <section class="profileSection">
+        <h1>Change user data</h1>
+        <div *ngIf="!isLoadingUserDataForm">
+          <form [formGroup]="userDataForm" (submit)="userDataFormSubmit()" class="form-content rounded" id="userDataForm">
+            <div class="form-group">
+              <i class="fa-solid fa-user"></i>
+              <input type="text" id="username" formControlName="username" placeholder="Username" autocomplete="off"
+              [ngClass]="{'invalid': userDataForm.get('username').invalid && userDataForm.get('username').touched}">
+              <label for="username">Username</label>
+            </div>
+
+            <div class="form-group">
+              <i class="fa-regular fa-at"></i>
+              <input type="email" id="email" formControlName="email" placeholder="Email" autocomplete="off"
+              [ngClass]="{'invalid': userDataForm.get('email').invalid && userDataForm.get('email').touched}">
+              <label for="email">Email</label>
+            </div>
+
+            <div class="form-group">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="checkpassword" formControlName="password" placeholder="Password" autocomplete="off"
+              [ngClass]="{'invalid': userDataForm.get('password').invalid && userDataForm.get('password').touched}">
+              <label for="checkpassword">Verify Password</label>
+            </div>
+
+            <div class="form-buttons mt-8">
+              <button type="submit" [disabled]="!userDataForm.valid" form="userDataForm" class="button login">UPDATE</button>
+            </div>
+          </form>
+        </div>
+        <app-spinner *ngIf="isLoadingUserDataForm"></app-spinner>
+      </section>
+
+      <section class="profileSection">
+        <h1>Change password</h1>
+        <div *ngIf="!isLoadingUserCredentialsForm">
+          <form [formGroup]="userCredentialsForm" (submit)="userCredentialsFormSubmit()" class="form-content rounded" id="userCredentialsForm">
+
+            <div class="form-group">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="oldPassword" formControlName="oldPassword" placeholder="Current Password" autocomplete="off"
+              [ngClass]="{'invalid': userCredentialsForm.get('oldPassword').invalid && userCredentialsForm.get('oldPassword').touched}">
+              <label for="oldPassword">Current Password</label>
+            </div>
+
+            <div class="form-group">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="password" formControlName="password" placeholder="Password" autocomplete="off"
+              [ngClass]="{'invalid': userCredentialsForm.get('password').invalid && userCredentialsForm.get('password').touched}">
+              <label for="password">Password</label>
+            </div>
+
+            <div class="form-group">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" id="rpassword" formControlName="rpassword" placeholder="Repeat password" autocomplete="off"
+              [ngClass]="{'invalid': userCredentialsForm.get('rpassword').invalid && userCredentialsForm.get('rpassword').touched}">
+              <label for="rpassword">Repeat password</label>
+            </div>
+
+            <div class="form-buttons mt-8">
+              <button type="submit" [disabled]="!userCredentialsForm.valid" form="userCredentialsForm" class="button login">UPDATE</button>
+            </div>
+          </form>
+        </div>
+        <app-spinner *ngIf="isLoadingUserCredentialsForm"></app-spinner>
+      </section>
     </div>
 
-  </div>
-
-  <section class="main bgcolor2">
-    <div class="dashboardMain">
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. Provident sunt obcaecati inventore distinctio eveniet quos? Error ad quisquam iusto!
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum nostrum voluptates nemo rem assumenda atque esse eveniet qui quam. 
-      </p>
     </div>
   </section>
 </div>
