@@ -75,6 +75,7 @@ import { ConfigurationSubjectsComponent } from './components/dashboard/configura
 import { ConfigurationReportsComponent } from './components/dashboard/configuration/configuration-reports/configuration-reports.component';
 import { AvatarsAddModalComponent } from './components/dashboard/configuration/configuration-avatars/avatars-add-modal/avatars-add-modal.component';
 import { SubjectsAddModalComponent } from './components/dashboard/configuration/configuration-subjects/subjects-add-modal/subjects-add-modal.component';
+import { PlayGoalComponent } from './components/dashboard/play-goal/play-goal.component';
 
 
 @NgModule({
@@ -120,7 +121,8 @@ import { SubjectsAddModalComponent } from './components/dashboard/configuration/
     SubjectsAddModalComponent,
     AllSuggestionsComponent,
     DetailSuggestionComponent,
-    SelectAvatarComponent
+    SelectAvatarComponent,
+    PlayGoalComponent
   ],
   imports: [
     BrowserModule,

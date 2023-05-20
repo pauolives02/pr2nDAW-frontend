@@ -11,7 +11,7 @@
           </div>
       
           <div *ngIf="userData" class="mt-16 mb-4">
-            <h1 class="nickname">{{ userData.username }}</h1>
+            <h1 class="nickname xl:mt-8">{{ userData.username }}</h1>
             <div class="lvl-container flex flex-col w-1/2" *ngIf="userStats">
               <div class="progressbar-wrapper">
                 <img src="assets/img/star.svg" class="star" [ngStyle]="{'left': progress + '%'}">

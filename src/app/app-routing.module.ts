@@ -50,6 +50,9 @@ import { ConfigurationUsersComponent } from './components/dashboard/configuratio
 import { ConfigurationSubjectsComponent } from './components/dashboard/configuration/configuration-subjects/configuration-subjects.component';
 import { ConfigurationReportsComponent } from './components/dashboard/configuration/configuration-reports/configuration-reports.component';
 
+// DASHBOARD > PLAY
+import { PlayGoalComponent } from './components/dashboard/play-goal/play-goal.component';
+
 
 
 const routes: Routes = [
@@ -100,6 +103,7 @@ const routes: Routes = [
             { path: 'user-reports', component: ConfigurationReportsComponent },
           ]
         },
+        { path: 'play/:type/:id', component: PlayGoalComponent }
       ]
   },
   { path: '**', component: NotFoundComponent}
