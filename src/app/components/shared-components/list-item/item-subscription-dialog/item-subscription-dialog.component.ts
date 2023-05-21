@@ -12,9 +12,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ItemSubscriptionDialogComponent {
 
   item: Exercise | Set
-  ammount: number = 10
   imagesUrl: string
   form: FormGroup
+  addSet: boolean = false
 
   constructor(
     private dialogRef: MatDialogRef<ItemSubscriptionDialogComponent>,
@@ -23,6 +23,7 @@ export class ItemSubscriptionDialogComponent {
   ) {
     this.item = data.item
     this.imagesUrl = data.imagesUrl
+    if (data.addSet) this.addSet = data.addSet
 
     this.form = new FormGroup({
       ammount: new FormControl(1, [Validators.required, Validators.min(1)]),

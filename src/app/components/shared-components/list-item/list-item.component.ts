@@ -46,14 +46,13 @@ export class ListItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.item)
     this.subscribed = this.item.isSubscribed
     if (this.itemType === 'exercise') {
       this.imagesUrl = environment.apiUrl + '/api/exercise/get-image/'
       this.itemService = this.exerciseService
       this.editUrl = '/dashboard/exercises/edit/'
     } else if (this.itemType === 'set') {
-      this.imagesUrl = environment.apiUrl + '/api/sets/get-image/'
+      this.imagesUrl = environment.apiUrl + '/api/set/get-image/'
       this.itemService = this.setService
       this.editUrl = '/dashboard/set/edit/'
     }

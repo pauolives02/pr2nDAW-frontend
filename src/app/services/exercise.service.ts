@@ -47,4 +47,8 @@ export class ExerciseService {
     return this.http.delete(environment.apiUrl + '/api/exercise/delete/' + id)
   }
 
+  getExercisesForSet(type) {
+    return this.http.get(environment.apiUrl + '/api/exercise/for-set/' + type)
+  }
+
 }

@@ -2,8 +2,8 @@
   <section>
     <h3>Subscriptions</h3>
 
-    <div *ngIf="sets.length != 0" class="gridList">
-      <app-list-item *ngFor="let set of sets" [item]="set"></app-list-item>
+    <div *ngIf="sets.length != 0 && !isLoading" class="gridList">
+      <app-list-item *ngFor="let set of sets" [item]="set.subscription" [itemType]="'set'" (updateList)="getSubscriptions($event)"></app-list-item>
     </div>
 
     <p *ngIf="sets.length == 0 && !isLoading">No sets were found.</p>

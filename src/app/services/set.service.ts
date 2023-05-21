@@ -39,4 +39,12 @@ export class SetService {
     return this.http.delete(environment.apiUrl + '/api/set/delete/' + id)
   }
 
+  addSubscription(id, repetitions) {
+    return this.http.post(environment.apiUrl + '/api/set/subscription/add', {id, repetitions})
+  }
+
+  removeSubscription(id) {
+    return this.http.post(environment.apiUrl + '/api/set/subscription/remove', {id})
+  }
+
 }

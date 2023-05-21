@@ -57,11 +57,6 @@ export class AllSetsComponent implements OnInit {
         }
       },
       {
-        name: 'Finished XP',
-        key: 'finished_xp',
-        type: 'number',
-      },
-      {
         name: 'Public',
         key: 'public',
         type: 'select',
@@ -82,6 +77,7 @@ export class AllSetsComponent implements OnInit {
       {
         text: 'Delete',
         icon: 'fa-trash',
+        class: 'bgRed',
         onclick: (item) => this.onDelete(item)
       },
     ]

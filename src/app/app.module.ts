@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule } from "@angular/material/dialog";
+import { NgxSelectModule } from 'ngx-select-ex';
 
 // INTERCEPTORS //
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -131,6 +132,7 @@ import { PlayGoalComponent } from './components/dashboard/play-goal/play-goal.co
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
+    NgxSelectModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

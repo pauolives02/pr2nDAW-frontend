@@ -22,7 +22,10 @@
         </div>
 
         <div class="form-buttons">
-          <button type="submit" class="button login !h-7" [disabled]="!form.valid">Subscribe</button>
+          <button type="submit" class="button login !h-7" [disabled]="!form.valid">
+            <ng-container *ngIf="!addSet">Subscribe</ng-container>
+            <ng-container *ngIf="addSet">Add</ng-container>
+          </button>
         </div>
       </form>
     </div>

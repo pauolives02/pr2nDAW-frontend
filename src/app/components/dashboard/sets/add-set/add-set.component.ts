@@ -6,6 +6,10 @@ import { requiredFileType } from 'src/app/helpers/requiredFileType';
 import { toFormData } from 'src/app/helpers/toFormData';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageModalService } from 'src/app/services/messageModal.service';
+import { ExerciseService } from 'src/app/services/exercise.service';
+import { MatDialog } from "@angular/material/dialog";
+import { ItemSubscriptionDialogComponent } from 'src/app/components/shared-components/list-item/item-subscription-dialog/item-subscription-dialog.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-set',
@@ -20,13 +24,18 @@ export class AddSetComponent {
   edit: boolean = false
   setId: string = ''
   set: any
+  availableExercises: any[] = []
+  setExercises: any[] = []
+  userId: string
 
     constructor(
     private setService: SetService,
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private messageModalService: MessageModalService
+    private dialog: MatDialog,
+    private messageModalService: MessageModalService,
+    private exerciseService: ExerciseService
   ) {
     this.route.params.subscribe(params => {
       this.setId = params['id']
@@ -39,6 +48,9 @@ export class AddSetComponent {
 
    ngOnInit() {
     this.isAdmin = this.authService.getIsAdmin()
+    this.userId = this.authService.getUserId()
+
+    this.getAvailableExercises(null, 'false')
 
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(15)]),
@@ -54,7 +66,10 @@ export class AddSetComponent {
 
   saveSet() {
     if (this.form.valid) {
-      const formData = toFormData(this.form.value)
+      const setData = this.form.value
+      setData.exercises = JSON.stringify(this.setExercises)
+      const formData = toFormData(setData)
+
       this.isLoading = true
 
       if (!this.edit) {
@@ -62,6 +77,7 @@ export class AddSetComponent {
         .subscribe({
           next: (response: any) => {
             this.form.reset()
+            this.setExercises = []
             this.isLoading = false
             this.messageModalService.openModal(response.msg, 1)
           },
@@ -95,6 +111,59 @@ export class AddSetComponent {
         this.router.navigate(['/dashboard/sets'])
       }
     })
+  }
+
+  getAvailableExercises(event, type = null) {
+    if (event) type = event.target.value
+    this.exerciseService.getExercisesForSet(type).subscribe({
+      next: (result: any) => {
+         console.log(result)
+         this.availableExercises = result
+      }
+    })
+  }
+
+  addToExerciseList(event) {
+    const itemId = event.target.value
+    const item = this.availableExercises.find(e => e.id === itemId)
+
+    const dialogRef = this.dialog.open(ItemSubscriptionDialogComponent, {
+      width: '80%',
+      height: '70vh',
+      data: {
+        item: item,
+        imagesUrl: environment.apiUrl + '/api/exercise/get-image/',
+        addSet: true
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(
+      repetitions => {
+        if (repetitions) {
+          this.setExercises.push({
+            id: item.id,
+            name: item.name,
+            repetitions
+          })
+        }
+      }
+    )
+  }
+
+  removeFromList(i) {
+    this.setExercises.splice(i, 1)
+  }
+
+  moveItem(i, direction) {
+    let newPos
+    if (direction == 'up') {
+      newPos = i - 1
+    } else if (direction == 'down') {
+      newPos = i + 1
+    }
+    const item = this.setExercises[i]
+    this.setExercises.splice(i, 1)
+    this.setExercises.splice(newPos, 0, item)
   }
 
 }

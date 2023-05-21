@@ -24,6 +24,10 @@ export class SetListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getSets()
+  }
+
+  getSets(event = null) {
     this.isLoading = true
     if (!this.isPrivate) {
       this.title = 'Public'

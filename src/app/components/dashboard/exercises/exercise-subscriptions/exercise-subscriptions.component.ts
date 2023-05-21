@@ -1,5 +1,4 @@
 import { Component, OnInit} from '@angular/core';
-import { Exercise } from 'src/app/models/exercise.model';
 import { ExerciseService } from 'src/app/services/exercise.service';
 
 @Component({
@@ -11,7 +10,6 @@ export class ExerciseSubscriptionsComponent implements OnInit {
 
   exercises: any[] = []
   isLoading: boolean = false
-  // imagesUrl: string  = environment.apiUrl + '/api/exercise/get-image/'
 
   constructor(
     private exerciseService: ExerciseService,
@@ -26,7 +24,6 @@ export class ExerciseSubscriptionsComponent implements OnInit {
     this.exerciseService.getExercisesSubscribed().subscribe(
       (res: any) => {
         this.exercises = res
-        console.log(this.exercises)
         this.isLoading = false
       }
     )

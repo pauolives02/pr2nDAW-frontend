@@ -1,6 +1,5 @@
 import { Component, OnInit} from '@angular/core';
 import { SetService } from 'src/app/services/set.service';
-import { Set } from 'src/app/models/set.model';
 
 @Component({
   selector: 'app-set-subscriptions',
@@ -9,15 +8,18 @@ import { Set } from 'src/app/models/set.model';
 })
 export class SetSubscriptionsComponent implements OnInit {
 
-  sets: Set[] = []
+  sets: any[] = []
   isLoading: boolean = false
-  // imagesUrl: string  = environment.apiUrl + '/api/exercise/get-image/'
 
   constructor(
     private setService: SetService,
   ) {}
 
   ngOnInit() {
+    this.getSubscriptions()
+  }
+
+  getSubscriptions(event= null) {
     this.isLoading = true
     this.setService.getSetsSubscribed().subscribe(
       (res: any) => {
