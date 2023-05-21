@@ -77,6 +77,7 @@ export class AddSetComponent {
         .subscribe({
           next: (response: any) => {
             this.form.reset()
+            this.form.get('public').setValue(false)
             this.setExercises = []
             this.isLoading = false
             this.messageModalService.openModal(response.msg, 1)
@@ -125,29 +126,31 @@ export class AddSetComponent {
 
   addToExerciseList(event) {
     const itemId = event.target.value
-    const item = this.availableExercises.find(e => e.id === itemId)
+    if (itemId != '') {
+      const item = this.availableExercises.find(e => e.id === itemId)
 
-    const dialogRef = this.dialog.open(ItemSubscriptionDialogComponent, {
-      width: '80%',
-      height: '70vh',
-      data: {
-        item: item,
-        imagesUrl: environment.apiUrl + '/api/exercise/get-image/',
-        addSet: true
-      }
-    })
-
-    dialogRef.afterClosed().subscribe(
-      repetitions => {
-        if (repetitions) {
-          this.setExercises.push({
-            id: item.id,
-            name: item.name,
-            repetitions
-          })
+      const dialogRef = this.dialog.open(ItemSubscriptionDialogComponent, {
+        width: '80%',
+        height: '70vh',
+        data: {
+          item: item,
+          imagesUrl: environment.apiUrl + '/api/exercise/get-image/',
+          addSet: true
         }
-      }
-    )
+      })
+
+      dialogRef.afterClosed().subscribe(
+        repetitions => {
+          if (repetitions) {
+            this.setExercises.push({
+              id: item.id,
+              name: item.name,
+              repetitions
+            })
+          }
+        }
+      )
+    }
   }
 
   removeFromList(i) {

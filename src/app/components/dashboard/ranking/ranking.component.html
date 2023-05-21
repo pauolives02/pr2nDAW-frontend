@@ -6,19 +6,26 @@
         <section>
           <h3>Top level</h3>
           <ng-container *ngIf="!isLoadingTopLvl">
-            <div *ngFor="let user of topLvl; let i = index" class="flex items-center justify-between ranking p-2">
-              <i class="fa-solid fa-medal" *ngIf="i == 0 || i == 1 || i == 2"></i>
-              <p class="index" *ngIf="i != 0 && i != 1 && i != 2">{{ i + 1 }}</p>
-              <div class="flex !w-[31.6%]">
-                <img src="{{ avatarUrl + user.user_id.avatar }}" class="h-8 w-8 mr-2">
-                <p><a [routerLink]="'/dashboard/profile/'+user.user_id.id">{{ user.user_id.username }} </a></p>
+            <div *ngFor="let user of topLvl; let i = index" class="flex items-center flex-col sm:flex-row ranking p-2">
+
+              <div class="!w-full sm:!w-1/2 flex">
+                <i class="fa-solid fa-medal !w-1/2 sm:!w-1/4" *ngIf="i == 0 || i == 1 || i == 2"></i>
+                <p class="index !w-1/2 sm:!w-1/4" *ngIf="i != 0 && i != 1 && i != 2">{{ i + 1 }}</p>
+                <div class="flex !w-1/2 sm:!w-3/4">
+                  <img src="{{ avatarUrl + user.user_id.avatar }}" class="h-8 w-8 mr-2">
+                  <p><a [routerLink]="'/dashboard/profile/'+user.user_id.id">{{ user.user_id.username }} </a></p>
+                </div>
               </div>
-              <div class="flex !w-[31.6%]" title="Level">
-                <img src="assets/img/star.svg" class="h-6 mr-2">
-                <p>{{ user.level}}</p>
-              </div>
-              <p class="!w-[31.6%]">{{ user.current_xp }} XP</p>
+
+                <div class="!w-full sm:!w-1/2 flex">
+                  <div class="flex !w-1/2" title="Level">
+                    <img src="assets/img/star.svg" class="h-6 mr-2">
+                    <p>{{ user.level}}</p>
+                  </div>
+                  <p class="!w-1/2">{{ user.current_xp }} XP</p>
+                </div>
             </div>
+
           </ng-container>
           <app-spinner *ngIf="isLoadingTopLvl"></app-spinner>
         </section>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeService } from 'src/app/services/home.service';
+import { DailyGoalService } from 'src/app/services/dailyGoal.service';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   exerciseImgUrl: string = environment.apiUrl + '/api/exercise/get-image/'
 
   constructor(
-    private homeService: HomeService,
+    private dailyGoalService: DailyGoalService,
     private router: Router 
   ) {}
 
@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   getDailyGoals() {
     this.isLoading = true
-    this.homeService.getDailyGoals().subscribe({
+    this.dailyGoalService.getDailyGoals().subscribe({
       next: (result: any) => {
         this.dailyGoals = result
         this.isLoading = false

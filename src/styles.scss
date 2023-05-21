@@ -23,14 +23,13 @@ body {
   overflow-x: hidden;
   height: 100vh;
   background-color: var(--color1);
-  // background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='119' height='119' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%232e323d' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 
 .bgcolor1 {background-color: #354057;}
 .bgcolor2 {background-color: #2b2e3d;}
 
-// filter: grayscale(100%);
+.color4 { color: var(--color4);}
 
 
 // ************************************ //
@@ -70,40 +69,6 @@ body {
   font-weight: bold;
   text-shadow: 2px 2px var(--color2);
 }
-
-// .auth .container {
-//   display: flex;
-//   width: 80%;
-//   margin: auto;
-//   border-radius: 8px;
-//   background-color: var(--color2);
-//   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-//   overflow: auto;
-// }
-
-// .auth .container .item {
-//   width: 100%;
-//   height: 40vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   @apply md:w-1/2 md:h-[60vh];
-// }
-
-// .auth .item h3 {
-//   color: var(--white);
-//   font-family: 'Kalam';
-//   font-size: 3em;
-//   font-weight: bold;
-//   text-shadow: 2px 2px var(--color2);
-//   @apply md:text-7xl;
-// }
-
-// .auth .container .image {
-//   background: linear-gradient(212.38deg, rgb(8 113 190 / 74%) 0%, rgb(8 192 255 / 73%) 100%), url('assets/img/test.png');
-//   background-size: cover;
-//   background-position: center, center;
-// }
 
 .login {
   background: linear-gradient(90deg, var(--color3), var(--color4));
@@ -156,7 +121,6 @@ div.main {
   box-shadow: 0 8px 32px rgb(13, 14, 19);
   padding-top: 1rem;
   margin-left: -240px;
-  // transition: .2s ease-in-out;
   overflow-x: hidden;
 }
 
@@ -261,8 +225,6 @@ div.main {
 a.active {
   background: var(--color4);
 }
-
-// 
 
 
 // OTHER
@@ -494,14 +456,11 @@ div.item:not(.auth .item) {
 
 div.item img {
   @apply h-24 w-24 md:mr-2;
-  // @apply lg:h-60;
-  // @apply lg:w-60;
   border-radius: 3px;
 }
 
 div.item div.itemContent {
   width: 100%;
-  // padding: 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -531,6 +490,8 @@ div.item div.itemContent .description {
   border-radius: 10px;
   font-size: 15px;
   font-weight: bold;
+  max-width: fit-content;
+  align-self: end;
 }
 
 // ************************************ //
@@ -590,7 +551,6 @@ div.item div.itemContent .description {
 .inputFile + label strong {
   min-width: 180px;
   padding: 0.3rem;
-  // border: 1px solid var(--color4);
   background-color: var(--color4);
   color: #fff;
   @apply sm:p-2;
@@ -602,7 +562,6 @@ div.item div.itemContent .description {
   padding: .3rem;
   text-align: center;
   @apply sm:p-2;
-  // border: 1px solid var(--color4);
 }
 
 // ************************************ //

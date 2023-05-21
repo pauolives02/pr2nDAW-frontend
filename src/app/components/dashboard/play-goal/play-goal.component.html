@@ -1,0 +1,46 @@
+<div class="flex flex-col h-full">
+  
+  <div *ngIf="goal" class="flex justify-between flex-wrap px-6">
+    <h1>REPETITIONS: {{ goal.completed_repetitions }} / {{ goal.repetitions }}</h1>
+    <h1>STEP: {{ step + 1 }} / {{ steps.length }}</h1>
+  </div>
+
+  <section class="main">
+    <div class="dashboardMain">
+      
+      <section class="bgcolor2 goalContent" *ngIf="goal">
+        <img src="{{exerciseImgUrl + currentExercise.exercise.image }}">
+        
+        <div class="flex justify-between">
+          <h2>{{ currentExercise.exercise.name }}</h2>
+          <p *ngIf="currentExercise.repetitions - goal.finished_exercises[step] != 0">REMAINING: {{ currentExercise.repetitions - goal.finished_exercises[step] }}</p>
+          <p *ngIf="currentExercise.repetitions - goal.finished_exercises[step] == 0">COMPLETED!</p>
+        </div>
+        <p>{{ currentExercise.exercise.description }}</p>
+
+        <div *ngIf="currentExercise.repetitions - goal.finished_exercises[step] != 0">
+          <form class="form-content" [formGroup]="form" (submit)="saveProgress()">
+            <div class="form-group">
+              <i class="fa-solid fa-repeat"></i>
+              <input type="number" id="ammount" formControlName="ammount" placeholder="Ammount" class="!h-7">
+              <label for="ammount">Completed repetitions</label>
+            </div>
+            <div class="form-buttons">
+              <button type="submit" class="button login !h-7" [disabled]="!form.valid">Save</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="flex justify-between">
+          <div class="block">
+            <button *ngIf="step != 0" (click)="changeStep(false)"><i class="fa-solid fa-angle-left"></i> Back</button>
+          </div>
+          <div class="block">
+            <button *ngIf="step != steps.length - 1" (click)="changeStep(true)">Next <i class="fa-solid fa-angle-right"></i></button>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </section>
+</div>

@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { ConfirmDialogComponent } from 'src/app/components/shared-components/confirm-dialog/confirm-dialog.component';
 import { MatDialog } from "@angular/material/dialog";
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-configuration-users',
@@ -18,7 +19,8 @@ export class ConfigurationUsersComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -55,17 +57,22 @@ export class ConfigurationUsersComponent implements OnInit {
     ]
 
     this.buttons = [
+      // {
+      //   text: 'Ban',
+      //   icon: 'fa-ban',
+      //   class: 'bgRed',
+      //   onclick: (item) => this.onDelete(item)
+      // },
       {
-        text: 'Delete',
-        icon: 'fa-ban',
-        class: 'bgRed',
-        onclick: (item) => this.onDelete(item)
+        text: 'Profile',
+        icon: 'fa-eye',
+        onclick: (item) => this.router.navigate(['/dashboard/profile/' + item.id])
       },
     ]
   }
 
-  onDelete(item) {
+  // onDelete(item) {
 
-  }
+  // }
 
 }

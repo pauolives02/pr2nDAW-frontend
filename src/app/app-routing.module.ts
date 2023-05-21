@@ -48,7 +48,6 @@ import { ConfigurationComponent } from './components/dashboard/configuration/con
 import { ConfigurationAvatarsComponent } from './components/dashboard/configuration/configuration-avatars/configuration-avatars.component';
 import { ConfigurationUsersComponent } from './components/dashboard/configuration/configuration-users/configuration-users.component';
 import { ConfigurationSubjectsComponent } from './components/dashboard/configuration/configuration-subjects/configuration-subjects.component';
-import { ConfigurationReportsComponent } from './components/dashboard/configuration/configuration-reports/configuration-reports.component';
 
 // DASHBOARD > PLAY
 import { PlayGoalComponent } from './components/dashboard/play-goal/play-goal.component';
@@ -100,7 +99,6 @@ const routes: Routes = [
             { path: 'avatars', component: ConfigurationAvatarsComponent },
             { path: 'subjects', component: ConfigurationSubjectsComponent },
             { path: 'user-list', component: ConfigurationUsersComponent },
-            { path: 'user-reports', component: ConfigurationReportsComponent },
           ]
         },
         { path: 'play/:type/:id', component: PlayGoalComponent }

@@ -64,6 +64,8 @@ export class AddExerciseComponent implements OnInit {
         .subscribe({
           next: (response: any) => {
             this.form.reset()
+            this.form.get('public').setValue(false)
+            this.form.get('finished_xp').setValue('1')
             this.isLoading = false
             this.messageModalService.openModal(response.msg, 1)
           },

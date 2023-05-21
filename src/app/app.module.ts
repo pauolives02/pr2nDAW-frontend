@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { MatDialogModule } from "@angular/material/dialog";
-import { NgxSelectModule } from 'ngx-select-ex';
 
 // INTERCEPTORS //
 import { HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -73,7 +72,6 @@ import { ConfigurationComponent } from './components/dashboard/configuration/con
 import { ConfigurationAvatarsComponent } from './components/dashboard/configuration/configuration-avatars/configuration-avatars.component';
 import { ConfigurationUsersComponent } from './components/dashboard/configuration/configuration-users/configuration-users.component';
 import { ConfigurationSubjectsComponent } from './components/dashboard/configuration/configuration-subjects/configuration-subjects.component';
-import { ConfigurationReportsComponent } from './components/dashboard/configuration/configuration-reports/configuration-reports.component';
 import { AvatarsAddModalComponent } from './components/dashboard/configuration/configuration-avatars/avatars-add-modal/avatars-add-modal.component';
 import { SubjectsAddModalComponent } from './components/dashboard/configuration/configuration-subjects/subjects-add-modal/subjects-add-modal.component';
 import { PlayGoalComponent } from './components/dashboard/play-goal/play-goal.component';
@@ -112,7 +110,6 @@ import { PlayGoalComponent } from './components/dashboard/play-goal/play-goal.co
     ConfigurationAvatarsComponent,
     ConfigurationUsersComponent,
     ConfigurationSubjectsComponent,
-    ConfigurationReportsComponent,
     ConfirmDialogComponent,
     SharedTableComponent,
     AllExercisesComponent,
@@ -132,7 +129,6 @@ import { PlayGoalComponent } from './components/dashboard/play-goal/play-goal.co
     BrowserAnimationsModule,
     HttpClientModule,
     MatDialogModule,
-    NgxSelectModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

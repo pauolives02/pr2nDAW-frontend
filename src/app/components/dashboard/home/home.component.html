@@ -5,7 +5,7 @@
       <section>
         <h3>Daily Goals</h3>
 
-        <div class="gridList">
+        <div class="gridList" *ngIf="dailyGoals.length != 0"> 
           <div *ngFor="let goal of dailyGoals" class="dailyGoal">
             <div *ngIf=" goal.completed_repetitions >= goal.repetitions" class="overlay">
               <i class="fa-regular fa-circle-check" style="color: #1aa24e;"></i>
@@ -23,11 +23,9 @@
             </div>
           </div>
         </div>
+
+        <p *ngIf="dailyGoals.length == 0">You don't have any goal yet. Visit <a routerLink="/dashboard/exercises" class="color4 underline">Exercises</a> or <a routerLink="/dashboard/sets" class="color4 underline">Sets</a> to get a subscription</p>
       </section>
-    
-      <!-- <section>
-        <h1>Statistics</h1>
-      </section> -->
     
     </div>
   </section>
