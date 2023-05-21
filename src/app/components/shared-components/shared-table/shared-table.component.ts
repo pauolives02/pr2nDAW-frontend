@@ -33,7 +33,6 @@ export class SharedTableComponent implements OnInit {
         this.isLoading = false
       },
       error: (error) => {
-        console.log(error)
         this.isLoading = false
       }
     })

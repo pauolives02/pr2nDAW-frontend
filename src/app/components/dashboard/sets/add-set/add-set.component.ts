@@ -106,6 +106,7 @@ export class AddSetComponent {
         this.form.get('name').setValue(this.set.name)
         this.form.get('description').setValue(this.set.description)
         this.form.get('public').setValue(this.set.public)
+        this.setExercises = this.set.exercises
       },
       error: (err) => {
         this.router.navigate(['/dashboard/sets'])
@@ -117,7 +118,6 @@ export class AddSetComponent {
     if (event) type = event.target.value
     this.exerciseService.getExercisesForSet(type).subscribe({
       next: (result: any) => {
-         console.log(result)
          this.availableExercises = result
       }
     })

@@ -120,7 +120,6 @@ export class MySuggestionsComponent implements OnInit {
   }
 
   onDelete(item) {
-    console.log(item)
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       height: '50vh',
       width: '80vh',

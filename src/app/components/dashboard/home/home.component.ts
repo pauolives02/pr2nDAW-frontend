@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
       next: (result: any) => {
         this.dailyGoals = result
         this.isLoading = false
-        console.log(this.dailyGoals)
       },
       error: () => this.isLoading = false
     })

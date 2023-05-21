@@ -54,7 +54,7 @@ export class ListItemComponent implements OnInit {
     } else if (this.itemType === 'set') {
       this.imagesUrl = environment.apiUrl + '/api/set/get-image/'
       this.itemService = this.setService
-      this.editUrl = '/dashboard/set/edit/'
+      this.editUrl = '/dashboard/sets/edit/'
     }
   }
 

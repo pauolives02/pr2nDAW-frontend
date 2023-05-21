@@ -27,7 +27,6 @@ export class ExerciseDetailComponent implements OnInit {
     this.exerciseService.getExerciseById(id)
     .subscribe(exercise => {
       this.exercise = exercise
-      console.log(this.exercise)
     })
   }
 }
